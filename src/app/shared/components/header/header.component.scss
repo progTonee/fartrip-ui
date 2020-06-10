@@ -1,0 +1,8 @@
+.mat-card {
+  .mat-card-actions:last-child {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 0;
+  }
+}

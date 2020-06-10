@@ -1,0 +1,12 @@
+<app-header [headerType]="'login'"></app-header>
+<form [formGroup]="formGroup" (ngSubmit)="onFormSubmit()">
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Enter your email" formControlName="email">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput placeholder="Enter your password" type="password" formControlName="password">
+  </mat-form-field>
+  <button mat-button type="submit">Submit</button>
+</form>

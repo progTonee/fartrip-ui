@@ -1,0 +1,11 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+  height: 300px;
+  margin: auto;
+  position: relative;
+  top: 50vh;
+  transform: translateY(-50%);
+}
