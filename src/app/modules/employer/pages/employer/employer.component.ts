@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employer.component.scss']
 })
 export class EmployerComponent implements OnInit {
+  employerTabs: any[];
 
-  constructor() { }
+  constructor() {
+    this.employerTabs = [
+      { label: 'Available orders', path: 'available-orders' },
+      { label: 'Orders history', path: 'orders-history' }
+    ];
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

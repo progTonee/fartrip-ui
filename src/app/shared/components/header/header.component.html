@@ -3,4 +3,8 @@
     <a mat-button routerLink="/login">Sign In</a>
     <a mat-button routerLink="/signup">Sign Up</a>
   </mat-card-actions>
+  <mat-card-actions *ngIf="headerType === 'user' || headerType === 'employer'">
+    <a mat-button [routerLink]="headerType === 'user' ? ['/user/settings'] : ['/employer/settings']">Settings</a>
+    <a mat-button routerLink="/">Log out</a>
+  </mat-card-actions>
 </mat-card>

@@ -1,0 +1,38 @@
+<div class="user-expansion-panel" *ngIf="type === 'drivers'">
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false"
+                         *ngFor="let item of data">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ item.name }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ item.status }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="user-expansion-panel__content">
+        <app-driver></app-driver>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div class="employer-expansion-panel" *ngIf="type === 'available-orders' || type === 'orders-history'">
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false"
+                         *ngFor="let item of data">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ item.destination }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ item.distance }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="employer-expansion-panel__content">
+        <app-available-order></app-available-order>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

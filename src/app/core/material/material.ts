@@ -3,6 +3,8 @@ import {
   MatButtonModule,
   MatInputModule,
   MatFormFieldModule,
+  MatTabsModule,
+  MatExpansionModule,
 } from '@angular/material';
 
 export const materialModules = [
@@ -10,4 +12,6 @@ export const materialModules = [
   MatButtonModule,
   MatInputModule,
   MatFormFieldModule,
+  MatTabsModule,
+  MatExpansionModule,
 ];

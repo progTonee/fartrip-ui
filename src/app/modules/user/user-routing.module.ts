@@ -1,9 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './pages/user/user.component';
+import { DriversComponent } from './components/drivers/drivers.component';
+import { OrdersHistoryComponent } from 'src/app/shared/components/orders-history/orders-history.component';
+import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
 
 const routes: Routes = [
-  { path: '', component: UserComponent }
+  {
+    path: '',
+    component: UserComponent,
+    children: [
+      { path: 'drivers', component: DriversComponent },
+      { path: 'orders-history', component: OrdersHistoryComponent }
+    ]
+  },
+  { path: 'user/settings', component: UserSettingsComponent }
 ];
 
 @NgModule({
