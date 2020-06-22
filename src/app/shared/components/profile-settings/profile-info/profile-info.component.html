@@ -21,6 +21,14 @@
           <input matInput placeholder="Enter your age" formControlName="age" />
           <mat-error *ngIf="commonProfileFormGroup.get('age').hasError('required')">The age is required</mat-error>
         </mat-form-field>
+        <mat-form-field *ngIf="isEmployerInfoDisplayed">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option *ngFor="let item of profileInfoService.getStatusList()" [value]="item.value">{{item.text}}</mat-option>
+          </mat-select>
+          <input matInput placeholder="Select your current status" formControlName="status" />
+          <mat-error *ngIf="commonProfileFormGroup.get('status').hasError('required')">The status is required</mat-error>
+        </mat-form-field>
         <button mat-button type="submit" *ngIf="isProfileEdited">Submit</button>
       </form>
       <form class="password-profile-info" [formGroup]="passwordProfileFormGroup" (ngSubmit)="onProfileSubmit('passwordProfileInfo')">
@@ -43,5 +51,5 @@
       </form>
     </div>
   </div>
-  <app-car-info *ngIf="isCarInfoDisplayed"></app-car-info>
+  <app-car-info *ngIf="isEmployerInfoDisplayed"></app-car-info>
 </div>

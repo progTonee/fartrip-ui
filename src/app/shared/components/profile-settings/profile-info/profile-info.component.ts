@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProfileInfoService } from './profile-info.service';
 
 @Component({
   selector: 'app-profile-info',
@@ -8,17 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile-info.component.scss']
 })
 export class ProfileInfoComponent implements OnInit {
-  isCarInfoDisplayed: boolean;
-
   commonProfileFormGroup: FormGroup;
   passwordProfileFormGroup: FormGroup;
+  isEmployerInfoDisplayed: boolean;
   isProfileEdited = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, public profileInfoService: ProfileInfoService) {
     this.commonProfileFormGroup = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
       age: ['', Validators.required],
+      status: ['', Validators.required]
     });
     this.passwordProfileFormGroup = this.fb.group({
       currentPassword: ['', Validators.required],
@@ -31,7 +32,7 @@ export class ProfileInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isCarInfoDisplayed = this.router.url.indexOf('employer') !== -1;
+    this.isEmployerInfoDisplayed = this.router.url.indexOf('employer') !== -1;
   }
 
   onEditClick(): void {

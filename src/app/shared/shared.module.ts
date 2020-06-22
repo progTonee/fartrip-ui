@@ -17,6 +17,7 @@ import { EmployerCommentsComponent } from './components/profile-settings/employe
 import { ProfileInfoComponent } from './components/profile-settings/profile-info/profile-info.component';
 import { EmployerCommentsService } from './components/profile-settings/employer-comments/employer-comments.service';
 import { CommentComponent } from './components/profile-settings/employer-comments/comment/comment.component';
+import { ProfileInfoService } from './components/profile-settings/profile-info/profile-info.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CommentComponent } from './components/profile-settings/employer-comment
   providers: [
     OrdersHistoryService,
     EmployerCommentsService,
+    ProfileInfoService,
   ],
   exports: [
     HeaderComponent,
