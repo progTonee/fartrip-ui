@@ -16,7 +16,7 @@ import { UserSettingsComponent } from './pages/user-settings/user-settings.compo
   imports: [
     CommonModule,
     UserRoutingModule,
-    SharedModule,
+    SharedModule
   ],
   providers: [
     DriversService,

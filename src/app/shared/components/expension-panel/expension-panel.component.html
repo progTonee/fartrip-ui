@@ -11,13 +11,13 @@
           {{ item.status }}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <div class="user-expansion-panel__content">
+      <div class="user-expansion-panel__drivers">
         <app-driver></app-driver>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
 </div>
-<div class="employer-expansion-panel" *ngIf="type === 'available-orders' || type === 'orders-history'">
+<div class="employer-expansion-panel" *ngIf="type === 'orders-history'">
   <mat-accordion>
     <mat-expansion-panel (opened)="panelOpenState = true"
                          (closed)="panelOpenState = false"
@@ -30,8 +30,46 @@
           {{ item.distance }}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <div class="employer-expansion-panel__content">
-        <app-available-order></app-available-order>
+      <div class="employer-expansion-panel__orders-history">
+        <app-order-history [data]="item" [type]="type"></app-order-history>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div class="employer-expansion-panel" *ngIf="type === 'available-orders'">
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false"
+                         *ngFor="let item of data">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ item.destination }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ item.distance }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="employer-expansion-panel__available-orders">
+        <app-available-order [data]="item"></app-available-order>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div class="employer-expansion-panel" *ngIf="type === 'comments'">
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false"
+                         *ngFor="let item of data">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ item.userName }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ item.date }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="employer-expansion-panel__comments">
+        <app-comment [data]="item"></app-comment>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

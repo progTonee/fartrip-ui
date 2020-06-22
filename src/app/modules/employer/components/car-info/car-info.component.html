@@ -1,0 +1,26 @@
+<div class="car-info">
+  <div class="car-info__image">
+    <img src="#" alt="Car image" />
+    <button mat-button type="button" (click)="onEditClick()">{{isInfoEdited ? 'Cancel editing' : 'Edit info'}}</button>
+  </div>
+  <div class="car-info__description">
+    <form [formGroup]="formGroup" (ngSubmit)="onCarInfoSettingsSubmit()">
+      <mat-form-field>
+        <mat-label>Model</mat-label>
+        <input matInput placeholder="Enter the car model" formControlName="model" />
+        <mat-error *ngIf="formGroup.get('model').hasError('required')">The model is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Type</mat-label>
+        <input matInput placeholder="Enter the car type" formControlName="type" />
+        <mat-error *ngIf="formGroup.get('type').hasError('required')">The type is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Amount of seats</mat-label>
+        <input matInput placeholder="Enter amout of seats" formControlName="seatsAmount" />
+        <mat-error *ngIf="formGroup.get('seatsAmount').hasError('required')">The amount of seats is required</mat-error>
+      </mat-form-field>
+      <button mat-button type="submit" *ngIf="isInfoEdited">Submit</button>
+    </form>
+  </div>
+</div>

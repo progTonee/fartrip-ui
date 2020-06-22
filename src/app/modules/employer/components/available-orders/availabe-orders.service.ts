@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { IOrder } from 'src/app/core/models/order';
+import { Order } from 'src/app/core/models/order';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AvailabeOrdersService {
-  availableOrdersData: IOrder[];
+  availableOrdersData: Order[];
 
   constructor() {
     this.availableOrdersData = [
@@ -13,19 +13,19 @@ export class AvailabeOrdersService {
         destination: 'Moscow',
         spentTime: 60000,
         distance: 300.25,
-        userName: 'User 1'
+        userName: 'User 1 Available'
       },
       {
         destination: 'Paris',
         spentTime: 600000,
         distance: 3000.25,
-        userName: 'User 2'
+        userName: 'User 2 Available'
       },
       {
         destination: 'Poland',
         spentTime: 3500,
         distance: 200.25,
-        userName: 'User 3'
+        userName: 'User 3 Available'
       }
     ];
   }

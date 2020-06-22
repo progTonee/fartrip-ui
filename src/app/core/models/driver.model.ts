@@ -1,6 +1,6 @@
 import { DriverStatus } from '../enums/user';
 
-export interface IDriver {
+export interface Driver {
   name: string;
   age: number;
   status: DriverStatus;

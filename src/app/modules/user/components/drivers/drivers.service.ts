@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { IDriver } from 'src/app/core/models/driver.model';
+import { Driver } from 'src/app/core/models/driver.model';
 import { DriverStatus } from 'src/app/core/enums/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DriversService {
-  driversData: IDriver[];
+  driversData: Driver[];
 
   constructor() {
     this.driversData = [
@@ -37,7 +37,7 @@ export class DriversService {
     ];
   }
 
-  getDriversData(): any[] {
+  getDriversData(): Driver[] {
     return this.driversData;
   }
 }

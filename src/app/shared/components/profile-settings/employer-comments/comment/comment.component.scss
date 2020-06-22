@@ -1,0 +1,12 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+  
+  div {
+    margin: 5px 0;
+
+    mat-icon {
+      color: #FFCC00;
+    }
+  }
+}

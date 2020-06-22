@@ -12,7 +12,6 @@ export class ExpensionPanelComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

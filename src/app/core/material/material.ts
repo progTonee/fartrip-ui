@@ -5,6 +5,7 @@ import {
   MatFormFieldModule,
   MatTabsModule,
   MatExpansionModule,
+  MatIconModule,
 } from '@angular/material';
 
 export const materialModules = [
@@ -14,4 +15,5 @@ export const materialModules = [
   MatFormFieldModule,
   MatTabsModule,
   MatExpansionModule,
+  MatIconModule,
 ];

@@ -1,0 +1,47 @@
+<div class="profile-info">
+  <div class="profile-info__general-info">
+    <div class="profile-info__general-info__profile-image"> 
+      <img src="#" alt="Profile image" />
+      <button mat-button type="button" (click)="onEditClick()">{{isProfileEdited ? 'Cancel editing' : 'Edit profile'}}</button>
+    </div>
+    <div class="profile-info__general-info__profile-info">
+      <form class="common-profile-info" [formGroup]="commonProfileFormGroup" (ngSubmit)="onProfileSubmit('commonProfileInfo')">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Enter your name" formControlName="name" />
+          <mat-error *ngIf="commonProfileFormGroup.get('name').hasError('required')">The name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Enter your email" formControlName="email" />
+          <mat-error *ngIf="commonProfileFormGroup.get('email').hasError('required')">The email is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Age</mat-label>
+          <input matInput placeholder="Enter your age" formControlName="age" />
+          <mat-error *ngIf="commonProfileFormGroup.get('age').hasError('required')">The age is required</mat-error>
+        </mat-form-field>
+        <button mat-button type="submit" *ngIf="isProfileEdited">Submit</button>
+      </form>
+      <form class="password-profile-info" [formGroup]="passwordProfileFormGroup" (ngSubmit)="onProfileSubmit('passwordProfileInfo')">
+        <mat-form-field>
+          <mat-label>Current password</mat-label>
+          <input matInput placeholder="Enter your current" formControlName="currentPassword" />
+          <mat-error *ngIf="passwordProfileFormGroup.get('currentPassword').hasError('required')">Current password is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>New password</mat-label>
+          <input matInput placeholder="Enter new password" formControlName="newPassword" />
+          <mat-error *ngIf="passwordProfileFormGroup.get('newPassword').hasError('required')">New password is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Confirm new password</mat-label>
+          <input matInput placeholder="Confirm new password" formControlName="confirmNewPassword" />
+          <mat-error *ngIf="passwordProfileFormGroup.get('confirmNewPassword').hasError('required')">Confirm password is required</mat-error>
+        </mat-form-field>
+        <button mat-button type="submit" *ngIf="isProfileEdited">Submit</button>
+      </form>
+    </div>
+  </div>
+  <app-car-info *ngIf="isCarInfoDisplayed"></app-car-info>
+</div>

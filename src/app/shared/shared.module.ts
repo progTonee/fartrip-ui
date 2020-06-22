@@ -8,7 +8,15 @@ import { ExpensionPanelComponent } from './components/expension-panel/expension-
 import { OrdersHistoryComponent } from './components/orders-history/orders-history.component';
 import { OrdersHistoryService } from './components/orders-history/orders-history.service';
 import { DriverComponent } from '../modules/user/components/driver/driver.component';
-import { AvailableOrderComponent } from '../modules/employer/components/available-order/available-order.component';
+import { AvailableOrderComponent } from '../modules/employer/components/available-orders/available-order/available-order.component';
+import { OrderHistoryComponent } from './components/orders-history/order-history/order-history.component';
+import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CarInfoComponent } from '../modules/employer/components/car-info/car-info.component';
+import { EmployerCommentsComponent } from './components/profile-settings/employer-comments/employer-comments.component';
+import { ProfileInfoComponent } from './components/profile-settings/profile-info/profile-info.component';
+import { EmployerCommentsService } from './components/profile-settings/employer-comments/employer-comments.service';
+import { CommentComponent } from './components/profile-settings/employer-comments/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -17,21 +25,31 @@ import { AvailableOrderComponent } from '../modules/employer/components/availabl
     ExpensionPanelComponent,
     OrdersHistoryComponent,
     DriverComponent,
-    AvailableOrderComponent
+    AvailableOrderComponent,
+    OrderHistoryComponent,
+    ProfileSettingsComponent,
+    CarInfoComponent,
+    EmployerCommentsComponent,
+    ProfileInfoComponent,
+    CommentComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     ...materialModules,
   ],
   providers: [
-    OrdersHistoryService
+    OrdersHistoryService,
+    EmployerCommentsService,
   ],
   exports: [
     HeaderComponent,
     TabsComponent,
     ExpensionPanelComponent,
-    OrdersHistoryComponent
+    OrdersHistoryComponent,
+    ProfileSettingsComponent
   ]
 })
 export class SharedModule { }

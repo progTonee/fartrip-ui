@@ -1,4 +1,4 @@
-export interface IOrder {
+export interface Order {
   destination: string;
   distance: number;
   userName?: string;

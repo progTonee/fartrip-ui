@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { IOrder } from 'src/app/core/models/order';
+import { Order } from 'src/app/core/models/order';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersHistoryService {
-  ordersHistoryData: IOrder[];
+  ordersHistoryData: Order[];
 
   constructor() {
     this.ordersHistoryData = [
@@ -30,7 +30,7 @@ export class OrdersHistoryService {
     ];
   }
 
-  geteOrdersHistoryData(): IOrder[] {
+  getOrdersHistoryData(): Order[] {
     return this.ordersHistoryData;
   }
 }
