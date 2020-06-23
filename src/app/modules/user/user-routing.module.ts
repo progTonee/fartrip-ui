@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './pages/user/user.component';
 import { DriversComponent } from './components/drivers/drivers.component';
-import { OrdersHistoryComponent } from 'src/app/shared/components/orders-history/orders-history.component';
 import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
 import { ProfileInfoComponent } from 'src/app/shared/components/profile-settings/profile-info/profile-info.component';
 import { DriverComponent } from './components/drivers/driver/driver.component';
-import { OrderComponent } from 'src/app/shared/components/orders-history/order/order.component';
+import { OrderComponent } from 'src/app/shared/components/orders/order/order.component';
+import { OrdersComponent } from 'src/app/shared/components/orders/orders.component';
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
     component: UserComponent,
     children: [
       { path: 'drivers', component: DriversComponent },
-      { path: 'orders-history', component: OrdersHistoryComponent }
+      { path: 'orders-history', component: OrdersComponent }
     ]
   },
   {

@@ -5,12 +5,12 @@ import { Order } from 'src/app/core/models/order';
 @Injectable({
   providedIn: 'root'
 })
-export class OrdersHistoryService {
-  ordersHistoryData: Order[];
-  ordersHistoryColumns: string[];
+export class OrdersService {
+  ordersData: Order[];
+  ordersColumns: string[];
 
   constructor() {
-    this.ordersHistoryData = [
+    this.ordersData = [
       {
         id: 1,
         destination: 'Moscow',
@@ -144,22 +144,22 @@ export class OrdersHistoryService {
         status: OrderStatus.Canceled
       }
     ];
-    this.ordersHistoryColumns = ['destination', 'departure', 'distance', 'spentTime', 'action'];
+    this.ordersColumns = ['destination', 'departure', 'distance', 'spentTime', 'action'];
   }
 
-  getOrdersHistoryData(type: string): Order[] {
+  getOrdersData(type: string): Order[] {
     if (type === 'available-orders') {
-      return this.ordersHistoryData.filter(order => order.status === OrderStatus.New || order.status === OrderStatus.InProgress);
+      return this.ordersData.filter(order => order.status === OrderStatus.New || order.status === OrderStatus.InProgress);
     } else {
-      return this.ordersHistoryData.filter(order => order.status !== OrderStatus.New);
+      return this.ordersData.filter(order => order.status !== OrderStatus.New);
     }
   }
 
   getOrderData(id: number): Order {
-    return this.ordersHistoryData.find(order => order.id === id);
+    return this.ordersData.find(order => order.id === id);
   }
 
-  getOrdersHistoryColumns(): string[] {
-    return this.ordersHistoryColumns;
+  getOrdersColumns(): string[] {
+    return this.ordersColumns;
   }
 }

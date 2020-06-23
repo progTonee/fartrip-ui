@@ -4,8 +4,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { materialModules } from '../core/material/material';
 import { RouterModule } from '@angular/router';
 import { TabsComponent } from './components/tabs/tabs.component';
-import { OrdersHistoryComponent } from './components/orders-history/orders-history.component';
-import { OrdersHistoryService } from './components/orders-history/orders-history.service';
 import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarInfoComponent } from '../modules/employer/components/car-info/car-info.component';
@@ -16,15 +14,16 @@ import { CommentComponent } from './components/profile-settings/employer-comment
 import { ProfileInfoService } from './components/profile-settings/profile-info/profile-info.service';
 import { DriverComponent } from '../modules/user/components/drivers/driver/driver.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { OrderComponent } from './components/orders-history/order/order.component';
+import { OrderComponent } from './components/orders/order/order.component';
 import { pipes } from '../core/pipes';
 import { MapComponent } from './components/map/map.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { OrdersService } from './components/orders/orders.service';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     TabsComponent,
-    OrdersHistoryComponent,
     DriverComponent,
     ProfileSettingsComponent,
     CarInfoComponent,
@@ -33,7 +32,8 @@ import { MapComponent } from './components/map/map.component';
     CommentComponent,
     OrderComponent,
     ...pipes,
-    MapComponent
+    MapComponent,
+    OrdersComponent
   ],
   imports: [
     CommonModule,
@@ -44,14 +44,14 @@ import { MapComponent } from './components/map/map.component';
     ...materialModules,
   ],
   providers: [
-    OrdersHistoryService,
     EmployerCommentsService,
     ProfileInfoService,
+    OrdersService,
   ],
   exports: [
     HeaderComponent,
     TabsComponent,
-    OrdersHistoryComponent,
+    OrdersComponent,
     ProfileSettingsComponent,
     OrderComponent,
   ]

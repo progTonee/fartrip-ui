@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/core/models/order';
 import { ActivatedRoute } from '@angular/router';
-import { OrdersHistoryService } from '../orders-history.service';
 import { Employer } from 'src/app/core/models/employer';
 import { User } from 'src/app/core/models/user';
 import { UsersService } from 'src/app/modules/user/users.service';
 import { EmployersService } from 'src/app/modules/employer/employers.service';
+import { OrdersService } from '../orders.service';
 
 @Component({
   selector: 'app-order',
@@ -18,7 +18,7 @@ export class OrderComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private ordersHistoryService: OrdersHistoryService,
+    private ordersService: OrdersService,
     private usersService: UsersService,
     private employersService: EmployersService
   ) {}
@@ -27,7 +27,7 @@ export class OrderComponent implements OnInit {
     const orderId = this.route.snapshot.paramMap.get('id');
     const type = this.route.snapshot.url[0].path;
 
-    this.data = this.ordersHistoryService.getOrderData(+orderId);
+    this.data = this.ordersService.getOrderData(+orderId);
     this.type = type;
   }
 
