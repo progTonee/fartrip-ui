@@ -7,7 +7,6 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { OrdersHistoryComponent } from './components/orders-history/orders-history.component';
 import { OrdersHistoryService } from './components/orders-history/orders-history.service';
 import { AvailableOrderComponent } from '../modules/employer/components/available-orders/available-order/available-order.component';
-import { OrderHistoryComponent } from './components/orders-history/order-history/order-history.component';
 import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarInfoComponent } from '../modules/employer/components/car-info/car-info.component';
@@ -19,6 +18,9 @@ import { ProfileInfoService } from './components/profile-settings/profile-info/p
 import { DriverComponent } from '../modules/user/components/drivers/driver/driver.component';
 import { CardComponent } from './components/card/card.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { OrderComponent } from './components/orders-history/order/order.component';
+import { pipes } from '../core/pipes';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,15 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     OrdersHistoryComponent,
     DriverComponent,
     AvailableOrderComponent,
-    OrderHistoryComponent,
     ProfileSettingsComponent,
     CarInfoComponent,
     EmployerCommentsComponent,
     ProfileInfoComponent,
     CommentComponent,
-    CardComponent
+    CardComponent,
+    OrderComponent,
+    ...pipes,
+    MapComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +57,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     TabsComponent,
     OrdersHistoryComponent,
     ProfileSettingsComponent,
-    CardComponent
+    CardComponent,
+    OrderComponent,
   ]
 })
 export class SharedModule { }

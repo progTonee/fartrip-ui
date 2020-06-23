@@ -4,6 +4,7 @@
     <a mat-button routerLink="/signup">Sign Up</a>
   </mat-card-actions>
   <mat-card-actions *ngIf="headerType === 'user' || headerType === 'employer'">
+    <a *ngIf="page === 'order-details'" mat-button [routerLink]="headerType === 'user' ? ['/user/orders-history'] : ['/employer/orders-history']">Back to orders list</a>
     <a *ngIf="page === 'driver-details'" mat-button routerLink="/user/drivers">Back to drivers list</a>
     <a *ngIf="page !== 'settings'" mat-button [routerLink]="headerType === 'user' ? ['/user/settings'] : ['/employer/settings']">Settings</a>
     <a *ngIf="page === 'settings'" mat-button [routerLink]="headerType === 'user' ? ['/user'] : ['/employer']">Back to profile</a>

@@ -1,0 +1,41 @@
+@import "color";
+
+.order {
+  width: 70%;
+  margin: 20px auto;
+
+  .order-status {
+    font-size: 24px;
+
+    &.done {
+      color: $green;
+    }
+    &.canceled {
+      color: $red;
+    }
+    &.in-progress {
+      color: $orange;
+    }
+  }
+
+  ::ng-deep app-map {
+    div {
+      margin-top: 30px;
+    }
+  }
+
+  mat-card {
+    .order-image {
+      background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+      background-size: cover;
+      width: 100px;
+      height: 100px;
+    }
+
+    mat-card-subtitle {
+      div {
+        margin-top: 5px;
+      }
+    }
+  }
+}

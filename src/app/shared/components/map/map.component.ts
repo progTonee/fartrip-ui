@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdersHistoryService } from './orders-history.service';
-import { Order } from 'src/app/core/models/order';
 
-declare const ol: any;
+declare var ol: any;
 
 @Component({
-  selector: 'app-orders-history',
-  templateUrl: './orders-history.component.html',
-  styleUrls: ['./orders-history.component.scss']
+  selector: 'app-map',
+  templateUrl: './map.component.html',
+  styleUrls: ['./map.component.scss']
 })
-export class OrdersHistoryComponent implements OnInit {
-  latitude = 18.5204;
-  longitude = 73.8567;
-
+export class MapComponent implements OnInit {
+  latitude = 52.424198;
+  longitude = 30.989594;
   map: any;
 
-  constructor(private ordersHistoryService: OrdersHistoryService) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.map = new ol.Map({
@@ -30,6 +27,7 @@ export class OrdersHistoryComponent implements OnInit {
         zoom: 12
       })
     });
+
     this.addPoint(this.latitude, this.longitude);
   }
 
@@ -45,26 +43,21 @@ export class OrdersHistoryComponent implements OnInit {
       source: new ol.source.Vector({
         features: [new ol.Feature({
           geometry: new ol.geom.Point(ol.proj.transform([lng, lat], 'EPSG:4326', 'EPSG:3857')),
+          name: 'Null Island',
+          population: 2000,
+          rainfall: 500
         })]
       }),
       style: new ol.style.Style({
-        image: new ol.style.Icon({
-          anchor: [0.5, 0.5],
-          anchorXUnits: 'fraction',
-          anchorYUnits: 'fraction',
-          src: 'assets/img/my-icon.png'
-        })
+        // tslint:disable-next-line: no-redundant-jsdoc
+        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+          opacity: 1,
+          src: '../../../../assets/location-icon.png',
+        }))
       })
     });
+
     this.map.addLayer(vectorLayer);
-  }
-
-  getOrdersHistoryData(): Order[] {
-    return this.ordersHistoryService.getOrdersHistoryData();
-  }
-
-  getOrdersHistoryColumns(): string[] {
-    return this.ordersHistoryService.getOrdersHistoryColumns();
   }
 
 }

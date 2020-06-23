@@ -1,0 +1,16 @@
+@import "color";
+
+.orders-history {
+  overflow: auto;
+
+  table {
+    width: 100%;
+
+    .details-button {
+      width: 120px;
+      margin: auto;
+      background: #173F5F;
+      color: $white;
+    }
+  }
+}

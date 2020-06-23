@@ -6,6 +6,7 @@ import { OrdersHistoryComponent } from 'src/app/shared/components/orders-history
 import { EmployerSettingsComponent } from './pages/employer-settings/employer-settings.component';
 import { ProfileInfoComponent } from 'src/app/shared/components/profile-settings/profile-info/profile-info.component';
 import { EmployerCommentsComponent } from 'src/app/shared/components/profile-settings/employer-comments/employer-comments.component';
+import { OrderComponent } from 'src/app/shared/components/orders-history/order/order.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
       { path: 'profile', component: ProfileInfoComponent },
       { path: 'comments', component: EmployerCommentsComponent }
     ]
-  }
+  },
+  { path: 'employer/orders-history/:id/details', component: OrderComponent },
 ];
 
 @NgModule({
