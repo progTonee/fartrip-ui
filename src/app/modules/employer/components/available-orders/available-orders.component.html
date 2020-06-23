@@ -1,3 +1,29 @@
-<div class="content">
-  <app-card [data]="availableOrdersService.getAvailableOrdersData()" [type]="'available-orders'"></app-card>
+<div class="available-orders">
+  <table mat-table [dataSource]="getAvailableOrdersData()">
+    <ng-container matColumnDef="destination">
+      <th mat-header-cell *matHeaderCellDef>Destination</th>
+      <td mat-cell *matCellDef="let item">{{item.destination}}</td>
+    </ng-container>
+    <ng-container matColumnDef="departure">
+      <th mat-header-cell *matHeaderCellDef>Departure</th>
+      <td mat-cell *matCellDef="let item">{{item.departure}}</td>
+    </ng-container>
+    <ng-container matColumnDef="distance">
+      <th mat-header-cell *matHeaderCellDef>Distance</th>
+      <td mat-cell *matCellDef="let item">{{item.distance}}</td>
+    </ng-container>
+    <ng-container matColumnDef="spentTime">
+      <th mat-header-cell *matHeaderCellDef>Spent time</th>
+      <td mat-cell *matCellDef="let item">{{item.spentTime}}</td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let item">
+        <a class="details-button" mat-button mat-raised-button [routerLink]="[item.id, 'details']">View details</a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="getAvailableOrdersColumns(); sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: getAvailableOrdersColumns();"></tr>
+  </table>
 </div>

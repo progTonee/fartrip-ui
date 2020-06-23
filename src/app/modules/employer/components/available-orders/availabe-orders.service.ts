@@ -7,6 +7,7 @@ import { OrderStatus } from 'src/app/core/enums/order-staus';
 })
 export class AvailabeOrdersService {
   availableOrdersData: Order[];
+  availableOrdersColumns: string[];
 
   constructor() {
     this.availableOrdersData = [
@@ -41,9 +42,18 @@ export class AvailabeOrdersService {
         status: OrderStatus.New
       }
     ];
+    this.availableOrdersColumns = ['destination', 'departure', 'distance', 'spentTime', 'action'];
   }
 
-  getAvailableOrdersData(): any[] {
+  getAvailableOrdersData(): Order[] {
     return this.availableOrdersData;
+  }
+
+  getAcvailableOrderData(id: number): Order {
+    return this.availableOrdersData.find(order => order.id === id);
+  }
+
+  getAvailableOrdersColumns(): string[] {
+    return this.availableOrdersColumns;
   }
 }

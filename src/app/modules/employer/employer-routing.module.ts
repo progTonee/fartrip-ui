@@ -25,6 +25,7 @@ const routes: Routes = [
       { path: 'comments', component: EmployerCommentsComponent }
     ]
   },
+  { path: 'employer/available-orders/:id/details', component: OrderComponent },
   { path: 'employer/orders-history/:id/details', component: OrderComponent },
 ];
 
