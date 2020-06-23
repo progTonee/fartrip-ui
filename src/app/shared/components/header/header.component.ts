@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   @Input() headerType: string;
-  @Input() isSettingsPage: boolean;
+  @Input() page: string;
 
   isSignInSignUpPage = false;
 

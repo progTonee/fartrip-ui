@@ -1,3 +1,5 @@
+@import "color";
+
 form {
   display: flex;
   flex-direction: column;
@@ -12,15 +14,15 @@ form {
   button {
     width: 150px;
     margin: auto;
-    background: #173F5F;
-    color: white;
+    background: $main-blue;
+    color: $white;
   }
 
   ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-    color: #173F5F !important;
+    color: $main-blue !important;
   }
 
   ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
-    background-color: #173F5F !important;
+    background-color: $main-blue !important;
   }
 }

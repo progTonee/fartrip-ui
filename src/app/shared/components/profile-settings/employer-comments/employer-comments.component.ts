@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EmployerCommentsService } from './employer-comments.service';
+import { Comment } from 'src/app/core/models/comment';
 
 @Component({
   selector: 'app-employer-comments',
@@ -8,8 +9,14 @@ import { EmployerCommentsService } from './employer-comments.service';
 })
 export class EmployerCommentsComponent implements OnInit {
 
-  constructor(public employerCommentsService: EmployerCommentsService) {}
+  @Input() employerId = 1;
+
+  constructor(private employerCommentsService: EmployerCommentsService) {}
 
   ngOnInit(): void {}
+
+  getEmployerCommentsData(): Comment[] {
+    return this.employerCommentsService.getEmployerCommentsData(this.employerId);
+  }
 
 }

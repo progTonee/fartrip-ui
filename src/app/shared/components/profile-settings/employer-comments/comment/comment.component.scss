@@ -1,6 +1,12 @@
 .comment {
   display: flex;
   flex-direction: column;
+  width: 70%;
+  margin: auto;
+
+  mat-card {
+    margin: 15px 0;
+  }
   
   div {
     margin: 5px 0;

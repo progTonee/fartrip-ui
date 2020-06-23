@@ -10,7 +10,6 @@ export class DriversComponent implements OnInit {
 
   constructor(public driversService: DriversService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit(): void {}
 
 }

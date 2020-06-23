@@ -6,6 +6,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { DriversComponent } from './components/drivers/drivers.component';
 import { DriversService } from './components/drivers/drivers.service';
 import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
+import { materialModules } from 'src/app/core/material/material';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UserSettingsComponent } from './pages/user-settings/user-settings.compo
   imports: [
     CommonModule,
     UserRoutingModule,
-    SharedModule
+    SharedModule,
+    ...materialModules,
   ],
   providers: [
     DriversService,

@@ -1,8 +1,12 @@
 <div class="comment">
-  <div class="comment__rating">
-    <mat-icon *ngFor="let item of getCommentRating()">star</mat-icon>
-  </div>
-  <div class="comment__text">
-    {{data.text}}
-  </div>
+  <mat-card>
+    <mat-card-content>
+      <div class="comment__rating">
+        <mat-icon *ngFor="let item of getCommentRating()">star</mat-icon>
+      </div>
+      <div class="comment__text">
+        <span>{{data.text}}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

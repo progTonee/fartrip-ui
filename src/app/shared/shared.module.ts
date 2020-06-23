@@ -7,7 +7,6 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { ExpensionPanelComponent } from './components/expension-panel/expension-panel.component';
 import { OrdersHistoryComponent } from './components/orders-history/orders-history.component';
 import { OrdersHistoryService } from './components/orders-history/orders-history.service';
-import { DriverComponent } from '../modules/user/components/driver/driver.component';
 import { AvailableOrderComponent } from '../modules/employer/components/available-orders/available-order/available-order.component';
 import { OrderHistoryComponent } from './components/orders-history/order-history/order-history.component';
 import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
@@ -18,6 +17,7 @@ import { ProfileInfoComponent } from './components/profile-settings/profile-info
 import { EmployerCommentsService } from './components/profile-settings/employer-comments/employer-comments.service';
 import { CommentComponent } from './components/profile-settings/employer-comments/comment/comment.component';
 import { ProfileInfoService } from './components/profile-settings/profile-info/profile-info.service';
+import { DriverComponent } from '../modules/user/components/drivers/driver/driver.component';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,8 @@
+@import "color";
+
 .mat-card {
   background: #173F5F;
-  color: white;
+  color: $white;
   
   .mat-card-actions:last-child {
     margin-bottom: 0;

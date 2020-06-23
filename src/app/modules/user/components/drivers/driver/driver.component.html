@@ -1,0 +1,42 @@
+<app-header [headerType]="'user'" [page]="'driver-details'"></app-header>
+<div class="driver">
+  <div class="driver__info">
+    <div class="driver__info__general">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="driver-image"></div>
+          <mat-card-title>{{data.name}}</mat-card-title>
+          <mat-card-subtitle>
+            <span>{{data.status}}</span>
+            <div>
+              <mat-icon *ngFor="let item of getRating()">star</mat-icon>
+            </div>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <button class="apply-button" mat-button mat-raised-button type="button">Apply</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="driver__info__car">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Car description</mat-card-title>
+          <mat-card-subtitle>{{data.car.model}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>{{data.car.notes}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div class="driver__comments">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Comments</mat-card-title>
+      </mat-card-header>
+      <app-employer-comments [employerId]="data.id"></app-employer-comments>
+    </mat-card>
+  </div>
+</div>

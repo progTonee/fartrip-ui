@@ -8,6 +8,7 @@ import {
   MatIconModule,
   MatSelectModule,
   MatOptionModule,
+  MatTableModule,
 } from '@angular/material';
 
 export const materialModules = [
@@ -20,4 +21,5 @@ export const materialModules = [
   MatIconModule,
   MatSelectModule,
   MatOptionModule,
+  MatTableModule,
 ];

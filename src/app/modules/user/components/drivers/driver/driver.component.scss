@@ -1,0 +1,45 @@
+@import "color";
+
+.driver {
+  padding: 20px 50px;
+  width: 50%;
+  margin: auto;
+
+  mat-card {
+    margin: 15px;
+  }
+
+  &__info {
+    &__general {
+      .driver-image {
+        background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+        background-size: cover;
+      }
+
+      .apply-button {
+        width: 100px;
+        margin: auto;
+        background: #173F5F;
+        color: $white;
+      }
+    }
+    &__car {
+      img {
+        width: 500px;
+        height: 500px;
+        display: block;
+        margin: auto;
+      }
+    }
+  }
+
+  &__comments {
+    ::ng-deep .comment {
+      width: 100%;
+    }
+
+    mat-card {
+      box-shadow: none;
+    }
+  }
+}
