@@ -7,6 +7,7 @@ import { DriversComponent } from './components/drivers/drivers.component';
 import { DriversService } from './components/drivers/drivers.service';
 import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
 import { materialModules } from 'src/app/core/material/material';
+import { UsersService } from './users.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { materialModules } from 'src/app/core/material/material';
   ],
   providers: [
     DriversService,
+    UsersService,
   ],
   exports: [
     UserComponent,

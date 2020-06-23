@@ -4,7 +4,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { materialModules } from '../core/material/material';
 import { RouterModule } from '@angular/router';
 import { TabsComponent } from './components/tabs/tabs.component';
-import { ExpensionPanelComponent } from './components/expension-panel/expension-panel.component';
 import { OrdersHistoryComponent } from './components/orders-history/orders-history.component';
 import { OrdersHistoryService } from './components/orders-history/orders-history.service';
 import { AvailableOrderComponent } from '../modules/employer/components/available-orders/available-order/available-order.component';
@@ -18,12 +17,12 @@ import { EmployerCommentsService } from './components/profile-settings/employer-
 import { CommentComponent } from './components/profile-settings/employer-comments/comment/comment.component';
 import { ProfileInfoService } from './components/profile-settings/profile-info/profile-info.service';
 import { DriverComponent } from '../modules/user/components/drivers/driver/driver.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     TabsComponent,
-    ExpensionPanelComponent,
     OrdersHistoryComponent,
     DriverComponent,
     AvailableOrderComponent,
@@ -32,7 +31,8 @@ import { DriverComponent } from '../modules/user/components/drivers/driver/drive
     CarInfoComponent,
     EmployerCommentsComponent,
     ProfileInfoComponent,
-    CommentComponent
+    CommentComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
@@ -49,9 +49,9 @@ import { DriverComponent } from '../modules/user/components/drivers/driver/drive
   exports: [
     HeaderComponent,
     TabsComponent,
-    ExpensionPanelComponent,
     OrdersHistoryComponent,
-    ProfileSettingsComponent
+    ProfileSettingsComponent,
+    CardComponent
   ]
 })
 export class SharedModule { }

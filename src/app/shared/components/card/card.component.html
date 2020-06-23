@@ -1,0 +1,22 @@
+<div class="orders-history-card" *ngIf="type === 'orders-history'">
+  <mat-card *ngFor="let item of data">
+    <mat-card-header>
+      <mat-card-title>{{ item.destination }}</mat-card-title>
+      <mat-card-subtitle>{{ item.distance }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <app-order-history [data]="item" [type]="type"></app-order-history>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="available-orders-card" *ngIf="type === 'available-orders'">
+  <mat-card *ngFor="let item of data">
+    <mat-card-header>
+      <mat-card-title>{{ item.destination }}</mat-card-title>
+      <mat-card-subtitle>{{ item.distance }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <app-available-order [data]="item"></app-available-order>
+    </mat-card-content>
+  </mat-card>
+</div>
