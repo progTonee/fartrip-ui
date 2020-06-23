@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Status } from 'src/app/core/models/status';
-import { statusList } from 'src/app/core/constants/status';
+import { EmployerStatus } from 'src/app/core/models/employer-status';
+import { employerStatusList } from 'src/app/core/constants/status';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileInfoService {
-  statusList: Status[];
+  statusList: EmployerStatus[];
 
   constructor() {
-    this.statusList = statusList;
+    this.statusList = employerStatusList;
   }
 
-  getStatusList(): Status[] {
+  getStatusList(): EmployerStatus[] {
     return this.statusList;
   }
 }

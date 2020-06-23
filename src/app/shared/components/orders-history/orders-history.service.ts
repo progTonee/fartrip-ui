@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Order } from 'src/app/core/models/order';
+import { OrderStatus } from 'src/app/core/enums/order-staus';
 
 @Injectable({
   providedIn: 'root'
@@ -15,73 +16,97 @@ export class OrdersHistoryService {
         destination: 'Moscow',
         spentTime: 60000,
         distance: 300.25,
-        userName: 'User 1'
+        userId: 1,
+        employerId: 1,
+        status: OrderStatus.New
       },
       {
         destination: 'Paris',
         spentTime: 600000,
         distance: 3000.25,
-        userName: 'User 2'
+        userId: 1,
+        employerId: 2,
+        status: OrderStatus.InProgress
       },
       {
         destination: 'Poland',
         spentTime: 3500,
         distance: 200.25,
-        userName: 'User 3'
+        userId: 2,
+        employerId: 1,
+        status: OrderStatus.InProgress
       },
       {
         destination: 'Moscow',
         spentTime: 60000,
         distance: 300.25,
-        userName: 'User 1'
+        userId: 1,
+        employerId: 1,
+        status: OrderStatus.InProgress
       },
       {
         destination: 'Paris',
         spentTime: 600000,
         distance: 3000.25,
-        userName: 'User 2'
+        userId: 1,
+        employerId: 1,
+        status: OrderStatus.New
       },
       {
         destination: 'Poland',
         spentTime: 3500,
         distance: 200.25,
-        userName: 'User 3'
+        userId: 1,
+        employerId: 1,
+        status: OrderStatus.Canceled
       },
       {
         destination: 'Moscow',
         spentTime: 60000,
         distance: 300.25,
-        userName: 'User 1'
+        userId: 1,
+        employerId: 3,
+        status: OrderStatus.Canceled
       },
       {
         destination: 'Paris',
         spentTime: 600000,
         distance: 3000.25,
-        userName: 'User 2'
+        userId: 1,
+        employerId: 3,
+        status: OrderStatus.New
       },
       {
         destination: 'Poland',
         spentTime: 3500,
         distance: 200.25,
-        userName: 'User 3'
+        userId: 2,
+        employerId: 4,
+        status: OrderStatus.New
       },
       {
         destination: 'Moscow',
         spentTime: 60000,
         distance: 300.25,
-        userName: 'User 1'
+        userId: 1,
+        employerId: 5,
+        status: OrderStatus.InProgress
       },
       {
         destination: 'Paris',
         spentTime: 600000,
         distance: 3000.25,
-        userName: 'User 2'
+        userId: 2,
+        employerId: 2,
+        status: OrderStatus.Done
       },
       {
         destination: 'Poland',
         spentTime: 3500,
         distance: 200.25,
-        userName: 'User 3'
+        userId: 2,
+        employerId: 4,
+        status: OrderStatus.Canceled
       }
     ];
     this.ordersHistoryDisplayedData = this.ordersHistoryData.slice(0, this.amountOfDisplayedHistory);

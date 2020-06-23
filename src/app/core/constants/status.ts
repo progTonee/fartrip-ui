@@ -1,8 +1,8 @@
-import { Status } from '../models/status';
-import { StatusValue, StatusText } from '../enums/status';
+import { EmployerStatus } from '../models/employer-status';
+import { EmployerStatusValue, EmployerStatusText } from '../enums/employer-status';
 
-export const statusList: Status[] = [
-  { value: StatusValue.Available, text: StatusText.Available },
-  { value: StatusValue.InProgress, text: StatusText.InProgress },
-  { value: StatusValue.OutOfWork, text: StatusText.OutOfWork }
+export const employerStatusList: EmployerStatus[] = [
+  { value: EmployerStatusValue.Available, text: EmployerStatusText.Available },
+  { value: EmployerStatusValue.InProgress, text: EmployerStatusText.InProgress },
+  { value: EmployerStatusValue.OutOfWork, text: EmployerStatusText.OutOfWork }
 ];
