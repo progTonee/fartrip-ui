@@ -1,0 +1,22 @@
+@import "button";
+
+.orders-history-card, .available-orders-card {
+  width: 70%;
+  margin: auto;
+
+  mat-card {
+    margin: 15px 0;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+
+    button {
+      @include main-button(100px);
+      margin: unset;
+    }
+  }
+}
+

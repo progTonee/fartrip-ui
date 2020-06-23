@@ -8,6 +8,9 @@
       <app-order-history [data]="item" [type]="type"></app-order-history>
     </mat-card-content>
   </mat-card>
+  <div class="orders-history-card__button" *ngIf="data.lentgh > 5">
+    <button mat-button mat-raised-button type="button" (click)="showMoreOrders('orders-history')">Show more</button>
+  </div>
 </div>
 <div class="available-orders-card" *ngIf="type === 'available-orders'">
   <mat-card *ngFor="let item of data">
@@ -19,4 +22,7 @@
       <app-available-order [data]="item"></app-available-order>
     </mat-card-content>
   </mat-card>
+  <div class="available-orders-card__button" *ngIf="data.lentgh > 5">
+    <button mat-button mat-raised-button type="button" (click)="showMoreOrders('available-orders')">Show more</button>
+  </div>
 </div>

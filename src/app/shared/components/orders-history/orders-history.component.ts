@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersHistoryService } from './orders-history.service';
+import { Order } from 'src/app/core/models/order';
 
 @Component({
   selector: 'app-orders-history',
@@ -8,9 +9,16 @@ import { OrdersHistoryService } from './orders-history.service';
 })
 export class OrdersHistoryComponent implements OnInit {
 
-  constructor(public ordersHistoryService: OrdersHistoryService) {}
+  constructor(private ordersHistoryService: OrdersHistoryService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  getOrdersHistoryData(): Order[] {
+    return this.ordersHistoryService.getOrdersHistoryData();
+  }
+
+  loadMoreOrders(): void {
+    this.ordersHistoryService.loadMoreOrders();
   }
 
 }

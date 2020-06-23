@@ -1,3 +1,8 @@
 <div class="content">
-  <app-card [data]="ordersHistoryService.getOrdersHistoryData()" [type]="'orders-history'"></app-card>
+  <app-card
+    [data]="getOrdersHistoryData()"
+    [type]="'orders-history'"
+    (loadMoreOrders)="loadMoreOrders()"
+  >
+  </app-card>
 </div>

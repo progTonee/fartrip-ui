@@ -18,6 +18,7 @@ import { CommentComponent } from './components/profile-settings/employer-comment
 import { ProfileInfoService } from './components/profile-settings/profile-info/profile-info.service';
 import { DriverComponent } from '../modules/user/components/drivers/driver/driver.component';
 import { CardComponent } from './components/card/card.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CardComponent } from './components/card/card.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    ScrollingModule,
     ...materialModules,
   ],
   providers: [

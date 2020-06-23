@@ -1,0 +1,8 @@
+@import "color";
+
+@mixin main-button($width: 150px) {
+  width: $width;
+  margin: auto;
+  background: $main-blue;
+  color: $white;
+}
