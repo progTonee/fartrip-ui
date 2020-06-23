@@ -16,6 +16,9 @@
     &.in-progress {
       color: $orange;
     }
+    &.new {
+      color: $light-blue;
+    }
   }
 
   ::ng-deep app-map {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersHistoryService } from './orders-history.service';
 import { Order } from 'src/app/core/models/order';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-orders-history',
@@ -8,13 +9,16 @@ import { Order } from 'src/app/core/models/order';
   styleUrls: ['./orders-history.component.scss']
 })
 export class OrdersHistoryComponent implements OnInit {
+  type: string;
 
-  constructor(private ordersHistoryService: OrdersHistoryService) {}
+  constructor(private ordersHistoryService: OrdersHistoryService, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.type = this.route.snapshot.url[0].path;
+  }
 
   getOrdersHistoryData(): Order[] {
-    return this.ordersHistoryService.getOrdersHistoryData();
+    return this.ordersHistoryService.getOrdersHistoryData(this.type);
   }
 
   getOrdersHistoryColumns(): string[] {

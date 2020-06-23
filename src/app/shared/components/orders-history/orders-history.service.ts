@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Order } from 'src/app/core/models/order';
 import { OrderStatus } from 'src/app/core/enums/order-staus';
+import { Order } from 'src/app/core/models/order';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +53,7 @@ export class OrdersHistoryService {
         cost: 50,
         userId: 1,
         employerId: 1,
-        status: OrderStatus.Done
+        status: OrderStatus.New
       },
       {
         id: 5,
@@ -86,7 +86,7 @@ export class OrdersHistoryService {
         cost: 33,
         userId: 1,
         employerId: 3,
-        status: OrderStatus.Done
+        status: OrderStatus.New
       },
       {
         id: 8,
@@ -97,7 +97,7 @@ export class OrdersHistoryService {
         cost: 54,
         userId: 1,
         employerId: 3,
-        status: OrderStatus.Done
+        status: OrderStatus.InProgress
       },
       {
         id: 9,
@@ -108,7 +108,7 @@ export class OrdersHistoryService {
         cost: 30,
         userId: 2,
         employerId: 4,
-        status: OrderStatus.Done
+        status: OrderStatus.InProgress
       },
       {
         id: 10,
@@ -119,7 +119,7 @@ export class OrdersHistoryService {
         cost: 55,
         userId: 1,
         employerId: 5,
-        status: OrderStatus.Done
+        status: OrderStatus.InProgress
       },
       {
         id: 11,
@@ -147,8 +147,12 @@ export class OrdersHistoryService {
     this.ordersHistoryColumns = ['destination', 'departure', 'distance', 'spentTime', 'action'];
   }
 
-  getOrdersHistoryData(): Order[] {
-    return this.ordersHistoryData;
+  getOrdersHistoryData(type: string): Order[] {
+    if (type === 'available-orders') {
+      return this.ordersHistoryData.filter(order => order.status === OrderStatus.New || order.status === OrderStatus.InProgress);
+    } else {
+      return this.ordersHistoryData.filter(order => order.status !== OrderStatus.New);
+    }
   }
 
   getOrderData(id: number): Order {
