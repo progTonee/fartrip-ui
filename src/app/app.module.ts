@@ -6,6 +6,7 @@ import { EmployerModule } from './modules/employer/employer.module';
 import { UserModule } from './modules/user/user.module';
 import { WelcomePageModule } from './modules/welcome-page/welcome-page.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     EmployerModule,

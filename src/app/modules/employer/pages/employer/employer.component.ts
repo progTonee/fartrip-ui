@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employer',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class EmployerComponent implements OnInit {
   employerTabs: any[];
 
-  constructor() {
+  constructor(private router: Router) {
     this.employerTabs = [
       { label: 'Available orders', path: 'available-orders' },
       { label: 'Orders history', path: 'orders-history' }
@@ -16,6 +17,8 @@ export class EmployerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.router.navigateByUrl('/employee/available-orders');
   }
+
 
 }

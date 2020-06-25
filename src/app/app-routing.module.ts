@@ -9,7 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/welcome-page/welcome-page.module').then(module => module.WelcomePageModule)
   },
   {
-    path: 'employer',
+    path: 'employee',
     loadChildren: () => import('./modules/employer/employer.module').then(module => module.EmployerModule)
   },
   {

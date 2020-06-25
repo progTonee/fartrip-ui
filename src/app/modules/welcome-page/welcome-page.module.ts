@@ -7,6 +7,9 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { LoginComponent } from './pages/login/login.component';
 import { materialModules } from 'src/app/core/material/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpService } from 'src/app/core/services/http.service';
+import { SnackBarService } from 'src/app/core/services/snack-bar.service';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     SharedModule,
     ...materialModules
+  ],
+  providers: [
+    HttpService,
+    SnackBarService,
+    LocalStorageService
   ],
   exports: [
     WelcomePageComponent

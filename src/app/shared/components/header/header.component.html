@@ -8,6 +8,6 @@
     <a *ngIf="page === 'driver-details'" mat-button routerLink="/user/drivers">Back to drivers list</a>
     <a *ngIf="page !== 'settings'" mat-button [routerLink]="headerType === 'user' ? ['/user/settings'] : ['/employer/settings']">Settings</a>
     <a *ngIf="page === 'settings'" mat-button [routerLink]="headerType === 'user' ? ['/user'] : ['/employer']">Back to profile</a>
-    <a mat-button routerLink="/">Log out</a>
+    <a mat-button routerLink="/" (click)="onLogOut()">Log out</a>
   </mat-card-actions>
 </mat-card>

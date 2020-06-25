@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Component({
   selector: 'app-user',
@@ -8,14 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class UserComponent implements OnInit {
   userTabs: any[];
 
-  constructor() {
+  constructor(private router: Router) {
     this.userTabs = [
       { label: 'Drivers', path: 'drivers' },
       { label: 'Orders history', path: 'orders-history' }
     ];
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.router.navigateByUrl('/user/drivers');
   }
 
 }
