@@ -6,7 +6,9 @@ import { EmployerModule } from './modules/employer/employer.module';
 import { UserModule } from './modules/user/user.module';
 import { WelcomePageModule } from './modules/welcome-page/welcome-page.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { RefreshTokeInterceptor } from './core/interceptors/refresh-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     UserModule,
     WelcomePageModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

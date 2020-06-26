@@ -20,6 +20,10 @@ export class LocalStorageService {
     return localStorage.getItem(itemName);
   }
 
+  set(item: string, value: string): void {
+    localStorage.setItem(item, value);
+  }
+
   clear(): void {
     localStorage.clear();
   }

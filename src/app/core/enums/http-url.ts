@@ -1,5 +1,5 @@
 export enum HttpUrl {
-  Login = 'http://localhost:9000/oauth/token',
-  UserSignUp = 'http://localhost:9000/users',
-  EmployeeSignUp = 'http://localhost:9000/employees',
+  Token = 'http://localhost:9000/oauth/token',
+  Users = 'http://localhost:9000/users',
+  Employees = 'http://localhost:9000/employees',
 }

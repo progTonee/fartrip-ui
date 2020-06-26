@@ -8,12 +8,14 @@ import { DriversService } from './components/drivers/drivers.service';
 import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
 import { materialModules } from 'src/app/core/material/material';
 import { UsersService } from './users.service';
+import { EmployeeStatusPipe } from 'src/app/core/pipes/employee-status.pipe';
 
 @NgModule({
   declarations: [
     UserComponent,
     DriversComponent,
     UserSettingsComponent,
+    EmployeeStatusPipe
   ],
   imports: [
     CommonModule,

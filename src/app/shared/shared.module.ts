@@ -15,10 +15,10 @@ import { ProfileInfoService } from './components/profile-settings/profile-info/p
 import { DriverComponent } from '../modules/user/components/drivers/driver/driver.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { OrderComponent } from './components/orders/order/order.component';
-import { pipes } from '../core/pipes';
 import { MapComponent } from './components/map/map.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrdersService } from './components/orders/orders.service';
+import { OrderSpentTimePipe } from '../core/pipes/order-spent-time.pipe';
 
 @NgModule({
   declarations: [
@@ -31,9 +31,9 @@ import { OrdersService } from './components/orders/orders.service';
     ProfileInfoComponent,
     CommentComponent,
     OrderComponent,
-    ...pipes,
     MapComponent,
-    OrdersComponent
+    OrdersComponent,
+    OrderSpentTimePipe
   ],
   imports: [
     CommonModule,

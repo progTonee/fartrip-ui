@@ -1,6 +1,6 @@
-import { EmployerStatusValue, EmployerStatusText } from '../enums/employer-status';
+import { EmployeeStatusValue, EmployeeStatusText } from '../enums/employee-status';
 
 export interface EmployerStatus {
-  text: EmployerStatusText;
-  value: EmployerStatusValue;
+  text: EmployeeStatusText;
+  value: EmployeeStatusValue;
 }

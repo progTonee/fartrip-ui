@@ -1,4 +1,5 @@
 @import "color";
+@import "button";
 
 .orders {
   overflow: auto;
@@ -7,10 +8,7 @@
     width: 100%;
 
     .details-button {
-      width: 120px;
-      margin: auto;
-      background: #173F5F;
-      color: $white;
+      @include main-button(120px);
     }
   }
 }

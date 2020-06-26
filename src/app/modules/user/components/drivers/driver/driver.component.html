@@ -5,11 +5,18 @@
       <mat-card>
         <mat-card-header>
           <div mat-card-avatar class="driver-image"></div>
-          <mat-card-title>{{data.name}}</mat-card-title>
+          <mat-card-title>{{getDriverData()?.name}}</mat-card-title>
           <mat-card-subtitle>
-            <span>{{data.status}}</span>
+            <span
+              class="status"
+              [class.available]="getDriverData()?.status === 'available'"
+              [class.in-progress]="getDriverData()?.status === 'in_progress'"
+              [class.out-of-work]="getDriverData()?.status === 'out_of_work'"
+            >
+              {{getStatus()}}
+            </span>
             <div>
-              <mat-icon *ngFor="let item of getRating()">star</mat-icon>
+              <mat-icon class="rating-icon" *ngFor="let item of getRating()">star</mat-icon>
             </div>
           </mat-card-subtitle>
         </mat-card-header>
@@ -22,11 +29,11 @@
       <mat-card>
         <mat-card-header>
           <mat-card-title>Car description</mat-card-title>
-          <mat-card-subtitle>{{data.car.model}}</mat-card-subtitle>
+          <mat-card-subtitle>{{getDriverData()?.car.model}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
         <mat-card-content>
-          <p>{{data.car.notes}}</p>
+          <p>{{getDriverData()?.car.note}}</p>
         </mat-card-content>
       </mat-card>
     </div>
@@ -36,7 +43,7 @@
       <mat-card-header>
         <mat-card-title>Comments</mat-card-title>
       </mat-card-header>
-      <app-employer-comments [employerId]="data.id"></app-employer-comments>
+      <app-employer-comments [employerId]="getDriverData()?.id"></app-employer-comments>
     </mat-card>
   </div>
 </div>

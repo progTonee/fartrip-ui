@@ -1,4 +1,4 @@
 export interface Car {
   model: string;
-  notes: string;
+  note: string;
 }

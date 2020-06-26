@@ -7,6 +7,18 @@
   table {
     width: 100%;
 
+    .status {
+      &.available {
+        color: $green;
+      }
+      &.in-progress {
+        color: $orange;
+      }
+      &.out-of-work {
+        color: $light-blue2;
+      }
+    }
+
     .details-button {
       width: 120px;
       margin: auto;

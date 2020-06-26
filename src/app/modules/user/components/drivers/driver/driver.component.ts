@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Driver } from 'src/app/core/models/driver.model';
 import { DriversService } from '../drivers.service';
 import { ActivatedRoute } from '@angular/router';
+import { EmployeeStatusValue, EmployeeStatusText } from '../../../../../core/enums/employee-status';
 
 @Component({
   selector: 'app-driver',
@@ -9,17 +10,42 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./driver.component.scss']
 })
 export class DriverComponent implements OnInit {
-  data: Driver;
 
   constructor(private route: ActivatedRoute, private driversService: DriversService) {}
 
   ngOnInit(): void {
     const driverId = this.route.snapshot.paramMap.get('id');
-    this.data = this.driversService.getDriverData(+driverId);
+    this.driversService.loadDriverData(+driverId);
+  }
+
+  getDriverData(): Driver {
+    return this.driversService.getDriverData();
   }
 
   getRating(): any[] {
-    return new Array(Math.floor(this.data.rating)).fill(null);
+    const driver = this.driversService.getDriverData();
+    if (driver) {
+      return new Array(Math.floor(driver.rating)).fill(null);
+    }
+
+    return new Array(Math.floor(0)).fill(null);
+  }
+
+  getStatus(): string {
+    const driver = this.driversService.getDriverData();
+    if (driver) {
+      switch (driver.status) {
+        case EmployeeStatusValue.Available: {
+          return EmployeeStatusText.Available;
+        }
+        case EmployeeStatusValue.InProgress: {
+          return EmployeeStatusText.InProgress;
+        }
+        case EmployeeStatusValue.OutOfWork: {
+          return EmployeeStatusText.OutOfWork;
+        }
+      }
+    }
   }
 
 }

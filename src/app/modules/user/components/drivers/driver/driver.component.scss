@@ -12,6 +12,24 @@
 
   &__info {
     &__general {
+      .status {
+        font-size: 16px;
+
+        &.available {
+          color: $green;
+        }
+        &.in-progress {
+          color: $orange;
+        }
+        &.out-of-work {
+          color: $light-blue2;
+        }
+      }
+
+      .rating-icon {
+        color: $yellow;
+      }
+
       .driver-image {
         background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
         background-size: cover;
