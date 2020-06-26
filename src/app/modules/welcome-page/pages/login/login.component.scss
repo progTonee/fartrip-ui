@@ -6,14 +6,23 @@ form {
   flex-direction: column;
   justify-content: space-between;
   width: 400px;
-  height: 100px;
   margin: auto;
   position: relative;
   top: 50vh;
   transform: translateY(-50%);
 
+  .form-header {
+   display: flex;
+   justify-content: center;
+
+   h3 {
+     color: $main-blue;
+   }
+  }
+
   button {
     @include main-button;
+    margin-top: 10px;
   }
 
   ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {

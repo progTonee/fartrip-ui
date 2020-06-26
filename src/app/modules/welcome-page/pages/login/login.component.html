@@ -1,5 +1,8 @@
 <app-header [headerType]="'login'"></app-header>
 <form [formGroup]="formGroup" (ngSubmit)="onFormSubmit()">
+  <div class="form-header">
+    <h3>Log in to FarTrip</h3>
+  </div>
   <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput placeholder="Enter your email" formControlName="email" />

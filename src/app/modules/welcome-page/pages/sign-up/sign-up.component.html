@@ -1,5 +1,8 @@
 <app-header [headerType]="'signup'"></app-header>
 <form [formGroup]="formGroup" (ngSubmit)="onFormSubmit()">
+  <div class="form-header">
+    <h3>Sign up to FarTrip</h3>
+  </div>
   <mat-form-field>
     <mat-label>Name</mat-label>
     <input matInput placeholder="Enter your name" formControlName="name" />
