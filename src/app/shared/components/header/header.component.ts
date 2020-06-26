@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -14,14 +14,18 @@ export class HeaderComponent implements OnInit {
 
   isSignInSignUpPage = false;
 
-  constructor(private router: Router, private localStorageService: LocalStorageService) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.isSignInSignUpPage = this.router.url.indexOf('login') !== -1 || this.router.url.indexOf('signup') !== -1;
   }
 
   onLogOut(): void {
-    this.localStorageService.clear();
+    this.authService.logOut();
+  }
+
+  isLoggedInUser(): boolean {
+    return this.authService.isLoggedIn();
   }
 
 }

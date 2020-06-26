@@ -1,7 +1,12 @@
 <mat-card *ngIf="!isSignInSignUpPage">
   <mat-card-actions *ngIf="headerType === 'welcome'">
-    <a mat-button routerLink="/login">Sign In</a>
-    <a mat-button routerLink="/signup">Sign Up</a>
+    <div class="not-logged-in" *ngIf="!isLoggedInUser()">
+      <a mat-button routerLink="/login">Sign In</a>
+      <a mat-button routerLink="/signup">Sign Up</a>
+    </div>
+    <div class="logged-in" *ngIf="isLoggedInUser()">
+      <button mat-button (click)="onLogOut()">Log out</button>
+    </div>
   </mat-card-actions>
   <mat-card-actions *ngIf="headerType === 'user' || headerType === 'employer'">
     <a *ngIf="page === 'order-details'" mat-button [routerLink]="headerType === 'user' ? ['/user/orders-history'] : ['/employer/orders-history']">Back to orders list</a>

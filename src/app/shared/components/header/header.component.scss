@@ -1,8 +1,15 @@
 @import "color";
+@import "button";
 
 .mat-card {
-  background: #173F5F;
+  background: $main-blue;
   color: $white;
+
+  .logged-in {
+    button {
+      @include main-button(100px);
+    }
+  }
   
   .mat-card-actions:last-child {
     margin-bottom: 0;
