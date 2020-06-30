@@ -35,6 +35,11 @@
         background-size: cover;
       }
 
+      .work_description {
+        margin-top: 5px;
+        font-size: 16px;;
+      }
+
       .apply-button {
         @include main-button(100px);
       }

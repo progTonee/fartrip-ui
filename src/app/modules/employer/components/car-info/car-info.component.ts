@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ProfileInfoService } from 'src/app/shared/components/profile-settings/profile-info/profile-info.service';
+import { Car } from 'src/app/core/models/car';
 
 @Component({
   selector: 'app-car-info',
@@ -10,16 +12,20 @@ export class CarInfoComponent implements OnInit {
   formGroup: FormGroup;
   isInfoEdited = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private profileInfoService: ProfileInfoService) {
     this.formGroup = this.fb.group({
       model: ['', Validators.required],
-      type: ['', Validators.required],
-      seatsAmount: [null, Validators.required],
+      note: ['', Validators.required],
     });
     this.formGroup.disable();
   }
 
   ngOnInit(): void {}
+
+  getCarInfo(): Car | null {
+    const profileData = this.profileInfoService.getProfileInfoData();
+    return profileData ? profileData.car : null;
+  }
 
   onEditClick(): void {
     this.isInfoEdited = !this.isInfoEdited;
@@ -30,8 +36,9 @@ export class CarInfoComponent implements OnInit {
     }
   }
 
-  onCarInfoSettingsSubmit(): void {
-
+  onCarInfoSubmit(): void {
+    const { model, note } = this.formGroup.value;
+    this.profileInfoService.updateEmployeeProfileCar({ model, note });
   }
 
 }

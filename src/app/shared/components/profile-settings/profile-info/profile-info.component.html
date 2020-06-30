@@ -24,28 +24,34 @@
         <mat-form-field *ngIf="isEmployerInfoDisplayed">
           <mat-label>Status</mat-label>
           <mat-select formControlName="status">
-            <mat-option *ngFor="let item of profileInfoService.getStatusList()" [value]="item.value">{{item.text}}</mat-option>
+            <mat-option *ngFor="let item of getStatusList()" [value]="item.value" >{{item.text}}</mat-option>
           </mat-select>
           <input matInput placeholder="Select your current status" formControlName="status" />
           <mat-error *ngIf="commonProfileFormGroup.get('status').hasError('required')">The status is required</mat-error>
         </mat-form-field>
         <button mat-button type="submit" *ngIf="isProfileEdited">Submit</button>
       </form>
-      <form class="password-profile-info" [formGroup]="passwordProfileFormGroup" (ngSubmit)="onProfileSubmit('passwordProfileInfo')">
+      <form
+        *ngIf="isProfileEdited"
+        class="password-profile-info"
+        [formGroup]="passwordProfileFormGroup"
+        (ngSubmit)="onProfileSubmit('passwordProfileInfo')"
+      >
         <mat-form-field>
           <mat-label>Current password</mat-label>
-          <input matInput placeholder="Enter your current" formControlName="currentPassword" />
+          <input matInput placeholder="Enter your current" formControlName="currentPassword" type="password" />
           <mat-error *ngIf="passwordProfileFormGroup.get('currentPassword').hasError('required')">Current password is required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>New password</mat-label>
-          <input matInput placeholder="Enter new password" formControlName="newPassword" />
+          <input matInput placeholder="Enter new password" formControlName="newPassword" type="password" />
           <mat-error *ngIf="passwordProfileFormGroup.get('newPassword').hasError('required')">New password is required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Confirm new password</mat-label>
-          <input matInput placeholder="Confirm new password" formControlName="confirmNewPassword" />
+          <input matInput placeholder="Confirm new password" formControlName="confirmNewPassword" type="password" />
           <mat-error *ngIf="passwordProfileFormGroup.get('confirmNewPassword').hasError('required')">Confirm password is required</mat-error>
+          <mat-error *ngIf="passwordProfileFormGroup.get('confirmNewPassword').hasError('mustMatch')">New and confirm passwords must match!</mat-error>
         </mat-form-field>
         <button mat-button type="submit" *ngIf="isProfileEdited">Submit</button>
       </form>

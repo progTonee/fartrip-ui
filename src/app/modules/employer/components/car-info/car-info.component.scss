@@ -32,6 +32,10 @@
         color: $white;
       }
 
+      ::ng-deep .mat-form-field .mat-input-element:disabled {
+        color: black;
+      }
+
       ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
         color: $main-blue !important;
       }

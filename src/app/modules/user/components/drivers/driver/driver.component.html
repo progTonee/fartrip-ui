@@ -18,6 +18,9 @@
             <div>
               <mat-icon class="rating-icon" *ngFor="let item of getRating()">star</mat-icon>
             </div>
+            <div class="work_description">
+              <span>{{getDriverData()?.workDescription}}</span>
+            </div>
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>

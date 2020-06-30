@@ -25,7 +25,7 @@ import { EmployeeStatusPipe } from 'src/app/core/pipes/employee-status.pipe';
   ],
   providers: [
     DriversService,
-    UsersService,
+    UsersService
   ],
   exports: [
     UserComponent,

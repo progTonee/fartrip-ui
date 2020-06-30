@@ -35,7 +35,7 @@
     <mat-label>Confirm password</mat-label>
     <input matInput placeholder="Confirm the password" type="password" formControlName="confirmPassword" />
     <mat-error *ngIf="formGroup.get('confirmPassword').hasError('required')">The confirm password is required!</mat-error>
-    <mat-error *ngIf="formGroup.get('confirmPassword').hasError('mustMatch')">Passwords must match!</mat-error>
+    <mat-error *ngIf="formGroup.get('confirmPassword').hasError('mustMatch')">New and confirm passwords must match!</mat-error>
   </mat-form-field>
   <button mat-button type="submit">Submit</button>
 </form>
