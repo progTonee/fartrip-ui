@@ -48,7 +48,7 @@ export class ProfileInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isEmployerInfoDisplayed = this.router.url.indexOf('employer') !== -1;
+    this.isEmployerInfoDisplayed = this.router.url.indexOf('employee') !== -1;
     const profileType = this.isEmployerInfoDisplayed ? 'employee' : 'user';
 
     this.profileInfoService.loadProfileInfo(profileType)

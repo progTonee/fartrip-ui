@@ -17,15 +17,15 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'employer/settings',
+    path: 'employee/settings',
     component: EmployerSettingsComponent,
     children: [
       { path: 'profile', component: ProfileInfoComponent },
       { path: 'comments', component: EmployerCommentsComponent }
     ]
   },
-  { path: 'employer/available-orders/:id/details', component: OrderComponent },
-  { path: 'employer/orders-history/:id/details', component: OrderComponent },
+  { path: 'employee/available-orders/:id/details', component: OrderComponent },
+  { path: 'employee/orders-history/:id/details', component: OrderComponent },
 ];
 
 @NgModule({
