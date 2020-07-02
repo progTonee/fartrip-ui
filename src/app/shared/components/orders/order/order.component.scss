@@ -1,4 +1,5 @@
 @import "color";
+@import "button";
 
 .order {
   width: 70%;
@@ -38,6 +39,17 @@
     mat-card-subtitle {
       div {
         margin-top: 5px;
+      }
+    }
+  }
+
+  .order-actions {
+    margin-top: 10px;
+    button {
+      @include main-button(100px);
+
+      &:nth-child(2) {
+        margin-left: 20px;
       }
     }
   }
