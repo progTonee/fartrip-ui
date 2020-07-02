@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/core/models/order';
 import { ActivatedRoute } from '@angular/router';
-import { Employer } from 'src/app/core/models/employer';
-import { User } from 'src/app/core/models/user';
-import { UsersService } from 'src/app/modules/user/users.service';
-import { EmployersService } from 'src/app/modules/employer/employers.service';
 import { OrdersService } from '../orders.service';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Component({
   selector: 'app-order',
@@ -13,29 +10,24 @@ import { OrdersService } from '../orders.service';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  data: Order;
-  type: string;
+  orderId: string;
 
   constructor(
     private route: ActivatedRoute,
     private ordersService: OrdersService,
-    private usersService: UsersService,
-    private employersService: EmployersService
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
-    const orderId = this.route.snapshot.paramMap.get('id');
-    const type = this.route.snapshot.url[0].path;
-
-    this.data = this.ordersService.getOrderData(+orderId);
-    this.type = type;
+    this.orderId = this.route.snapshot.paramMap.get('id');
+    this.ordersService.loadOrderData(this.orderId);
   }
 
-  getEmployerData(): Employer {
-    return this.employersService.getEmployerData(this.data.employerId);
+  getOrderData(): Order {
+    return this.ordersService.getOrderData();
   }
 
-  getUserData(): User {
-    return this.usersService.getUserData(this.data.userId);
+  getOrderType(): string {
+    return this.localStorageService.get('role').toLowerCase();
   }
 }

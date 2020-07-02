@@ -9,16 +9,10 @@ import { Router } from '@angular/router';
 export class EmployerComponent implements OnInit {
   employerTabs: any[];
 
-  constructor(private router: Router) {
-    this.employerTabs = [
-      { label: 'Available orders', path: 'available-orders' },
-      { label: 'Orders history', path: 'orders-history' }
-    ];
-  }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.router.navigateByUrl('/employee/available-orders');
+    this.router.navigateByUrl('/employee/orders-history');
   }
-
 
 }

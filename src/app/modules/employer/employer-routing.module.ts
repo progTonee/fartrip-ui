@@ -12,7 +12,6 @@ const routes: Routes = [
     path: '',
     component: EmployerComponent,
     children: [
-      { path: 'available-orders', component: OrdersComponent },
       { path: 'orders-history', component: OrdersComponent },
     ]
   },

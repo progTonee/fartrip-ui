@@ -18,7 +18,9 @@ import { OrderComponent } from './components/orders/order/order.component';
 import { MapComponent } from './components/map/map.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrdersService } from './components/orders/orders.service';
-import { OrderSpentTimePipe } from '../core/pipes/order-spent-time.pipe';
+import { OrderSpendTimePipe } from '../core/pipes/order-spend-time.pipe';
+import { OrderStatusPipe } from '../core/pipes/order-status.pipe';
+import { OrderDistancePipe } from '../core/pipes/order-distance.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { OrderSpentTimePipe } from '../core/pipes/order-spent-time.pipe';
     OrderComponent,
     MapComponent,
     OrdersComponent,
-    OrderSpentTimePipe
+    OrderSpendTimePipe,
+    OrderStatusPipe,
+    OrderDistancePipe
   ],
   imports: [
     CommonModule,

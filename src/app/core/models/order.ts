@@ -1,12 +1,13 @@
-import { OrderStatus } from '../enums/order-staus';
+import { OrderStatusValue } from '../enums/order';
 
 export interface Order {
+  name: string;
   id: number;
   destination: string;
   departure: string;
   distance: number;
-  status: OrderStatus;
-  spentTime?: number;
+  status: OrderStatusValue;
+  spendTime?: number;
   cost?: number;
   userId: number;
   employerId: number;

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from './orders.service';
-import { ActivatedRoute } from '@angular/router';
 import { Order } from 'src/app/core/models/order';
 
 @Component({
@@ -9,16 +8,15 @@ import { Order } from 'src/app/core/models/order';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  type: string;
 
-  constructor(private ordersService: OrdersService, private route: ActivatedRoute) {}
+  constructor(private ordersService: OrdersService) {}
 
   ngOnInit(): void {
-    this.type = this.route.snapshot.url[0].path;
+    this.ordersService.loadOrdersData();
   }
 
   getOrdersData(): Order[] {
-    return this.ordersService.getOrdersData(this.type);
+    return this.ordersService.getOrdersData();
   }
 
   getOrdersColumns(): string[] {

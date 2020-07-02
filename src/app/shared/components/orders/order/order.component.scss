@@ -7,17 +7,17 @@
   .order-status {
     font-size: 24px;
 
-    &.done {
-      color: $green;
-    }
-    &.canceled {
-      color: $red;
+    &.new {
+      color: $light-blue;
     }
     &.in-progress {
       color: $orange;
     }
-    &.new {
-      color: $light-blue;
+    &.completed {
+      color: $green;
+    }
+    &.canceled {
+      color: $red;
     }
   }
 

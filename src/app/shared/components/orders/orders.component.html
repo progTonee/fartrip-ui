@@ -10,11 +10,24 @@
     </ng-container>
     <ng-container matColumnDef="distance">
       <th mat-header-cell *matHeaderCellDef>Distance</th>
-      <td mat-cell *matCellDef="let item">{{item.distance}}</td>
+      <td mat-cell *matCellDef="let item">{{item.distance | orderDistance}}</td>
     </ng-container>
-    <ng-container matColumnDef="spentTime">
-      <th mat-header-cell *matHeaderCellDef>Spent time</th>
-      <td mat-cell *matCellDef="let item">{{item.spentTime | orderSpentTime}}</td>
+    <ng-container matColumnDef="spendTime">
+      <th mat-header-cell *matHeaderCellDef>Spend time</th>
+      <td mat-cell *matCellDef="let item">{{item.spendTime | orderSpendTime}}</td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td
+        mat-cell
+        *matCellDef="let item"
+        [class.new]="item.status === 'new'"
+        [class.in-progress]="item.status === 'in_progress'"
+        [class.completed]="item.status === 'completed'"
+        [class.canceled]="item.status === 'canceled'"
+      >
+        {{item.status | orderStatus}}
+      </td>
     </ng-container>
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Action</th>

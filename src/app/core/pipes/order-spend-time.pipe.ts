@@ -1,14 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'orderSpentTime'
+  name: 'orderSpendTime'
 })
-export class OrderSpentTimePipe implements PipeTransform {
+export class OrderSpendTimePipe implements PipeTransform {
 
-  transform(spentTimeSeconds: number): string {
+  transform(spendTimeSeconds: number): string {
     let days;
-    let hours = Math.floor((spentTimeSeconds / 3600));
-    const minutes = (Math.floor((spentTimeSeconds / 60))) % 60;
+    let hours = Math.floor((spendTimeSeconds / 3600));
+    const minutes = (Math.floor((spendTimeSeconds / 60))) % 60;
 
     if (hours > 24) {
       days = Math.floor(hours / 24);
@@ -20,6 +20,10 @@ export class OrderSpentTimePipe implements PipeTransform {
     if (hours === 0) {
       return `${minutes} minutes`;
     } else {
+      if (minutes === 0) {
+        return `${hours} hours`;
+      }
+
       return `${hours} hours ${minutes} minutes`;
     }
   }

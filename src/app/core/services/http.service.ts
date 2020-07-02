@@ -56,6 +56,38 @@ export class HttpService {
     return this.http.get(`${HttpUrl.Employees}/${id}/car`);
   }
 
+  getOrders(id: string, profileType: string): Observable<any> {
+    if (profileType === 'employee') {
+      return this.getEmployeeOrders(id);
+    } else {
+      return this.getUserOrders(id);
+    }
+  }
+
+  getOrder(orderId: string, accountId: string, profileType: string): Observable<any> {
+    if (profileType === 'employee') {
+      return this.getEmployeeOrder(orderId, accountId);
+    } else {
+      return this.getUserOrder(orderId, accountId);
+    }
+  }
+
+  getEmployeeOrders(id: string): Observable<any> {
+    return this.http.get(`${HttpUrl.Employees}/${id}/orders`);
+  }
+
+  getUserOrders(id: string): Observable<any> {
+    return this.http.get(`${HttpUrl.Users}/${id}/orders`);
+  }
+
+  getEmployeeOrder(orderId: string, accountId: string): Observable<any> {
+    return this.http.get(`${HttpUrl.Employees}/${accountId}/orders/${orderId}`);
+  }
+
+  getUserOrder(orderId: string, accountId: string): Observable<any> {
+    return this.http.get(`${HttpUrl.Users}/${accountId}/orders/${orderId}`);
+  }
+
   updateProfileInfo(id: string, profileInfoData: any, profileType: string, requestType: string): Observable<any> {
     if (profileType === 'employee') {
       return this.updateEmployeeProfileInfo(id, profileInfoData, requestType);

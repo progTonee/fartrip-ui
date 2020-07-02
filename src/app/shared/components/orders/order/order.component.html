@@ -1,25 +1,25 @@
-<app-header [headerType]="type" [page]="'order-details'"></app-header>
+<app-header [headerType]="getOrderType()" [page]="'order-details'"></app-header>
 <div class="order">
   <mat-card>
     <mat-card-header>
       <div mat-card-avatar class="order-image"></div>
-      <mat-card-title>{{type === 'user' ? getEmployerData().name : getUserData().name}}</mat-card-title>
+      <mat-card-title>{{getOrderData().name}}</mat-card-title>
       <mat-card-subtitle>
-        <div>{{data.departure}} -> {{data.destination}}</div>
-        <div>Distance - {{data.distance}} km</div>
-        <div>Spent time - {{data.spentTime | orderSpentTime}}</div>
-        <div>Price - {{data.cost}} $</div>
+        <div>{{getOrderData().departure}} -> {{getOrderData().destination}}</div>
+        <div>Distance - {{getOrderData().distance | orderDistance}}</div>
+        <div>Spent time - {{getOrderData().spendTime | orderSpendTime}}</div>
+        <div>Price - {{getOrderData().cost}} $</div>
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
      <div
       class="order-status"
-      [class.new]="data.status === 'New'"
-      [class.done]="data.status === 'Done'"
-      [class.canceled]="data.status === 'Canceled'"
-      [class.in-progress]="data.status === 'In Progress'"
+      [class.new]="getOrderData().status === 'new'"
+      [class.in-progress]="getOrderData().status === 'in_progress'"
+      [class.completed]="getOrderData().status === 'completed'"
+      [class.canceled]="getOrderData().status === 'canceled'"
     >
-      {{data.status}}
+      {{getOrderData().status | orderStatus}}
     </div>
     </mat-card-content>
   </mat-card>

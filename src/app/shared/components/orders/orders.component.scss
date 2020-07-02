@@ -7,6 +7,19 @@
   table {
     width: 100%;
 
+    .new {
+      color: $light-blue2;
+    }
+    .in-progress {
+      color: $orange;
+    }
+    .completed {
+      color: $green;
+    }
+    .canceled {
+      color: $red;
+    }
+
     .details-button {
       @include main-button(120px);
     }
