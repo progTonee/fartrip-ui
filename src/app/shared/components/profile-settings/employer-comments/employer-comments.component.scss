@@ -1,0 +1,40 @@
+@import "button";
+
+.employee-comments {
+  .add-comment {
+    form {
+      display: flex;
+      flex-direction: column;
+
+      ::ng-deep .mat-form-field .mat-input-element:disabled {
+        color: black;
+      }
+
+      ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+        color: $main-blue !important;
+      }
+
+      ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+        background-color: $main-blue !important;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        @include main-button;
+        margin: unset;
+
+        &:nth-child(1) {
+          width: 100px;
+          margin-right: 15px;
+        }
+        &:nth-child(2) {
+          width: 130px;
+        }
+      }
+    }
+  }
+}

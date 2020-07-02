@@ -55,6 +55,17 @@
   }
 
   &__comments {
+    mat-card-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 140px;
+
+      mat-icon {
+       font-size: 30px;
+       cursor: pointer;
+      }
+    }
     ::ng-deep .comment {
       width: 100%;
     }

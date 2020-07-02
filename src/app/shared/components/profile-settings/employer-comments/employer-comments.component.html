@@ -1,3 +1,15 @@
-<div class="employer-comments">
+<div class="employee-comments">
+  <div *ngIf="isLeaveCommentOpen()" class="add-comment">
+    <form [formGroup]="formGroup">
+      <mat-form-field>
+        <input matInput type="text" formControlName="comment" placeholder="Leave a comment" />
+        <mat-error *ngIf="formGroup.get('comment').hasError('required')">Leaving a comment is required!</mat-error>
+      </mat-form-field>
+      <div class="add-comment__actions">
+        <button mat-button mat-raised-button type="button" (click)="onCancelCommentClick()">Cancel</button>
+        <button mat-button mat-raised-button type="submit">Leave comment</button>
+      </div>
+    </form>
+  </div>
   <app-comment *ngFor="let item of getEmployerCommentsData()" [data]="item"></app-comment>
 </div>

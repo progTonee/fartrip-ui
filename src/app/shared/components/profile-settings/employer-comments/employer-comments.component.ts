@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EmployerCommentsService } from './employer-comments.service';
-import { Comment } from 'src/app/core/models/comment';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-employer-comments',
@@ -8,15 +8,28 @@ import { Comment } from 'src/app/core/models/comment';
   styleUrls: ['./employer-comments.component.scss']
 })
 export class EmployerCommentsComponent implements OnInit {
+  formGroup: FormGroup;
 
-  @Input() employerId = 1;
+  @Input() employerId: number;
 
-  constructor(private employerCommentsService: EmployerCommentsService) {}
+  constructor(private fb: FormBuilder, private employerCommentService: EmployerCommentsService) {
+    this.formGroup = this.fb.group({
+      comment: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {}
 
+  isLeaveCommentOpen(): boolean {
+    return this.employerCommentService.isLeaveCommentOpen();
+  }
+
   getEmployerCommentsData(): Comment[] {
-    return this.employerCommentsService.getEmployerCommentsData(this.employerId);
+    return [];
+  }
+
+  onCancelCommentClick(): void {
+    this.employerCommentService.setCommentOpen(false);
   }
 
 }

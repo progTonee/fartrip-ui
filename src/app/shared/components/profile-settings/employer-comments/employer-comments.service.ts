@@ -1,23 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Comment } from 'src/app/core/models/comment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployerCommentsService {
-  employerCommentsData: Comment[];
+  leaveCommentOpen = false;
 
-  constructor() {
-    this.employerCommentsData = [
-      { text: 'Comment 1', date: new Date().toISOString(), rating: 5, employerId: 5, userId: 1 },
-      { text: 'Comment 2', date: new Date().toISOString(), rating: 4, employerId: 5, userId: 2  },
-      { text: 'Comment 3', date: new Date().toISOString(), rating: 2, employerId: 5, userId: 3  },
-      { text: 'Comment 4', date: new Date().toISOString(), rating: 1, employerId: 5, userId: 4  },
-      { text: 'Comment 5', date: new Date().toISOString(), rating: 3, employerId: 5, userId: 5  }
-    ];
+  constructor() {}
+
+  isLeaveCommentOpen(): boolean {
+    return this.leaveCommentOpen;
   }
 
-  getEmployerCommentsData(id: number): Comment[] {
-    return this.employerCommentsData.filter(item => item.employerId === id);
+  setCommentOpen(leaveCommentOpen: boolean): void {
+    this.leaveCommentOpen = leaveCommentOpen;
   }
+
 }

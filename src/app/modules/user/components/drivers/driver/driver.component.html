@@ -44,7 +44,10 @@
   <div class="driver__comments">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>Comments</mat-card-title>
+        <mat-card-title>
+          <span>Comments</span>
+          <span><mat-icon (click)="onAddCommentClick()">add_comment</mat-icon></span>
+        </mat-card-title>
       </mat-card-header>
       <app-employer-comments [employerId]="getDriverData()?.id"></app-employer-comments>
     </mat-card>
