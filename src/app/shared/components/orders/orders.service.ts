@@ -15,6 +15,17 @@ export class OrdersService {
     this.ordersColumns = ['destination', 'departure', 'distance', 'spendTime', 'status', 'action'];
   }
 
+  createOrder(order: Order, employee: any): void {
+    const data = {
+      order,
+      user: {userAccountId: this.localStorageService.get('id') },
+      employee
+    };
+
+    this.httpService.createOrder(data)
+      .subscribe(response => console.log(response));
+  }
+
   loadOrdersData(): void {
     this.httpService.getOrders(this.localStorageService.get('id'), this.localStorageService.get('role').toLocaleLowerCase())
       .subscribe(response => this.setOrdersData(response));

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpUrl } from '../enums/http-url';
-import { Observable, Observer, ObservedValueOf } from 'rxjs';
+import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { Car } from '../models/car';
+import { Order } from '../models/order';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +55,10 @@ export class HttpService {
 
   getCatInfo(id: string): Observable<any> {
     return this.http.get(`${HttpUrl.Employees}/${id}/car`);
+  }
+
+  createOrder(data: any): Observable<any> {
+    return this.http.post(`${HttpUrl.Orders}`, data);
   }
 
   getOrders(id: string, profileType: string): Observable<any> {

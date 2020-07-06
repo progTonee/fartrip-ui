@@ -4,6 +4,8 @@ import { DriversService } from '../drivers.service';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeStatusValue, EmployeeStatusText } from '../../../../../core/enums/employee-status';
 import { EmployerCommentsService } from 'src/app/shared/components/profile-settings/employer-comments/employer-comments.service';
+import { DialogService } from 'src/app/core/services/dialog.service';
+import { OrderFormComponent } from 'src/app/core/components/order-form/order-form.component';
 
 @Component({
   selector: 'app-driver',
@@ -11,16 +13,18 @@ import { EmployerCommentsService } from 'src/app/shared/components/profile-setti
   styleUrls: ['./driver.component.scss']
 })
 export class DriverComponent implements OnInit {
+  driverId: string;
 
   constructor(
     private route: ActivatedRoute,
     private driversService: DriversService,
-    private employerCommentsService: EmployerCommentsService
+    private employerCommentsService: EmployerCommentsService,
+    private dialogService: DialogService
   ) {}
 
   ngOnInit(): void {
-    const driverId = this.route.snapshot.paramMap.get('id');
-    this.driversService.loadDriverData(+driverId);
+    this.driverId = this.route.snapshot.paramMap.get('id');
+    this.driversService.loadDriverData(+this.driverId);
   }
 
   getDriverData(): Driver {
@@ -55,6 +59,16 @@ export class DriverComponent implements OnInit {
 
   onAddCommentClick(): void {
     this.employerCommentsService.setCommentOpen(true);
+  }
+
+  onDriverApply(): void {
+    this.dialogService.open(
+      OrderFormComponent,
+      {
+        employeeId: this.driverId,
+        employeeCostPerKm: this.driversService.getDriverData().costPerKm
+      }
+    );
   }
 
 }

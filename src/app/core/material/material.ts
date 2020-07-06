@@ -9,7 +9,10 @@ import {
   MatSelectModule,
   MatOptionModule,
   MatTableModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatDialogModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 
 export const materialModules = [
@@ -23,5 +26,8 @@ export const materialModules = [
   MatSelectModule,
   MatOptionModule,
   MatTableModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatDialogModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 ];

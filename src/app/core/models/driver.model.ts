@@ -7,4 +7,5 @@ export interface Driver {
   status: string;
   car: Car;
   rating: number;
+  costPerKm: number;
 }

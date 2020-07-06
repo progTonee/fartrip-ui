@@ -1,0 +1,28 @@
+<div class="order-form">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput formControlName="departure" placeholder="Enter the place where you will leave from!" />
+      <mat-error *ngIf="formGroup.get('departure').hasError('required')">The place is required!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="destination" placeholder="Enter the place where you go to!" />
+      <mat-error *ngIf="formGroup.get('destination').hasError('required')">The place is required!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Enter the date of leaving!" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="formGroup.get('date').hasError('required')">The date is required!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [ngxTimepicker]="toggleTimepicker" formControlName="time" [disableClick]="true" readonly placeholder="Enter the time of leaving!">
+      <ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
+      <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+      <mat-error *ngIf="formGroup.get('time').hasError('required')">The time is required!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="userNotes" placeholder="Enter some notes (e.g. 'I need back door for my bag')" />
+    </mat-form-field>
+    <button class="action" mat-button mat-raised-button type="submit">Apply</button>
+  </form>
+</div>

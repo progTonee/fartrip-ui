@@ -1,0 +1,40 @@
+@import "color";
+@import "button";
+
+::ng-deep ngx-material-timepicker-container {
+  .timepicker-overlay {
+    z-index: 10000 !important;
+  }
+}
+
+.timepicker-overlay {
+  z-index: 10000;
+}
+
+.order-form {
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    mat-form-field {
+      margin: 3px 0;
+
+      &:nth-child(5) {
+        margin-top: -7px;
+      }
+    }
+
+    ::ng-deep mat-form-field {
+      .mat-form-field-infix {
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+
+    .action {
+      @include main-button(100px);
+      margin-top: 10px;
+    }
+  }
+}
