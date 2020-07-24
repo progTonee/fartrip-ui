@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { Car } from '../models/car';
 import { Order } from '../models/order';
+import { Comment } from '../models/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -95,6 +96,10 @@ export class HttpService {
 
   getEmployeeComments(accountId: string): Observable<any> {
     return this.http.get(`${HttpUrl.Employees}/${accountId}/comments`);
+  }
+
+  createEmployeeComment(employeeAccountId: string, userAccountId: string, comment: Comment): Observable<any> {
+    return this.http.post(`${HttpUrl.Employees}/${employeeAccountId}/comments`, { userAccountId, comment });
   }
 
   updateProfileInfo(id: string, profileInfoData: any, profileType: string, requestType: string): Observable<any> {

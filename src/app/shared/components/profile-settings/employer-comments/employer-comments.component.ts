@@ -25,8 +25,7 @@ export class EmployerCommentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const accountId = this.router.url.split('/')[3];
-    this.employerCommentService.loadComments(accountId);
+    this.employerCommentService.loadComments(this.getEmployeeAccountId());
   }
 
   isLeaveCommentOpen(): boolean {
@@ -37,8 +36,16 @@ export class EmployerCommentsComponent implements OnInit {
     return this.employerCommentService.getComments();
   }
 
+  getEmployeeAccountId(): string {
+    return this.router.url.split('/')[3];
+  }
+
   onCancelCommentClick(): void {
     this.employerCommentService.setCommentOpen(false);
+  }
+
+  onSubmitComment(): void {
+    this.employerCommentService.createComment(this.getEmployeeAccountId(), this.formGroup.value);
   }
 
 }
