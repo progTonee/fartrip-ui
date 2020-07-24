@@ -93,6 +93,10 @@ export class HttpService {
     return this.http.get(`${HttpUrl.Users}/${accountId}/orders/${orderId}`);
   }
 
+  getEmployeeComments(accountId: string): Observable<any> {
+    return this.http.get(`${HttpUrl.Employees}/${accountId}/comments`);
+  }
+
   updateProfileInfo(id: string, profileInfoData: any, profileType: string, requestType: string): Observable<any> {
     if (profileType === 'employee') {
       return this.updateEmployeeProfileInfo(id, profileInfoData, requestType);

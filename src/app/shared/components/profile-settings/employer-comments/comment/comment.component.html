@@ -1,14 +1,14 @@
 <div class="comment">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>{{getUserData().name}}</mat-card-title>
+      <mat-card-title>{{data.userName}}</mat-card-title>
       <mat-card-subtitle>
-        <span>{{getCommentDate()}}</span>
+        <span>{{data.createdDate | date : 'medium'}}</span>
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <div class="comment__text">
-        <span>{{data.text}}</span>
+        <span>{{data.comment}}</span>
       </div>
     </mat-card-content>
   </mat-card>

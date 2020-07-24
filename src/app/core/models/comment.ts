@@ -1,7 +1,5 @@
 export interface Comment {
-  employerId: number;
-  userId: number;
-  date: string;
-  rating: number;
-  text: string;
+  comment: string;
+  userName: string;
+  createdDate: string;
 }
