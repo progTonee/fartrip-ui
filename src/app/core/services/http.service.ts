@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { Car } from '../models/car';
 import { Comment } from '../models/comment';
+import { OrderStatusValue } from '../enums/order';
 
 @Injectable({
   providedIn: 'root'
@@ -95,6 +96,10 @@ export class HttpService {
 
   getUserOrder(orderId: string, accountId: string): Observable<any> {
     return this.http.get(`${HttpUrl.Users}/${accountId}/orders/${orderId}`);
+  }
+
+  updateOrderStatus(orderId: string, orderStatus: OrderStatusValue): Observable<any> {
+    return this.http.patch(`${HttpUrl.Orders}/${orderId}/status`, { status: orderStatus });
   }
 
   getEmployeeComments(accountId: string): Observable<any> {

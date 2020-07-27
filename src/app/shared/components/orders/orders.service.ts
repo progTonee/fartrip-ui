@@ -4,6 +4,7 @@ import { HttpService } from 'src/app/core/services/http.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { Router } from '@angular/router';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';
+import { OrderStatusValue } from 'src/app/core/enums/order';
 
 @Injectable({
   providedIn: 'root',
@@ -43,9 +44,14 @@ export class OrdersService {
       .subscribe(response => this.setOrderData(response));
   }
 
+  submitOrder(orderId: string): void {
+    this.httpService.updateOrderStatus(orderId, OrderStatusValue.InProgress)
+      .subscribe(() => this.setOrderData({ ...this.orderData, status: OrderStatusValue.InProgress }));
+  }
+
   cancelOrder(orderId: string): void {
-    this.httpService.deleteOrder(orderId)
-      .subscribe(() => this.router.navigateByUrl('/user/orders-history'));
+    this.httpService.updateOrderStatus(orderId, OrderStatusValue.Canceled)
+      .subscribe(() => this.setOrderData({ ...this.orderData, status: OrderStatusValue.Canceled }));
   }
 
   setOrdersData(ordersData: Order[]): void {
