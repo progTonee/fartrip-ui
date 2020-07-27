@@ -22,6 +22,14 @@ export class EmployerCommentsService {
       .subscribe(response => this.setComment(response));
   }
 
+  deleteComment(id: string): void {
+    this.httpService.deleteComment(id)
+      .subscribe(() => {
+        const commentIndex = this.comments.findIndex((comment: Comment) => comment.id === id);
+        this.comments.splice(commentIndex, 1);
+      });
+  }
+
   setComments(comments) {
     this.comments = comments;
   }

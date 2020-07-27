@@ -110,6 +110,10 @@ export class HttpService {
     return this.http.post(`${HttpUrl.Employees}/${employeeAccountId}/comments`, { userAccountId, comment });
   }
 
+  deleteComment(id: string): Observable<any> {
+    return this.http.delete(`${HttpUrl.Comments}/${id}`);
+  }
+
   updateProfileInfo(id: string, profileInfoData: any, profileType: string, requestType: string): Observable<any> {
     if (profileType === 'employee') {
       return this.updateEmployeeProfileInfo(id, profileInfoData, requestType);

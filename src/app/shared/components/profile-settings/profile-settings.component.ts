@@ -6,9 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./profile-settings.component.scss']
 })
 export class ProfileSettingsComponent implements OnInit {
-  @Input() type: string;
 
-  settingsTabs: any[];
+  @Input() type: string;
+  @Input() tabs: any[];
 
   constructor() {}
 

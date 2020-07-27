@@ -1,1 +1,1 @@
-export const authorizationUrls = ['users', 'employees', 'orders'];
+export const authorizationUrls = ['users', 'employees', 'orders', 'comments'];

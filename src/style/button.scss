@@ -1,8 +1,8 @@
 @import "color";
 
-@mixin main-button($width: 150px) {
+@mixin main-button($width: 150px, $color: $main-blue) {
   width: $width;
   margin: auto;
-  background: $main-blue;
+  background: $color;
   color: $white;
 }

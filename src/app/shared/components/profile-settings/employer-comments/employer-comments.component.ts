@@ -3,6 +3,7 @@ import { EmployerCommentsService } from './employer-comments.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Comment } from 'src/app/core/models/comment';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Component({
   selector: 'app-employer-comments',
@@ -17,7 +18,8 @@ export class EmployerCommentsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private employerCommentService: EmployerCommentsService,
-    private router: Router
+    private router: Router,
+    private localStorageService: LocalStorageService
   ) {
     this.formGroup = this.fb.group({
       comment: ['', Validators.required]
@@ -37,7 +39,11 @@ export class EmployerCommentsComponent implements OnInit {
   }
 
   getEmployeeAccountId(): string {
-    return this.router.url.split('/')[3];
+    if (this.localStorageService.get('role') === 'USER') {
+      return this.router.url.split('/')[3];
+    } else {
+      return this.localStorageService.get('id');
+    }
   }
 
   onCancelCommentClick(): void {

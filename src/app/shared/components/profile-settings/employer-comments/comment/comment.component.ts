@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Comment } from 'src/app/core/models/comment';
-import { UsersService } from 'src/app/modules/user/users.service';
+import { EmployerCommentsService } from '../employer-comments.service';
 
 @Component({
   selector: 'app-comment',
@@ -11,8 +11,12 @@ export class CommentComponent implements OnInit {
 
   @Input() data: Comment;
 
-  constructor() {}
+  constructor(private commentsService: EmployerCommentsService) {}
 
   ngOnInit(): void {}
+
+  onDelete(): void {
+    this.commentsService.deleteComment(this.data.id);
+  }
 
 }

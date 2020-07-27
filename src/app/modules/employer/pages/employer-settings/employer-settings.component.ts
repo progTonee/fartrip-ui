@@ -6,8 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employer-settings.component.scss']
 })
 export class EmployerSettingsComponent implements OnInit {
+  settingsTabs: any[];
 
-  constructor() {}
+  constructor() {
+    this.settingsTabs = [
+      { label: 'General Info', path: '/employee/settings/profile' },
+      { label: 'Comments', path: '/employee/settings/comments' }
+    ];
+  }
 
   ngOnInit(): void {}
 
