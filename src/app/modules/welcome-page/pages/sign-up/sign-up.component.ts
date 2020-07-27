@@ -22,6 +22,8 @@ export class SignUpComponent implements OnInit {
         age: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         role: ['', Validators.required],
+        costPerKm: ['', Validators.required],
+        workDescription: ['', Validators.required],
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
       },
@@ -36,31 +38,26 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  handleSuccessfullyRegistration(): void {
+    this.formGroup.reset();
+    this.snackbar.show('You were successfully registered!');
+  }
+
+  handleErrorRegistration(error: any): void {
+    this.snackbar.show(error.error.errorMessage);
+  }
+
   onFormSubmit(): void {
     const { value } = this.formGroup;
 
     if (value.role === 'USER') {
-      this.httpService.signUpUser(value)
-      .subscribe(
-        () => {
-          this.formGroup.reset();
-          this.snackbar.show('You were successfully registered!');
-        },
-        error => {
-          this.snackbar.show(error.error.errorMessage);
-        }
-      );
+      const userData = { name: value.name, age: value.age, email: value.email, password: value.password };
+
+      this.httpService.signUpUser(userData)
+        .subscribe(() => this.handleSuccessfullyRegistration(), error => this.handleErrorRegistration(error));
     } else {
       this.httpService.signUpEmployee(value)
-      .subscribe(
-        () => {
-          this.formGroup.reset();
-          this.snackbar.show('You were successfully registered!');
-        },
-        error => {
-          this.snackbar.show(error.error.errorMessage);
-        }
-      );
+        .subscribe(() => this.handleSuccessfullyRegistration(), error => this.handleErrorRegistration(error));
     }
   }
 

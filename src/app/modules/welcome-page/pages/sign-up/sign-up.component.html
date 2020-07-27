@@ -26,6 +26,16 @@
     </mat-select>
     <mat-error *ngIf="formGroup.get('role').hasError('required')">The role is required!</mat-error>
   </mat-form-field>
+  <mat-form-field *ngIf="formGroup.get('role').value === 'EMPLOYEE'">
+    <mat-label>Cost per killometer ($)</mat-label>
+    <input matInput placeholder="Enter your cost per kilommeter ($)" formControlName="costPerKm" />
+    <mat-error *ngIf="formGroup.get('costPerKm').hasError('required')">The cost per killometr is required!</mat-error>
+  </mat-form-field>
+  <mat-form-field *ngIf="formGroup.get('role').value === 'EMPLOYEE'">
+    <mat-label>Work description</mat-label>
+    <input matInput placeholder="Enter some notes about work for users." formControlName="workDescription" />
+    <mat-error *ngIf="formGroup.get('workDescription').hasError('required')">The notes about work are required!</mat-error>
+  </mat-form-field>
   <mat-form-field>
     <mat-label>Password</mat-label>
     <input matInput placeholder="Enter your password" type="password" formControlName="password" />
