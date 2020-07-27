@@ -4,7 +4,6 @@ import { HttpUrl } from '../enums/http-url';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { Car } from '../models/car';
-import { Order } from '../models/order';
 import { Comment } from '../models/comment';
 
 @Injectable({
@@ -59,7 +58,7 @@ export class HttpService {
   }
 
   createOrder(data: any): Observable<any> {
-    return this.http.post(`${HttpUrl.Orders}`, data);
+    return this.http.post(HttpUrl.Orders, data);
   }
 
   getOrders(id: string, profileType: string): Observable<any> {
@@ -76,6 +75,10 @@ export class HttpService {
     } else {
       return this.getUserOrder(orderId, accountId);
     }
+  }
+
+  deleteOrder(orderId: string): Observable<any> {
+    return this.http.delete(`${HttpUrl.Orders}/${orderId}`);
   }
 
   getEmployeeOrders(id: string): Observable<any> {

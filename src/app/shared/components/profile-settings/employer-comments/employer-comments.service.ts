@@ -31,7 +31,7 @@ export class EmployerCommentsService {
   }
 
   getComments(): Comment[] {
-    return this.comments.reverse();
+    return this.comments && this.comments.reverse();
   }
 
   isLeaveCommentOpen(): boolean {

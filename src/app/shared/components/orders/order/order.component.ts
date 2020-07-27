@@ -30,4 +30,8 @@ export class OrderComponent implements OnInit {
   getOrderType(): string {
     return this.localStorageService.get('role').toLowerCase();
   }
+
+  onCancel(): void {
+    this.ordersService.cancelOrder(this.orderId);
+  }
 }

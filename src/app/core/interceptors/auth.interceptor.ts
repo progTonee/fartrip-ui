@@ -3,7 +3,7 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-
+import { authorizationUrls } from '../constants/authorization-url';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -28,10 +28,12 @@ export class AuthInterceptor implements HttpInterceptor {
 
       return next.handle(authReq);
     }
+
+    return next.handle(req);
   }
 
   isAuthorizationRequest(url: string): boolean {
-    return url.includes('users') || url.includes('employees');
+    return !!authorizationUrls.find(authUrl => url.includes(authUrl));
   }
 
   isTokenRequest(url: string): boolean {

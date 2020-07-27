@@ -3,27 +3,27 @@
   <mat-card>
     <mat-card-header>
       <div mat-card-avatar class="order-image"></div>
-      <mat-card-title>{{getOrderData().name}}</mat-card-title>
+      <mat-card-title>{{getOrderData()?.name}}</mat-card-title>
       <mat-card-subtitle>
-        <div>{{getOrderData().departure}} -> {{getOrderData().destination}}</div>
-        <div>Distance - {{getOrderData().distance | orderDistance}}</div>
-        <div>Spent time - {{getOrderData().spendTime | orderSpendTime}}</div>
-        <div>Price - {{getOrderData().cost}} $</div>
+        <div>{{getOrderData()?.departure}} -> {{getOrderData()?.destination}}</div>
+        <div>Distance - {{getOrderData()?.distance | orderDistance}} km</div>
+        <div>Spent time - {{getOrderData()?.spendTime | orderSpendTime}}</div>
+        <div>Price - {{getOrderData()?.cost}} $</div>
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
      <div
       class="order-status"
-      [class.new]="getOrderData().status === 'new'"
-      [class.in-progress]="getOrderData().status === 'in_progress'"
-      [class.completed]="getOrderData().status === 'completed'"
-      [class.canceled]="getOrderData().status === 'canceled'"
+      [class.new]="getOrderData()?.status === 'new'"
+      [class.in-progress]="getOrderData()?.status === 'in_progress'"
+      [class.completed]="getOrderData()?.status === 'completed'"
+      [class.canceled]="getOrderData()?.status === 'canceled'"
     >
-      {{getOrderData().status | orderStatus}}
+      {{getOrderData()?.status | orderStatus}}
     </div>
     <div class="order-actions">
       <button *ngIf="getOrderType() === 'employee'" mat-button mat-raised-button type="button">Confirm</button>
-      <button mat-button mat-raised-button type="button">Cancel</button>
+      <button mat-button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
     </div>
     </mat-card-content>
   </mat-card>

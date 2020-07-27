@@ -6,6 +6,7 @@ import { EmployeeStatusValue, EmployeeStatusText } from '../../../../../core/enu
 import { EmployerCommentsService } from 'src/app/shared/components/profile-settings/employer-comments/employer-comments.service';
 import { DialogService } from 'src/app/core/services/dialog.service';
 import { OrderFormComponent } from 'src/app/core/components/order-form/order-form.component';
+import { OrdersService } from 'src/app/shared/components/orders/orders.service';
 
 @Component({
   selector: 'app-driver',
@@ -19,7 +20,8 @@ export class DriverComponent implements OnInit {
     private route: ActivatedRoute,
     private driversService: DriversService,
     private employerCommentsService: EmployerCommentsService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private ordersService: OrdersService
   ) {}
 
   ngOnInit(): void {
@@ -68,7 +70,10 @@ export class DriverComponent implements OnInit {
         employeeId: this.driverId,
         employeeCostPerKm: this.driversService.getDriverData().costPerKm
       }
-    );
+    )
+    .afterClosed()
+    .toPromise()
+    .then(data => this.ordersService.createOrder(data));
   }
 
 }

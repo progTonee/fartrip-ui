@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { OrdersService } from 'src/app/shared/components/orders/orders.service';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-order-form',
@@ -11,7 +10,11 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 export class OrderFormComponent implements OnInit {
   formGroup: FormGroup;
 
-  constructor(private fb: FormBuilder, private ordersService: OrdersService, @Inject(MAT_DIALOG_DATA) private data: any) {
+  constructor(
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<OrderFormComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: any
+  ) {
     this.formGroup = this.fb.group({
       departure: ['', Validators.required],
       destination: ['', Validators.required],
@@ -24,15 +27,13 @@ export class OrderFormComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
-    this.ordersService.createOrder(
-      this.formGroup.value,
-      { employee:
-        {
-          employeeId: this.data.employeeId,
-          employeeCostPerKm: this.data.employeeCostPerKm
-        }
+    this.dialogRef.close({
+      order: this.formGroup.value,
+      employee: {
+        accountId: this.data.employeeId,
+        costPerKm: this.data.employeeCostPerKm
       }
-    );
+    });
   }
 
 }

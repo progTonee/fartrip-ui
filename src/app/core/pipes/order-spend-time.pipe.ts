@@ -14,17 +14,17 @@ export class OrderSpendTimePipe implements PipeTransform {
       days = Math.floor(hours / 24);
       hours =  hours - (days * 24);
 
-      return `${days} days ${hours} hours ${minutes} minutes`;
+      return `~${days} days ${hours} hours ${minutes} minutes`;
     }
 
     if (hours === 0) {
-      return `${minutes} minutes`;
+      return `~${minutes} minutes`;
     } else {
       if (minutes === 0) {
-        return `${hours} hours`;
+        return `~${hours} hours`;
       }
 
-      return `${hours} hours ${minutes} minutes`;
+      return `~${hours} hours ${minutes} minutes`;
     }
   }
 
