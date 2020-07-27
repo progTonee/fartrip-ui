@@ -36,7 +36,7 @@
         mat-raised-button
         type="button"
         (click)="onCancel()"
-        *ngIf="getOrderData()?.status !== 'canceled'"
+        *ngIf="getOrderData()?.status !== 'canceled' && getOrderData()?.status !== 'in_progress'"
       >
         Cancel
     </button>

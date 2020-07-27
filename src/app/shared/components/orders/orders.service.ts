@@ -31,7 +31,7 @@ export class OrdersService {
     };
 
     this.httpService.createOrder(data)
-      .subscribe(() => this.snackBarService.show('The order was sent to the driver. Please, wait for the respond from him!'));
+      .subscribe(() => this.snackBarService.show('The order was sent to the driver. Please, wait for the respond from him!', 3000));
   }
 
   loadOrdersData(): void {

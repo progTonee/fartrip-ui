@@ -10,9 +10,9 @@ export class SnackBarService {
 
   constructor(private snackbar: MatSnackBar) {}
 
-  show(message: string): void {
+  show(message: string, duration?: number): void {
     this.snackbar.open(message, null, {
-      duration: 2000,
+      duration: duration ? duration : 2000,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition
     });
