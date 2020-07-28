@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Md5 } from 'ts-md5/dist/md5';
 import { Order } from 'src/app/core/models/order';
 import { HttpService } from 'src/app/core/services/http.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
-import { Router } from '@angular/router';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 import { OrderStatusValue } from 'src/app/core/enums/order';
+import { Gravatar } from 'src/app/core/enums/gravatar';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,6 @@ export class OrdersService {
   constructor(
     private httpService: HttpService,
     private localStorageService: LocalStorageService,
-    private router: Router,
     private snackBarService: SnackBarService
   ) {
     this.ordersColumns = ['destination', 'departure', 'distance', 'spendTime', 'status', 'action'];
@@ -73,4 +73,16 @@ export class OrdersService {
   getOrdersColumns(): string[] {
     return this.ordersColumns;
   }
+
+  getOrderUserGravatarUrl(): string {
+    if (this.orderData) {
+      const md5 = new Md5();
+      const hashedMd5 = md5.appendStr(this.orderData.email ).end().toString();
+
+      return `${Gravatar.Url}/${hashedMd5}?d=mp`;
+    }
+
+    return '';
+  }
+
 }

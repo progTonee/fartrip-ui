@@ -31,6 +31,10 @@ export class OrderComponent implements OnInit {
     return this.localStorageService.get('role').toLowerCase();
   }
 
+  getOrderUserGravatarUrl(): string {
+    return this.ordersService.getOrderUserGravatarUrl();
+  }
+
   onSubmit(): void {
     this.ordersService.submitOrder(this.orderId);
   }

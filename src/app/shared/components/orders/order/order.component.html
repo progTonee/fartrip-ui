@@ -2,14 +2,18 @@
 <div class="order">
   <mat-card>
     <mat-card-header>
-      <div mat-card-avatar class="order-image"></div>
-      <mat-card-title>{{getOrderData()?.name}}</mat-card-title>
-      <mat-card-subtitle>
-        <div>{{getOrderData()?.departure}} -> {{getOrderData()?.destination}}</div>
-        <div>Distance - {{getOrderData()?.distance | orderDistance}} km</div>
-        <div>Spent time - {{getOrderData()?.spendTime | orderSpendTime}}</div>
-        <div>Price - {{getOrderData()?.cost}} $</div>
-      </mat-card-subtitle>
+      <div class="order-image">
+        <img [src]="getOrderUserGravatarUrl()" />
+      </div>
+      <div>
+        <mat-card-title>{{getOrderData()?.name}}</mat-card-title>
+        <mat-card-subtitle>
+          <div>{{getOrderData()?.departure}} -> {{getOrderData()?.destination}}</div>
+          <div>Distance - {{getOrderData()?.distance | orderDistance}} km</div>
+          <div>Spent time - {{getOrderData()?.spendTime | orderSpendTime}}</div>
+          <div>Price - {{getOrderData()?.cost}} $</div>
+        </mat-card-subtitle>
+      </div>
     </mat-card-header>
     <mat-card-content>
      <div

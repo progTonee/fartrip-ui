@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 import { ProfileInfo } from 'src/app/core/models/profile-info';
 import { Car } from 'src/app/core/models/car';
+import { Md5 } from 'ts-md5/dist/md5';
+import { Gravatar } from 'src/app/core/enums/gravatar';
 
 @Injectable({
   providedIn: 'root'
@@ -56,5 +58,16 @@ export class ProfileInfoService {
 
   getStatusList(): EmployerStatus[] {
     return this.statusList;
+  }
+
+  getProfileGravatarUrl(): string {
+    if (this.profileInfoData) {
+      const md5 = new Md5();
+      const md5Hash = md5.appendStr(this.profileInfoData.email).end().toString();
+
+      return `${Gravatar.Url}/${md5Hash}?d=mp`;
+    }
+
+    return '';
   }
 }

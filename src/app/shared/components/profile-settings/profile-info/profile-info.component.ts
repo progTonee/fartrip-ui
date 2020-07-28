@@ -52,20 +52,7 @@ export class ProfileInfoComponent implements OnInit {
     const profileType = this.isEmployerInfoDisplayed ? 'employee' : 'user';
 
     this.profileInfoService.loadProfileInfo(profileType)
-      .subscribe(
-        response => this.handleProfileInfoData(response),
-        error => {
-          if (this.authService.isAccessTokenExpiredError(error)) {
-            return this.httpService.refresh()
-              .subscribe(refreshTokenResponse => {
-                this.localStorageService.set('access_token', refreshTokenResponse.access_token);
-
-                this.profileInfoService.loadProfileInfo(profileType)
-                  .subscribe(response => this.handleProfileInfoData(response));
-              });
-          }
-        }
-      );
+      .subscribe(response => this.handleProfileInfoData(response));
   }
 
   getStatusList(): EmployerStatus[] {

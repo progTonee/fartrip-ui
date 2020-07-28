@@ -1,7 +1,7 @@
 <div class="profile-info">
   <div class="profile-info__general-info">
     <div class="profile-info__general-info__profile-image"> 
-      <img src="#" alt="Profile image" />
+      <img [src]="profileInfoService.getProfileGravatarUrl()" alt="Profile image" />
       <button mat-button type="button" (click)="onEditClick()">{{isProfileEdited ? 'Cancel editing' : 'Edit profile'}}</button>
     </div>
     <div class="profile-info__general-info__profile-info">

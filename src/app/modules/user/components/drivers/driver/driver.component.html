@@ -4,24 +4,28 @@
     <div class="driver__info__general">
       <mat-card>
         <mat-card-header>
-          <div mat-card-avatar class="driver-image"></div>
-          <mat-card-title>{{getDriverData()?.name}}</mat-card-title>
-          <mat-card-subtitle>
-            <span
-              class="status"
-              [class.available]="getDriverData()?.status === 'available'"
-              [class.in-progress]="getDriverData()?.status === 'in_progress'"
-              [class.out-of-work]="getDriverData()?.status === 'out_of_work'"
-            >
-              {{getStatus()}}
-            </span>
-            <div>
-              <mat-icon class="rating-icon" *ngFor="let item of getRating()">star</mat-icon>
-            </div>
-            <div class="work_description">
-              <span>{{getDriverData()?.workDescription}}</span>
-            </div>
-          </mat-card-subtitle>
+          <div class="driver-image">
+            <img [src]="driversService.getProfileGravatarUrl(getDriverData()?.email)" alt="Driver image" />
+          </div>
+          <div>
+            <mat-card-title>{{getDriverData()?.name}}</mat-card-title>
+            <mat-card-subtitle>
+              <span
+                class="status"
+                [class.available]="getDriverData()?.status === 'available'"
+                [class.in-progress]="getDriverData()?.status === 'in_progress'"
+                [class.out-of-work]="getDriverData()?.status === 'out_of_work'"
+              >
+                {{getStatus()}}
+              </span>
+              <div>
+                <mat-icon class="rating-icon" *ngFor="let item of getRating()">star</mat-icon>
+              </div>
+              <div class="work_description">
+                <span>{{getDriverData()?.workDescription}}</span>
+              </div>
+            </mat-card-subtitle>
+          </div>
         </mat-card-header>
         <mat-card-content>
           <button class="apply-button" mat-button mat-raised-button type="button" (click)="onDriverApply()">Apply</button>

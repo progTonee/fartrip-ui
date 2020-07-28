@@ -2,6 +2,7 @@ import { OrderStatusValue } from '../enums/order';
 
 export interface Order {
   name: string;
+  email: string;
   id: number;
   destination: string;
   departure: string;

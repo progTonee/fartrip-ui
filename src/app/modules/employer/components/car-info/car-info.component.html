@@ -1,6 +1,6 @@
 <div class="car-info">
   <div class="car-info__image">
-    <img src="#" alt="Car image" />
+    <img [src]="getCarGravatarUrl()" alt="Car image" />
     <button mat-button type="button" (click)="onEditClick()">{{isInfoEdited ? 'Cancel editing' : 'Edit info'}}</button>
   </div>
   <div class="car-info__description">

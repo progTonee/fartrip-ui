@@ -27,6 +27,10 @@ export class CarInfoComponent implements OnInit {
     return profileData ? profileData.car : null;
   }
 
+  getCarGravatarUrl(): string {
+    return this.profileInfoService.getProfileGravatarUrl();
+  }
+
   onEditClick(): void {
     this.isInfoEdited = !this.isInfoEdited;
     if (this.isInfoEdited) {

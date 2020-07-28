@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Driver } from 'src/app/core/models/driver.model';
 import { HttpService } from 'src/app/core/services/http.service';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import { Md5 } from 'ts-md5/dist/md5';
+import { Gravatar } from 'src/app/core/enums/gravatar';
 
 @Injectable({
   providedIn: 'root'
@@ -12,44 +12,18 @@ export class DriversService {
   driversData: Driver[];
   driverData: Driver;
 
-  constructor(private httpService: HttpService, private authService: AuthService, private localStorageService: LocalStorageService) {
+  constructor(private httpService: HttpService) {
     this.driversDisplayedColumns = ['image', 'name', 'status', 'action'];
   }
 
   loadDriversData(): void {
     this.httpService.getEmployees()
-      .subscribe(
-        response => this.setDriversData(response),
-        error => {
-          if (this.authService.isAccessTokenExpiredError(error)) {
-            return this.httpService.refresh()
-              .subscribe(refreshTokenResponse => {
-                this.localStorageService.set('access_token', refreshTokenResponse.access_token);
-
-                this.httpService.getEmployees()
-                  .subscribe(response => this.setDriversData(response));
-              });
-          }
-        }
-      );
+      .subscribe(response => this.setDriversData(response));
   }
 
   loadDriverData(id: number): void {
     this.httpService.getEmployee(id)
-      .subscribe(
-        response => this.setDriverData(response),
-        error => {
-          if (this.authService.isAccessTokenExpiredError(error)) {
-            return this.httpService.refresh()
-              .subscribe(refreshTokenResponse => {
-                this.localStorageService.set('access_token', refreshTokenResponse.access_token);
-
-                this.httpService.getEmployee(id)
-                  .subscribe(response => this.setDriversData(response));
-              });
-          }
-        }
-      );
+      .subscribe(response => this.setDriverData(response));
   }
 
   getDriversData(): Driver[] {
@@ -70,5 +44,12 @@ export class DriversService {
 
   setDriverData(driverData: Driver): void {
     this.driverData = driverData;
+  }
+
+  getProfileGravatarUrl(email: string): string {
+    const md5 = new Md5();
+    const md5Hash = md5.appendStr(email).end().toString();
+
+    return `${Gravatar.Url}/${md5Hash}?d=mp`;
   }
 }

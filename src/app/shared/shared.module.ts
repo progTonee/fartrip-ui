@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GravatarModule } from 'ngx-gravatar';
 import { HeaderComponent } from './components/header/header.component';
 import { materialModules } from '../core/material/material';
 import { RouterModule } from '@angular/router';
@@ -45,6 +46,7 @@ import { OrderDistancePipe } from '../core/pipes/order-distance.pipe';
     ReactiveFormsModule,
     RouterModule,
     ScrollingModule,
+    GravatarModule,
     ...materialModules,
   ],
   providers: [
