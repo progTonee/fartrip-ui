@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GravatarModule } from 'ngx-gravatar';
 import { HeaderComponent } from './components/header/header.component';
 import { materialModules } from '../core/material/material';
 import { RouterModule } from '@angular/router';
@@ -22,6 +21,7 @@ import { OrdersService } from './components/orders/orders.service';
 import { OrderSpendTimePipe } from '../core/pipes/order-spend-time.pipe';
 import { OrderStatusPipe } from '../core/pipes/order-status.pipe';
 import { OrderDistancePipe } from '../core/pipes/order-distance.pipe';
+import { MapService } from './components/map/map.service';
 
 @NgModule({
   declarations: [
@@ -46,13 +46,13 @@ import { OrderDistancePipe } from '../core/pipes/order-distance.pipe';
     ReactiveFormsModule,
     RouterModule,
     ScrollingModule,
-    GravatarModule,
     ...materialModules,
   ],
   providers: [
     EmployerCommentsService,
     ProfileInfoService,
     OrdersService,
+    MapService,
   ],
   exports: [
     HeaderComponent,
