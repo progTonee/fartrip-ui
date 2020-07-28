@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MapService } from './map.service';
 
 @Component({
@@ -8,10 +8,20 @@ import { MapService } from './map.service';
 })
 export class MapComponent implements OnInit {
 
+  @Input() routePoints: any;
+
   constructor(private mapService: MapService) {}
 
   ngOnInit(): void {
-    this.mapService.setMap();
+    this.mapService.setMapOptions(this.routePoints);
+  }
+
+  getMapOptions(): any {
+    return this.mapService.getMapOptions();
+  }
+
+  getRoute(): any {
+    return this.mapService.getRoute(this.routePoints);
   }
 
 }

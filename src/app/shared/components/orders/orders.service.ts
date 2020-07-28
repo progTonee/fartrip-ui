@@ -76,7 +76,6 @@ export class OrdersService {
 
   getOrderUserGravatarUrl(): string {
     if (this.orderData) {
-      console.log(this.orderData);
       const md5 = new Md5();
       const hashedMd5 = md5.appendStr(this.orderData.email).end().toString();
 

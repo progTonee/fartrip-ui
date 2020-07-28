@@ -1,60 +1,62 @@
 import { Injectable } from '@angular/core';
-
-declare const ol: any;
+import { icon, latLng, marker, polyline, tileLayer } from 'leaflet';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapService {
-  latitude = 52.424198;
-  longitude = 30.989594;
-  map: any;
+  options: any;
 
   constructor() {}
 
-  setMap(): void {
-    this.map = new ol.Map({
-      target: 'map',
+  setMapOptions(routePoints: any[]): void {
+    this.options = {
       layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM()
-        })
+        this.getStreetMaps(),
+        this.getRoute(routePoints),
+        this.getStartPathPointMarker(routePoints[0]),
+        this.getEndPathPointMarker(routePoints[routePoints.length - 1])
       ],
-      view: new ol.View({
-        center: ol.proj.fromLonLat([this.longitude, this.latitude]),
-        zoom: 12
-      })
-    });
-
-    this.addPoint(this.latitude, this.longitude);
+      zoom: 14,
+      center: latLng([routePoints[0][0], routePoints[0][1]])
+    };
   }
 
-  etCenter() {
-    const view = this.map.getView();
-    view.setCenter(ol.proj.fromLonLat([this.longitude, this.latitude]));
-    view.addMarker(ol.proj.fromLonLat([this.longitude, this.latitude]));
-    view.setZoom(12);
+  getMapOptions(): void {
+    return this.options;
   }
 
-  addPoint(lat: number, lng: number) {
-    const vectorLayer = new ol.layer.Vector({
-      source: new ol.source.Vector({
-        features: [new ol.Feature({
-          geometry: new ol.geom.Point(ol.proj.transform([lng, lat], 'EPSG:4326', 'EPSG:3857')),
-          name: 'Null Island',
-          population: 2000,
-          rainfall: 500
-        })]
-      }),
-      style: new ol.style.Style({
-        // tslint:disable-next-line: no-redundant-jsdoc
-        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-          opacity: 1,
-          src: '../../../../assets/location-icon.png',
-        }))
+  getRoute(routePoints: any[]): any {
+    return polyline(routePoints);
+  }
+
+  private getStreetMaps(): any {
+    return tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      detectRetina: true,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+  }
+
+  private getStartPathPointMarker(startMarkerPoints: any[]): any {
+    return marker([startMarkerPoints[0], startMarkerPoints[1]], {
+      icon: icon({
+        iconSize: [25, 41],
+        iconAnchor: [13, 41],
+        iconUrl: 'leaflet/marker-icon.png',
+        shadowUrl: 'leaflet/marker-shadow.png'
       })
     });
+  }
 
-    this.map.addLayer(vectorLayer);
+  private getEndPathPointMarker(endMarkerPoints: any[]): any {
+    return marker([endMarkerPoints[0], endMarkerPoints[1]], {
+      icon: icon({
+        iconSize: [25, 41],
+        iconAnchor: [13, 41],
+        iconUrl: 'leaflet/marker-icon.png',
+        iconRetinaUrl: 'leaflet/marker-icon-2x.png',
+        shadowUrl: 'leaflet/marker-shadow.png'
+      })
+    });
   }
 }

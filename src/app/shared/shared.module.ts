@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { HeaderComponent } from './components/header/header.component';
 import { materialModules } from '../core/material/material';
 import { RouterModule } from '@angular/router';
@@ -46,6 +47,7 @@ import { MapService } from './components/map/map.service';
     ReactiveFormsModule,
     RouterModule,
     ScrollingModule,
+    LeafletModule,
     ...materialModules,
   ],
   providers: [
