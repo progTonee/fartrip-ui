@@ -44,13 +44,13 @@ export class OrdersService {
       .subscribe(response => this.setOrderData(response));
   }
 
-  submitOrder(orderId: string): void {
-    this.httpService.updateOrderStatus(orderId, OrderStatusValue.InProgress)
+  submitOrder(orderStatusData: any): void {
+    this.httpService.updateOrderStatus({ ...orderStatusData, status: OrderStatusValue.InProgress })
       .subscribe(() => this.setOrderData({ ...this.orderData, status: OrderStatusValue.InProgress }));
   }
 
-  cancelOrder(orderId: string): void {
-    this.httpService.updateOrderStatus(orderId, OrderStatusValue.Canceled)
+  cancelOrder(orderStatusData: any): void {
+    this.httpService.updateOrderStatus({ ...orderStatusData, status: OrderStatusValue.Canceled })
       .subscribe(() => this.setOrderData({ ...this.orderData, status: OrderStatusValue.Canceled }));
   }
 
@@ -76,8 +76,9 @@ export class OrdersService {
 
   getOrderUserGravatarUrl(): string {
     if (this.orderData) {
+      console.log(this.orderData);
       const md5 = new Md5();
-      const hashedMd5 = md5.appendStr(this.orderData.email ).end().toString();
+      const hashedMd5 = md5.appendStr(this.orderData.email).end().toString();
 
       return `${Gravatar.Url}/${hashedMd5}?d=mp`;
     }

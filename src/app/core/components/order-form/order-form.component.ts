@@ -30,8 +30,9 @@ export class OrderFormComponent implements OnInit {
     this.dialogRef.close({
       order: this.formGroup.value,
       employee: {
+        email: this.data.email,
         accountId: this.data.employeeId,
-        costPerKm: this.data.employeeCostPerKm
+        costPerKm: this.data.costPerKm
       }
     });
   }

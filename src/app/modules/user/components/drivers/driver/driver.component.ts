@@ -67,8 +67,9 @@ export class DriverComponent implements OnInit {
     this.dialogService.open(
       OrderFormComponent,
       {
+        email: this.driversService.getDriverData().email,
         employeeId: this.driverId,
-        employeeCostPerKm: this.driversService.getDriverData().costPerKm
+        costPerKm: this.driversService.getDriverData().costPerKm
       }
     )
     .afterClosed()

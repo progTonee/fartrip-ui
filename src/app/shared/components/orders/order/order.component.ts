@@ -36,10 +36,14 @@ export class OrderComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.ordersService.submitOrder(this.orderId);
+    this.ordersService.submitOrder(this.getOrderStatusData());
   }
 
   onCancel(): void {
-    this.ordersService.cancelOrder(this.orderId);
+    this.ordersService.cancelOrder(this.getOrderStatusData());
+  }
+
+  private getOrderStatusData(): any {
+    return { id: this.orderId, email: this.getOrderData().email, role: this.getOrderType().toUpperCase() };
   }
 }

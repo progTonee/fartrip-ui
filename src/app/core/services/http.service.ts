@@ -98,8 +98,8 @@ export class HttpService {
     return this.http.get(`${HttpUrl.Users}/${accountId}/orders/${orderId}`);
   }
 
-  updateOrderStatus(orderId: string, orderStatus: OrderStatusValue): Observable<any> {
-    return this.http.patch(`${HttpUrl.Orders}/${orderId}/status`, { status: orderStatus });
+  updateOrderStatus(orderStatusData: any): Observable<any> {
+    return this.http.patch(`${HttpUrl.Orders}/${orderStatusData.id}/status`, orderStatusData);
   }
 
   getEmployeeComments(accountId: string): Observable<any> {
