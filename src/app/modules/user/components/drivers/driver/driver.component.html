@@ -5,24 +5,24 @@
       <mat-card>
         <mat-card-header>
           <div class="driver-image">
-            <img [src]="driversService.getProfileGravatarUrl(getDriverData()?.email)" alt="Driver image" />
+            <img [src]="getProfileGravatarUrl((driver$ | async)?.email)" alt="Driver image" />
           </div>
           <div>
-            <mat-card-title>{{getDriverData()?.name}}</mat-card-title>
+            <mat-card-title>{{(driver$ | async)?.name}}</mat-card-title>
             <mat-card-subtitle>
               <span
                 class="status"
-                [class.available]="getDriverData()?.status === 'available'"
-                [class.in-progress]="getDriverData()?.status === 'in_progress'"
-                [class.out-of-work]="getDriverData()?.status === 'out_of_work'"
+                [class.available]="(driver$ | async)?.status === 'available'"
+                [class.in-progress]="(driver$ | async)?.status === 'in_progress'"
+                [class.out-of-work]="(driver$ | async)?.status === 'out_of_work'"
               >
-                {{getStatus()}}
+                {{getStatus((driver$ | async)?.status)}}
               </span>
               <div>
-                <mat-icon class="rating-icon" *ngFor="let item of getRating()">star</mat-icon>
+                <mat-icon class="rating-icon" *ngFor="let item of getRating((driver$ | async)?.rating)">star</mat-icon>
               </div>
               <div class="work_description">
-                <span>{{getDriverData()?.workDescription}}</span>
+                <span>{{(driver$ | async)?.workDescription}}</span>
               </div>
             </mat-card-subtitle>
           </div>
@@ -36,11 +36,11 @@
       <mat-card>
         <mat-card-header>
           <mat-card-title>Car description</mat-card-title>
-          <mat-card-subtitle>{{getDriverData()?.car.model}}</mat-card-subtitle>
+          <mat-card-subtitle>{{(driver$ | async)?.car.model}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
         <mat-card-content>
-          <p>{{getDriverData()?.car.note}}</p>
+          <p>{{(driver$ | async)?.car.note}}</p>
         </mat-card-content>
       </mat-card>
     </div>
@@ -53,7 +53,7 @@
           <span><mat-icon (click)="onAddCommentClick()">add_comment</mat-icon></span>
         </mat-card-title>
       </mat-card-header>
-      <app-employer-comments [employerId]="getDriverData()?.id"></app-employer-comments>
+      <app-employer-comments [employerId]="(driver$ | async)?.id"></app-employer-comments>
     </mat-card>
   </div>
 </div>

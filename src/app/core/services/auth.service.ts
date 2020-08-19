@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
 import { HttpErrorMessage } from '../enums/http-error-message';
+import { Observable } from 'rxjs';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(private localStorageService: LocalStorageService, private httpService: HttpService) {}
+
+  login(username: string, password: string): Observable<any> {
+    return this.httpService.login(username, password);
+  }
 
   isLoggedIn(): boolean {
     return !!this.localStorageService.get('logged_in');
@@ -19,9 +25,5 @@ export class AuthService {
 
   isAccessTokenExpiredError(error: any): boolean {
     return error.error.errorMessage === HttpErrorMessage.ExpiredAccessToken;
-  }
-
-  logOut(): void {
-    this.localStorageService.clear();
   }
 }

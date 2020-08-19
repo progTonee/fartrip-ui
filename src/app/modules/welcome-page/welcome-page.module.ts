@@ -10,6 +10,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpService } from 'src/app/core/services/http.service';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from 'src/app/ngrx/effects/auth.effects';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { LocalStorageService } from 'src/app/core/services/local-storage.service
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    EffectsModule.forFeature([AuthEffects]),
     ...materialModules
   ],
   providers: [

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { LOGOUT_REQUEST } from 'src/app/ngrx/actions/auth.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-header',
@@ -14,14 +16,14 @@ export class HeaderComponent implements OnInit {
 
   isSignInSignUpPage = false;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService, private store: Store) {}
 
   ngOnInit(): void {
     this.isSignInSignUpPage = this.router.url.indexOf('login') !== -1 || this.router.url.indexOf('signup') !== -1;
   }
 
   onLogOut(): void {
-    this.authService.logOut();
+    this.store.dispatch(LOGOUT_REQUEST());
   }
 
   isLoggedInUser(): boolean {

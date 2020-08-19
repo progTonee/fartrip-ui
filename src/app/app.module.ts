@@ -9,6 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers } from './ngrx';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import { PageNotFoundComponent } from './core/components/page-not-found/page-not
     BrowserAnimationsModule,
     EmployerModule,
     UserModule,
-    WelcomePageModule
+    WelcomePageModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

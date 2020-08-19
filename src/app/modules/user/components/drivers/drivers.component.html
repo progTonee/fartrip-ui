@@ -1,5 +1,5 @@
 <div class="drivers">
-  <table mat-table [dataSource]="getDriversData()">
+  <table mat-table [dataSource]="drivers$ | async">
     <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef>Image</th>
       <td mat-cell *matCellDef="let item">

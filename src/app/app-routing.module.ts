@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/welcome-page', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
-  { path: '**', component: PageNotFoundComponent }
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

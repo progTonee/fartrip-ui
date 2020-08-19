@@ -7,6 +7,10 @@ import { EmployerCommentsService } from 'src/app/shared/components/profile-setti
 import { DialogService } from 'src/app/core/services/dialog.service';
 import { OrderFormComponent } from 'src/app/core/components/order-form/order-form.component';
 import { OrdersService } from 'src/app/shared/components/orders/orders.service';
+import { Store } from '@ngrx/store';
+import { LOAD_EMPLOYEE_REQUEST } from 'src/app/ngrx/actions/employees.actions';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/ngrx';
 
 @Component({
   selector: 'app-driver',
@@ -14,49 +18,42 @@ import { OrdersService } from 'src/app/shared/components/orders/orders.service';
   styleUrls: ['./driver.component.scss']
 })
 export class DriverComponent implements OnInit {
-  driverId: string;
+  driver$: Observable<Driver> = this.store.select((state: AppState) => state.employees.viewableEmployee);
 
   constructor(
     private route: ActivatedRoute,
     private driversService: DriversService,
     private employerCommentsService: EmployerCommentsService,
     private dialogService: DialogService,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private store: Store
   ) {}
 
   ngOnInit(): void {
-    this.driverId = this.route.snapshot.paramMap.get('id');
-    this.driversService.loadDriverData(+this.driverId);
+    const driverId = this.route.snapshot.paramMap.get('id');
+    this.store.dispatch(LOAD_EMPLOYEE_REQUEST({ payload: { accountId: +driverId } }));
   }
 
-  getDriverData(): Driver {
-    return this.driversService.getDriverData();
-  }
-
-  getRating(): any[] {
-    const driver = this.driversService.getDriverData();
-    if (driver) {
-      return new Array(Math.floor(driver.rating)).fill(null);
-    }
-
-    return new Array(Math.floor(0)).fill(null);
-  }
-
-  getStatus(): string {
-    const driver = this.driversService.getDriverData();
-    if (driver) {
-      switch (driver.status) {
-        case EmployeeStatusValue.Available: {
-          return EmployeeStatusText.Available;
-        }
-        case EmployeeStatusValue.InProgress: {
-          return EmployeeStatusText.InProgress;
-        }
-        case EmployeeStatusValue.OutOfWork: {
-          return EmployeeStatusText.OutOfWork;
-        }
+  getStatus(status: string): string {
+    switch (status) {
+      case EmployeeStatusValue.Available: {
+        return EmployeeStatusText.Available;
+      }
+      case EmployeeStatusValue.InProgress: {
+        return EmployeeStatusText.InProgress;
+      }
+      case EmployeeStatusValue.OutOfWork: {
+        return EmployeeStatusText.OutOfWork;
       }
     }
+  }
+
+  getRating(rating: number): any[] {
+    return new Array(Math.floor(rating)).fill(null);
+  }
+
+  getProfileGravatarUrl(email: string): string {
+    return this.driversService.getProfileGravatarUrl(email);
   }
 
   onAddCommentClick(): void {
@@ -64,17 +61,19 @@ export class DriverComponent implements OnInit {
   }
 
   onDriverApply(): void {
-    this.dialogService.open(
-      OrderFormComponent,
-      {
-        email: this.driversService.getDriverData().email,
-        employeeId: this.driverId,
-        costPerKm: this.driversService.getDriverData().costPerKm
-      }
-    )
-    .afterClosed()
-    .toPromise()
-    .then(data => this.ordersService.createOrder(data));
+    this.driver$.subscribe(driver => {
+      this.dialogService.open(
+        OrderFormComponent,
+        {
+          email: driver.email,
+          employeeId: driver.id,
+          costPerKm: driver.costPerKm
+        }
+      )
+      .afterClosed()
+      .toPromise()
+      .then(data => this.ordersService.createOrder(data));
+    });
   }
 
 }

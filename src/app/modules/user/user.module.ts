@@ -13,6 +13,8 @@ import { DialogService } from 'src/app/core/services/dialog.service';
 import { OrderFormComponent } from 'src/app/core/components/order-form/order-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { EffectsModule } from '@ngrx/effects';
+import { EmployeesEffects } from 'src/app/ngrx/effects/employees.effects';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     UserRoutingModule,
     SharedModule,
     NgxMaterialTimepickerModule,
+    EffectsModule.forFeature([EmployeesEffects]),
     ...materialModules,
   ],
   entryComponents: [
