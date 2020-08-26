@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileInfoService } from './profile-info.service';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { HttpService } from 'src/app/core/services/http.service';
-import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { passwordsMustMatch } from 'src/app/core/validators/passwords-must-match.validator';
 import { EmployerStatus } from 'src/app/core/models/employer-status';
 import { EmployeeStatusValue, EmployeeStatusText } from 'src/app/core/enums/employee-status';
@@ -20,14 +17,7 @@ export class ProfileInfoComponent implements OnInit {
   isEmployerInfoDisplayed: boolean;
   isProfileEdited = false;
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private profileInfoService: ProfileInfoService,
-    private authService: AuthService,
-    private httpService: HttpService,
-    private localStorageService: LocalStorageService
-  ) {
+  constructor(private fb: FormBuilder, private router: Router, private profileInfoService: ProfileInfoService) {
     this.commonProfileFormGroup = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
@@ -113,5 +103,15 @@ export class ProfileInfoComponent implements OnInit {
     } else {
       this.profileInfoService.updateProfileInfoData({ password: currentPassword, newPassword }, profileType, 'password');
     }
+  }
+
+  onUploadImage(images: any): void {
+    const image = images.item(0);
+    const formData = new FormData();
+
+  }
+
+  onRemoveImage(): void {
+
   }
 }

@@ -31,7 +31,7 @@ export class AuthEffects {
             return LOGIN_SUCCESS({ payload: { accountId: response.id } });
           }),
           catchError(error => {
-            this.snackbarService.show(error.error.errorMessage);
+            this.snackbarService.show(error.error.message);
 
             return EMPTY;
           })

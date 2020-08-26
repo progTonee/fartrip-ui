@@ -14,13 +14,27 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
 
       img {
         height: 150px;
       }
 
-      button {
+      .edit-image-button {
+        position: absolute;
+        top: 115px;
+        left: 35px;
+        min-width: 40px;
+        padding: 0;
+      }
+
+      .editing-button {
         margin-top: 15px;
+      }
+
+      mat-menu {
+        display: flex;
+        flex-direction: column;
       }
     }
 

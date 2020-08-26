@@ -24,6 +24,6 @@ export class AuthService {
   }
 
   isAccessTokenExpiredError(error: any): boolean {
-    return error.error.errorMessage === HttpErrorMessage.ExpiredAccessToken;
+    return error.error.message === HttpErrorMessage.ExpiredAccessToken;
   }
 }

@@ -2,7 +2,17 @@
   <div class="profile-info__general-info">
     <div class="profile-info__general-info__profile-image"> 
       <img [src]="profileInfoService.getProfileGravatarUrl()" alt="Profile image" />
-      <button mat-button type="button" (click)="onEditClick()">{{isProfileEdited ? 'Cancel editing' : 'Edit profile'}}</button>
+      <button class="edit-image-button" *ngIf="isProfileEdited" mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <label for="image">Upload image</label>
+          <input style="visibility:hidden; cursor: pointer" type="file" id="image" (change)="onUploadImage($event.target.files)" />
+        </button>
+        <button mat-menu-item (click)="onRemoveImage()">Remove image</button>
+      </mat-menu>
+      <button class="editing-button" mat-button type="button" (click)="onEditClick()">{{isProfileEdited ? 'Cancel editing' : 'Edit profile'}}</button>
     </div>
     <div class="profile-info__general-info__profile-info">
       <form class="common-profile-info" [formGroup]="commonProfileFormGroup" (ngSubmit)="onProfileSubmit('commonProfileInfo')">

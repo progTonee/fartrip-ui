@@ -12,7 +12,7 @@ export class RefreshTokeInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(error => {
-      if (error.status === 401 && error.error.errorMessage === 'The access token is expired!') {
+      if (error.status === 401 && error.error.message === 'The access token is expired!') {
         this.httpService.refresh()
           .subscribe(response => this.localStorageService.set('access_token', response.access_token));
       }

@@ -44,7 +44,7 @@ export class SignUpComponent implements OnInit {
   }
 
   handleErrorRegistration(error: any): void {
-    this.snackbar.show(error.error.errorMessage);
+    this.snackbar.show(error.error.message);
   }
 
   onFormSubmit(): void {

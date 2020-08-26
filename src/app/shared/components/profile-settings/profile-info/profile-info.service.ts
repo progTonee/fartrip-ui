@@ -33,7 +33,7 @@ export class ProfileInfoService {
     this.httpService.updateProfileInfo(this.localStorageService.get('id'), profileInfoData, profileType, requestType)
       .subscribe(
         () => this.snackBarService.show('Data was successfully updated!'),
-        error => this.snackBarService.show(error.error.errorMessage)
+        error => this.snackBarService.show(error.error.message)
       );
   }
 
