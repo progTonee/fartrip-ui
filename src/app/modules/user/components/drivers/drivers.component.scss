@@ -7,6 +7,13 @@
   table {
     width: 100%;
 
+    .logo {
+      img {
+        width: 130px;
+        height: 130px;
+      }
+    }
+
     .status {
       &.available {
         color: $green;

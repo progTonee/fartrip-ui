@@ -2,9 +2,17 @@
 <div class="order">
   <mat-card>
     <mat-card-header>
-      <div class="order-image">
-        <img [src]="getOrderUserGravatarUrl()" />
-      </div>
+      <ng-container *ngIf="getLogo()">
+        <div class="order-image">
+          <img [src]="'data:image/jpg;base64,' + getLogo()" />
+        </div>
+      </ng-container>
+      <ng-container></ng-container>
+      <ng-container *ngIf="!getLogo()">
+        <div class="order-image">
+          <img [src]="getOrderUserGravatarUrl()" />
+        </div>
+      </ng-container>
       <div>
         <mat-card-title>{{getOrderData()?.name}}</mat-card-title>
         <mat-card-subtitle>

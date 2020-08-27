@@ -1,7 +1,23 @@
 <div class="car-info">
   <div class="car-info__image">
-    <img [src]="getCarGravatarUrl()" alt="Car image" />
-    <button mat-button type="button" (click)="onEditClick()">{{isInfoEdited ? 'Cancel editing' : 'Edit info'}}</button>
+    <ng-container *ngIf="getCarImage()">
+      <img [src]="'data:image/jpg;base64,' + getCarImage()" alt="Car image" />
+    </ng-container>
+    <ng-container></ng-container>
+    <ng-container *ngIf="!getCarImage()">
+      <img [src]="getCarGravatarUrl()" alt="Car image" />
+    </ng-container>
+    <button class="edit-image-button" *ngIf="isInfoEdited" mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <label for="image">Upload image</label>
+        <input style="visibility:hidden; cursor: pointer" type="file" id="image" name="logo" (change)="onUploadImage($event.target.files)" />
+      </button>
+      <button mat-menu-item (click)="onRemoveImage()">Remove image</button>
+    </mat-menu>
+    <button class="editing-button" mat-button type="button" (click)="onEditClick()">{{isInfoEdited ? 'Cancel editing' : 'Edit info'}}</button>
   </div>
   <div class="car-info__description">
     <form [formGroup]="formGroup" (ngSubmit)="onCarInfoSubmit()">
@@ -9,7 +25,7 @@
         <mat-label>Model</mat-label>
         <input matInput placeholder="Enter the car model" formControlName="model" [value]="getCarInfo() ? getCarInfo().model : ''" />
         <mat-error *ngIf="formGroup.get('model').hasError('required')">The model is required!</mat-error>
-      </mat-form-field>
+      </mat-form-field> 
       <mat-form-field>
         <mat-label>Note</mat-label>
         <input matInput placeholder="Enter the note for users" formControlName="note" [value]="getCarInfo() ? getCarInfo().note : ''" />

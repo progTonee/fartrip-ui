@@ -13,4 +13,5 @@ export interface Order {
   cost?: number;
   userId: number;
   employerId: number;
+  logo: any;
 }

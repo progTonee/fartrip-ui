@@ -9,4 +9,5 @@ export interface ProfileInfo {
   rating: number;
   status: string;
   workDescription: string;
+  logo: any;
 }

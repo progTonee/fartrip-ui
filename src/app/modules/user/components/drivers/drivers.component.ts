@@ -20,4 +20,13 @@ export class DriversComponent implements OnInit {
     this.store.dispatch(LOAD_EMPLOYEES_REQUEST());
   }
 
+  getLogo(logo: number[]): string | null {
+    console.log(logo);
+    const typedArray = new Uint8Array(logo);
+    const typedArrayChars = String.fromCharCode.apply(null, typedArray);
+    const base64String = btoa(typedArrayChars);
+
+    return base64String;
+  }
+
 }

@@ -32,9 +32,15 @@
     margin: 20px 0;
 
     .order-image {
-      background-size: cover;
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
+      padding-right: 10px;
+      padding-bottom: 10px;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
     }
 
     mat-card-subtitle {

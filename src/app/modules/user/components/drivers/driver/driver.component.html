@@ -4,9 +4,17 @@
     <div class="driver__info__general">
       <mat-card>
         <mat-card-header>
-          <div class="driver-image">
-            <img [src]="getProfileGravatarUrl((driver$ | async)?.email)" alt="Driver image" />
-          </div>
+          <ng-container *ngIf="(driver$ | async)?.logo">
+            <div class="driver-image">
+              <img [src]="'data:image/jpg;base64,' + getLogo((driver$ | async).logo.data)" alt="Driver image" />
+            </div>
+          </ng-container>
+          <ng-container></ng-container>
+          <ng-container *ngIf="!(driver$ | async)?.logo">
+            <div class="driver-image">
+              <img [src]="getProfileGravatarUrl((driver$ | async)?.email)" alt="Driver image" />
+            </div>
+          </ng-container>
           <div>
             <mat-card-title>{{(driver$ | async)?.name}}</mat-card-title>
             <mat-card-subtitle>
@@ -38,7 +46,17 @@
           <mat-card-title>Car description</mat-card-title>
           <mat-card-subtitle>{{(driver$ | async)?.car.model}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <ng-container *ngIf="(driver$ | async)?.car.image">
+          <div class="car-image">
+            <img mat-card-image [src]="'data:image/jpg;base64,' + getCarImage((driver$ | async).car.image.data)" alt="Car image">
+          </div>
+        </ng-container>
+        <ng-container></ng-container>
+        <ng-container *ngIf="!(driver$ | async)?.logo">
+          <div class="car-image">
+            <img [src]="getProfileGravatarUrl((driver$ | async)?.email)" alt="Driver image" />
+          </div>
+        </ng-container>
         <mat-card-content>
           <p>{{(driver$ | async)?.car.note}}</p>
         </mat-card-content>

@@ -1,14 +1,20 @@
 <div class="profile-info">
   <div class="profile-info__general-info">
-    <div class="profile-info__general-info__profile-image"> 
-      <img [src]="profileInfoService.getProfileGravatarUrl()" alt="Profile image" />
+    <div class="profile-info__general-info__profile-image">
+      <ng-container *ngIf="getLogo()">
+        <img [src]="'data:image/jpg;base64,' + getLogo()" alt="Profile image" />
+      </ng-container>
+      <ng-container></ng-container>
+      <ng-container *ngIf="!getLogo()">
+        <img [src]="profileInfoService.getProfileGravatarUrl()" alt="Profile image" />
+      </ng-container>
       <button class="edit-image-button" *ngIf="isProfileEdited" mat-button [matMenuTriggerFor]="menu">
         <mat-icon>edit</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>
           <label for="image">Upload image</label>
-          <input style="visibility:hidden; cursor: pointer" type="file" id="image" (change)="onUploadImage($event.target.files)" />
+          <input style="visibility:hidden; cursor: pointer" type="file" id="image" name="logo" (change)="onUploadImage($event.target.files)" />
         </button>
         <button mat-menu-item (click)="onRemoveImage()">Remove image</button>
       </mat-menu>

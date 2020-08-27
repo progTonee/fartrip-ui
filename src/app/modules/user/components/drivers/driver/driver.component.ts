@@ -48,6 +48,20 @@ export class DriverComponent implements OnInit {
     }
   }
 
+  getLogo(logo: number[]): string {
+    const typedArrayChars = String.fromCharCode.apply(null, logo);
+    const base64String = btoa(typedArrayChars);
+
+    return base64String;
+  }
+
+  getCarImage(carImage: number[]): string {
+    const typedArrayChars = String.fromCharCode.apply(null, carImage);
+    const base64String = btoa(typedArrayChars);
+
+    return base64String;
+  }
+
   getRating(rating: number): any[] {
     return new Array(Math.floor(rating)).fill(null);
   }

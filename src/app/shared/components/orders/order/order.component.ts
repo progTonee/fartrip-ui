@@ -31,6 +31,20 @@ export class OrderComponent implements OnInit {
     return this.localStorageService.get('role').toLowerCase();
   }
 
+  getLogo(): string {
+    const order = this.ordersService.getOrderData();
+
+    if (order && order.logo) {
+      const typedArray = new Uint8Array(order.logo.data);
+      const typedArrayChars = String.fromCharCode.apply(null, typedArray);
+      const base64String = btoa(typedArrayChars);
+
+      return base64String;
+    } else {
+      return null;
+    }
+  }
+
   getOrderUserGravatarUrl(): string {
     return this.ordersService.getOrderUserGravatarUrl();
   }

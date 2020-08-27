@@ -66,6 +66,20 @@ export class ProfileInfoComponent implements OnInit {
     }
   }
 
+  getLogo(): string {
+    const profileInfo = this.profileInfoService.getProfileInfoData();
+
+    if (profileInfo && profileInfo.logo) {
+      const typedArray = new Uint8Array(profileInfo.logo.data);
+      const typedArrayChars = String.fromCharCode.apply(null, typedArray);
+      const base64String = btoa(typedArrayChars);
+
+      return base64String;
+    } else {
+      return null;
+    }
+  }
+
   handleProfileInfoData(profileInfoData: any): any {
     this.profileInfoService.setProfileInfoData(profileInfoData);
     this.commonProfileFormGroup.setValue({
@@ -109,9 +123,12 @@ export class ProfileInfoComponent implements OnInit {
     const image = images.item(0);
     const formData = new FormData();
 
+    formData.append('logo', image, image.name);
+
+    this.profileInfoService.updateProfileLogo(formData);
   }
 
   onRemoveImage(): void {
-
+    this.profileInfoService.removeProfileLogo();
   }
 }

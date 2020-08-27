@@ -48,6 +48,34 @@ export class ProfileInfoService {
       });
   }
 
+  updateProfileLogo(logoFormData: FormData): void {
+    this.httpService.updateProfileLogo(this.localStorageService.get('id'), logoFormData)
+      .subscribe(response => {
+        this.profileInfoData.logo = response;
+      });
+  }
+
+  removeProfileLogo(): void {
+    this.httpService.removeProfileLogo(this.localStorageService.get('id'))
+      .subscribe(() => {
+        this.profileInfoData.logo = null;
+      });
+  }
+
+  updateCarImage(logoFormData: FormData): void {
+    this.httpService.updateCarImage(this.localStorageService.get('id'), logoFormData)
+      .subscribe(response => {
+        this.profileInfoData.car.image = response;
+      });
+  }
+
+  removeCarImage(): void {
+    this.httpService.removeCarImage(this.localStorageService.get('id'))
+      .subscribe(() => {
+        this.profileInfoData.car.image = null;
+      });
+  }
+
   setProfileInfoData(profileInfoData: any): void {
     this.profileInfoData = profileInfoData;
   }

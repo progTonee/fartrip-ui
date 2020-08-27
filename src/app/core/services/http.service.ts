@@ -122,6 +122,22 @@ export class HttpService {
     }
   }
 
+  updateProfileLogo(id: string, logoFormData: FormData): Observable<any> {
+    return this.http.post(`${HttpUrl.Accounts}/${id}/logo`, logoFormData);
+  }
+
+  removeProfileLogo(id: string): Observable<any> {
+    return this.http.delete(`${HttpUrl.Accounts}/${id}/logo`);
+  }
+
+  updateCarImage(id: string, logoFormData: FormData): Observable<any> {
+    return this.http.post(`${HttpUrl.Employees}/${id}/car`, logoFormData);
+  }
+
+  removeCarImage(id: string): Observable<any> {
+    return this.http.delete(`${HttpUrl.Employees}/${id}/car`);
+  }
+
   updateEmployeeProfileInfo(id: string, profileInfoData: any , requestType: string): Observable<any> {
     return this.http.patch(`${HttpUrl.Employees}/${id}?type=${requestType}`, profileInfoData);
   }

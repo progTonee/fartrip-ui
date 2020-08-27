@@ -31,6 +31,20 @@ export class CarInfoComponent implements OnInit {
     return this.profileInfoService.getProfileGravatarUrl();
   }
 
+  getCarImage(): string {
+    const profileInfo = this.profileInfoService.getProfileInfoData();
+
+    if (profileInfo && profileInfo.car && profileInfo.car.image) {
+      const typedArray = new Uint8Array(profileInfo.car.image.data);
+      const typedArrayChars = String.fromCharCode.apply(null, typedArray);
+      const base64String = btoa(typedArrayChars);
+
+      return base64String;
+    } else {
+      return null;
+    }
+  }
+
   onEditClick(): void {
     this.isInfoEdited = !this.isInfoEdited;
     if (this.isInfoEdited) {
@@ -42,7 +56,20 @@ export class CarInfoComponent implements OnInit {
 
   onCarInfoSubmit(): void {
     const { model, note } = this.formGroup.value;
-    this.profileInfoService.updateEmployeeProfileCar({ model, note });
+    this.profileInfoService.updateEmployeeProfileCar({ model, note, image: this.profileInfoService.getProfileInfoData().car.image });
+  }
+
+  onUploadImage(images: any): void {
+    const image = images.item(0);
+    const formData = new FormData();
+
+    formData.append('logo', image, image.name);
+
+    this.profileInfoService.updateCarImage(formData);
+  }
+
+  onRemoveImage(): void {
+    this.profileInfoService.removeCarImage();
   }
 
 }

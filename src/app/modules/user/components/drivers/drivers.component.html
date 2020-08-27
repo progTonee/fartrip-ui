@@ -2,8 +2,14 @@
   <table mat-table [dataSource]="drivers$ | async">
     <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef>Image</th>
-      <td mat-cell *matCellDef="let item">
-        <img [src]="driversService.getProfileGravatarUrl(item.email)" alt="Driver image" />
+      <td class="logo" mat-cell *matCellDef="let item">
+        <ng-container *ngIf="item.logo">
+          <img [src]="'data:image/jpg;base64,' + getLogo(item.logo.data)" alt="Profile image" />
+        </ng-container>
+        <ng-container></ng-container>
+        <ng-container *ngIf="!item.logo">
+          <img [src]="driversService.getProfileGravatarUrl(item.email)" alt="Driver image" />
+        </ng-container>
       </td>
     </ng-container>
     <ng-container matColumnDef="name">
