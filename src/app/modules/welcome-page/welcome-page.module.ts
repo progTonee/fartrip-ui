@@ -12,12 +12,14 @@ import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from 'src/app/ngrx/effects/auth.effects';
+import { WhatIsItComponent } from './components/what-is-it/what-is-it.component';
 
 @NgModule({
   declarations: [
     WelcomePageComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    WhatIsItComponent
   ],
   imports: [
     CommonModule,
