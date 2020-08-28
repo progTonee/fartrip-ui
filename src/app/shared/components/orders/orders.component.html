@@ -1,5 +1,5 @@
 <div class="orders">
-  <table mat-table [dataSource]="getOrdersData()">
+  <table mat-table [dataSource]="orders$ | async">
     <ng-container matColumnDef="destination">
       <th mat-header-cell *matHeaderCellDef>Destination</th>
       <td mat-cell *matCellDef="let item">{{item.destination}}</td>

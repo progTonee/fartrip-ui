@@ -2,40 +2,40 @@
 <div class="order">
   <mat-card>
     <mat-card-header>
-      <ng-container *ngIf="getLogo()">
+      <ng-container *ngIf="getLogo((order$ | async)?.logo)">
         <div class="order-image">
-          <img [src]="'data:image/jpg;base64,' + getLogo()" />
+          <img [src]="'data:image/jpg;base64,' + getLogo((order$ | async)?.logo)" />
         </div>
       </ng-container>
       <ng-container></ng-container>
-      <ng-container *ngIf="!getLogo()">
+      <ng-container *ngIf="!getLogo((order$ | async)?.logo)">
         <div class="order-image">
-          <img [src]="getOrderUserGravatarUrl()" />
+          <img [src]="getOrderUserGravatarUrl((order$ | async)?.email)" />
         </div>
       </ng-container>
       <div>
-        <mat-card-title>{{getOrderData()?.name}}</mat-card-title>
+        <mat-card-title>{{(order$ | async)?.name}}</mat-card-title>
         <mat-card-subtitle>
-          <div>{{getOrderData()?.departure}} -> {{getOrderData()?.destination}}</div>
-          <div>Distance - {{getOrderData()?.distance | orderDistance}} km</div>
-          <div>Spent time - {{getOrderData()?.spendTime | orderSpendTime}}</div>
-          <div>Price - {{getOrderData()?.cost}} $</div>
+          <div>{{(order$ | async)?.departure}} -> {{(order$ | async)?.destination}}</div>
+          <div>Distance - {{(order$ | async)?.distance | orderDistance}} km</div>
+          <div>Spent time - {{(order$ | async)?.spendTime | orderSpendTime}}</div>
+          <div>Price - {{(order$ | async)?.cost}} $</div>
         </mat-card-subtitle>
       </div>
     </mat-card-header>
     <mat-card-content>
      <div
       class="order-status"
-      [class.new]="getOrderData()?.status === 'new'"
-      [class.in-progress]="getOrderData()?.status === 'in_progress'"
-      [class.completed]="getOrderData()?.status === 'completed'"
-      [class.canceled]="getOrderData()?.status === 'canceled'"
+      [class.new]="(order$ | async)?.status === 'new'"
+      [class.in-progress]="(order$ | async)?.status === 'in_progress'"
+      [class.completed]="(order$ | async)?.status === 'completed'"
+      [class.canceled]="(order$ | async)?.status === 'canceled'"
     >
-      {{getOrderData()?.status | orderStatus}}
+      {{(order$ | async)?.status | orderStatus}}
     </div>
     <div class="order-actions">
       <button
-        *ngIf="getOrderType() === 'employee' && getOrderData()?.status === 'new'"
+        *ngIf="getOrderType() === 'employee' && (order$ | async)?.status === 'new'"
         mat-button
         mat-raised-button
         type="button"
@@ -48,12 +48,12 @@
         mat-raised-button
         type="button"
         (click)="onCancel()"
-        *ngIf="getOrderData()?.status === 'new'"
+        *ngIf="(order$ | async)?.status === 'new'"
       >
         Cancel
     </button>
     </div>
     </mat-card-content>
   </mat-card>
-  <app-map [routePoints]="getOrderData().routePoints"></app-map>
+  <app-map [routePoints]="(order$ | async).routePoints"></app-map>
 </div>

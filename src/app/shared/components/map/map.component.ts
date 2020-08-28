@@ -8,7 +8,7 @@ import { MapService } from './map.service';
 })
 export class MapComponent implements OnInit {
 
-  @Input() routePoints: any;
+  @Input() routePoints: any[];
 
   constructor(private mapService: MapService) {}
 
@@ -19,9 +19,4 @@ export class MapComponent implements OnInit {
   getMapOptions(): any {
     return this.mapService.getMapOptions();
   }
-
-  getRoute(): any {
-    return this.mapService.getRoute(this.routePoints);
-  }
-
 }

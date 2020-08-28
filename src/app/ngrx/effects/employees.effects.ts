@@ -5,9 +5,9 @@ import {
   LOAD_EMPLOYEES_REQUEST,
   LOAD_EMPLOYEES_SUCCESS,
   LOAD_EMPLOYEES_FAILED,
-   LOAD_EMPLOYEE_REQUEST,
-   LOAD_EMPLOYEE_SUCCESS,
-   LOAD_EMPLOYEE_FAILED
+  LOAD_EMPLOYEE_REQUEST,
+  LOAD_EMPLOYEE_SUCCESS,
+  LOAD_EMPLOYEE_FAILED
 } from '../actions/employees.actions';
 import { mergeMap, catchError, map } from 'rxjs/operators';
 import { Driver } from 'src/app/core/models/driver.model';

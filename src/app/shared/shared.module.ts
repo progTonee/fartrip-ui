@@ -23,6 +23,8 @@ import { OrderSpendTimePipe } from '../core/pipes/order-spend-time.pipe';
 import { OrderStatusPipe } from '../core/pipes/order-status.pipe';
 import { OrderDistancePipe } from '../core/pipes/order-distance.pipe';
 import { MapService } from './components/map/map.service';
+import {EffectsModule} from '@ngrx/effects';
+import {OrdersEffects} from '../ngrx/effects/orders.effects';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { MapService } from './components/map/map.service';
     RouterModule,
     ScrollingModule,
     LeafletModule,
+    EffectsModule.forFeature([OrdersEffects]),
     ...materialModules,
   ],
   providers: [

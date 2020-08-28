@@ -21,7 +21,6 @@ export class DriversComponent implements OnInit {
   }
 
   getLogo(logo: number[]): string | null {
-    console.log(logo);
     const typedArray = new Uint8Array(logo);
     const typedArrayChars = String.fromCharCode.apply(null, typedArray);
     const base64String = btoa(typedArrayChars);

@@ -11,6 +11,7 @@ import { Store } from '@ngrx/store';
 import { LOAD_EMPLOYEE_REQUEST } from 'src/app/ngrx/actions/employees.actions';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/ngrx';
+import {CREATE_ORDER_REQUEST} from '../../../../../ngrx/actions/orders.actions';
 
 @Component({
   selector: 'app-driver',
@@ -86,7 +87,7 @@ export class DriverComponent implements OnInit {
       )
       .afterClosed()
       .toPromise()
-      .then(data => this.ordersService.createOrder(data));
+      .then(data => this.store.dispatch(CREATE_ORDER_REQUEST({ payload: { orderData: data } })));
     });
   }
 
