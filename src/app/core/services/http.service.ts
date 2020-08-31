@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { Car } from '../models/car';
 import { Comment } from '../models/comment';
-import { OrderStatusValue } from '../enums/order';
 
 @Injectable({
   providedIn: 'root'
@@ -54,10 +53,6 @@ export class HttpService {
     return this.http.get(`${HttpUrl.Users}/${id}`);
   }
 
-  getCatInfo(id: string): Observable<any> {
-    return this.http.get(`${HttpUrl.Employees}/${id}/car`);
-  }
-
   createOrder(data: any): Observable<any> {
     return this.http.post(HttpUrl.Orders, data);
   }
@@ -76,10 +71,6 @@ export class HttpService {
     } else {
       return this.getUserOrder(orderId, accountId);
     }
-  }
-
-  deleteOrder(orderId: string): Observable<any> {
-    return this.http.delete(`${HttpUrl.Orders}/${orderId}`);
   }
 
   getEmployeeOrders(id: string): Observable<any> {

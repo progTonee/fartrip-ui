@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
-import { HttpErrorMessage } from '../enums/http-error-message';
 import { Observable } from 'rxjs';
 import { HttpService } from './http.service';
 
@@ -21,9 +20,5 @@ export class AuthService {
 
   isNavigatedRoleUrlCorrect(url: string): boolean {
     return url.includes(this.localStorageService.get('role').toLocaleLowerCase());
-  }
-
-  isAccessTokenExpiredError(error: any): boolean {
-    return error.error.message === HttpErrorMessage.ExpiredAccessToken;
   }
 }
