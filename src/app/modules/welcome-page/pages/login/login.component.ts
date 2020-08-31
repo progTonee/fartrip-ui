@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { LOGIN_REQUEST } from '../../../../ngrx/actions/auth.actions';
+import { RxwebValidators } from '@rxweb/reactive-form-validators';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private store: Store) {
     this.formGroup = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: ['', [RxwebValidators.required(), RxwebValidators.email()]],
+      password: ['', RxwebValidators.required()]
     });
   }
 

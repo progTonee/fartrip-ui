@@ -5,6 +5,7 @@ import { RoleValue, RoleLabel } from 'src/app/core/enums/role';
 import { HttpService } from 'src/app/core/services/http.service';
 import { passwordsMustMatch } from 'src/app/core/validators/passwords-must-match.validator';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';
+import { RxwebValidators } from '@rxweb/reactive-form-validators';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,16 +19,15 @@ export class SignUpComponent implements OnInit {
   constructor(private fb: FormBuilder, private httpService: HttpService, private snackbar: SnackBarService) {
     this.formGroup = this.fb.group(
       {
-        name: ['', Validators.required],
-        age: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        role: ['', Validators.required],
-        costPerKm: ['', Validators.required],
-        workDescription: ['', Validators.required],
-        password: ['', Validators.required],
-        confirmPassword: ['', Validators.required],
-      },
-      { validators: passwordsMustMatch('password', 'confirmPassword') }
+        name: ['', RxwebValidators.required],
+        age: ['', RxwebValidators.required],
+        email: ['', [RxwebValidators.required, RxwebValidators.email()]],
+        role: ['', RxwebValidators.required],
+        costPerKm: ['', RxwebValidators.required],
+        workDescription: ['', RxwebValidators.required],
+        password: ['', RxwebValidators.required],
+        confirmPassword: ['', [RxwebValidators.required, RxwebValidators.compare({ fieldName: 'password' })]],
+      }
     );
 
     this.roles = [

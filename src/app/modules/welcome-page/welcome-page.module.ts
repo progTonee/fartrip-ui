@@ -13,6 +13,8 @@ import { LocalStorageService } from 'src/app/core/services/local-storage.service
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from 'src/app/ngrx/effects/auth.effects';
 import { WhatIsItComponent } from './components/what-is-it/what-is-it.component';
+import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { WhatIsItComponent } from './components/what-is-it/what-is-it.component'
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    RxReactiveFormsModule,
+    NgbAlertModule,
     EffectsModule.forFeature([AuthEffects]),
     ...materialModules
   ],
