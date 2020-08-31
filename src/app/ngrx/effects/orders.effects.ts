@@ -18,6 +18,7 @@ import {OrdersService} from '../../shared/components/orders/orders.service';
 import {Order} from '../../core/models/order';
 import {OrderStatusValue} from '../../core/enums/order';
 import {SnackBarService} from '../../core/services/snack-bar.service';
+import {SpinnerService} from '../../core/services/spinner.service';
 
 @Injectable()
 export class OrdersEffects {
@@ -25,7 +26,8 @@ export class OrdersEffects {
   constructor(
     private actions$: Actions,
     private ordersService: OrdersService,
-    private snackBarService: SnackBarService
+    private snackBarService: SnackBarService,
+    private spinnerService: SpinnerService
   ) {}
 
   loadOrders$ = createEffect(() =>
@@ -59,6 +61,7 @@ export class OrdersEffects {
         this.ordersService.createOrder((action.payload.orderData)).pipe(
           map(() => {
             this.snackBarService.show('The order was sent to the driver. Please, wait for the respond from him!', 3000);
+            this.spinnerService.turnSpinner(false);
 
             return CREATE_ORDER_SUCCESS();
           }),

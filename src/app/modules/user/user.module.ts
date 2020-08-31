@@ -15,6 +15,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { EffectsModule } from '@ngrx/effects';
 import { EmployeesEffects } from 'src/app/ngrx/effects/employees.effects';
+import { SpinnerService } from '../../core/services/spinner.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { EmployeesEffects } from 'src/app/ngrx/effects/employees.effects';
   providers: [
     DriversService,
     UsersService,
-    DialogService
+    DialogService,
+    SpinnerService
   ],
   exports: [
     UserComponent

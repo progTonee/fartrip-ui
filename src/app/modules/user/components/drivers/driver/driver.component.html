@@ -36,7 +36,17 @@
           </div>
         </mat-card-header>
         <mat-card-content>
-          <button class="apply-button" mat-button mat-raised-button type="button" (click)="onDriverApply()">Apply</button>
+          <button
+            *ngIf="!spinnerService.getSpinner()"
+            class="apply-button"
+            mat-button
+            mat-raised-button
+            type="button"
+            (click)="onDriverApply()"
+          >
+            Apply
+          </button>
+          <mat-spinner *ngIf="spinnerService.getSpinner()"></mat-spinner>
         </mat-card-content>
       </mat-card>
     </div>

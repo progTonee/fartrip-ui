@@ -13,7 +13,8 @@ import {
   MatDialogModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatMenuModule
+  MatMenuModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 export const materialModules = [
@@ -31,5 +32,6 @@ export const materialModules = [
   MatDialogModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatMenuModule
+  MatMenuModule,
+  MatProgressSpinnerModule
 ];

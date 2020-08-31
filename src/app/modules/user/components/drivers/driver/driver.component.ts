@@ -12,6 +12,7 @@ import { LOAD_EMPLOYEE_REQUEST } from 'src/app/ngrx/actions/employees.actions';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/ngrx';
 import {CREATE_ORDER_REQUEST} from '../../../../../ngrx/actions/orders.actions';
+import {SpinnerService} from '../../../../../core/services/spinner.service';
 
 @Component({
   selector: 'app-driver',
@@ -22,6 +23,7 @@ export class DriverComponent implements OnInit {
   driver$: Observable<Driver> = this.store.select((state: AppState) => state.employees.viewableEmployee);
 
   constructor(
+    public spinnerService: SpinnerService,
     private route: ActivatedRoute,
     private driversService: DriversService,
     private employerCommentsService: EmployerCommentsService,
@@ -87,7 +89,10 @@ export class DriverComponent implements OnInit {
       )
       .afterClosed()
       .toPromise()
-      .then(data => this.store.dispatch(CREATE_ORDER_REQUEST({ payload: { orderData: data } })));
+      .then(data => {
+        this.store.dispatch(CREATE_ORDER_REQUEST({ payload: { orderData: data } }));
+        this.spinnerService.turnSpinner(true);
+      });
     });
   }
 

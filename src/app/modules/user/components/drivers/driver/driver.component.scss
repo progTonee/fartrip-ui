@@ -56,6 +56,20 @@
       .apply-button {
         @include main-button(100px);
       }
+
+      ::ng-deep mat-spinner {
+        width: 36px !important;
+        height: 36px !important;
+
+        svg {
+          width: 36px !important;
+          height: 36px !important;
+
+          circle {
+            stroke: $main-blue;
+          }
+        }
+      }
     }
     &__car {
       img {
