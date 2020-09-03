@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Role } from 'src/app/core/models/role';
 import { RoleValue, RoleLabel } from 'src/app/core/enums/role';
-import { HttpService } from 'src/app/core/services/http.service';
-import { passwordsMustMatch } from 'src/app/core/validators/passwords-must-match.validator';
-import { SnackBarService } from 'src/app/core/services/snack-bar.service';
+import { HttpService } from 'src/app/core/services/http.service';;
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
+import { Store } from '@ngrx/store';
+import { SIGNUP_REQUEST } from '../../../../ngrx/actions/acccounts.actions';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +16,7 @@ export class SignUpComponent implements OnInit {
   formGroup: FormGroup;
   roles: Role[];
 
-  constructor(private fb: FormBuilder, private httpService: HttpService, private snackbar: SnackBarService) {
+  constructor(private fb: FormBuilder, private httpService: HttpService, private store: Store) {
     this.formGroup = this.fb.group(
       {
         name: ['', RxwebValidators.required],
@@ -38,27 +38,28 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  handleSuccessfullyRegistration(): void {
-    this.formGroup.reset();
-    this.snackbar.show('You were successfully registered!');
-  }
-
-  handleErrorRegistration(error: any): void {
-    this.snackbar.show(error.error.message);
-  }
-
   onFormSubmit(): void {
     const { value } = this.formGroup;
 
-    if (value.role === 'USER') {
-      const userData = { name: value.name, age: value.age, email: value.email, password: value.password };
+    this.store.dispatch(SIGNUP_REQUEST({ payload: { accountData: this.getAccountData(value)  } }));
+    this.formGroup.reset();
+  }
 
-      this.httpService.signUpUser(userData)
-        .subscribe(() => this.handleSuccessfullyRegistration(), error => this.handleErrorRegistration(error));
-    } else {
-      this.httpService.signUpEmployee(value)
-        .subscribe(() => this.handleSuccessfullyRegistration(), error => this.handleErrorRegistration(error));
+  private getAccountData(formData: any): any {
+    const accountData: any = {
+      name: formData.name,
+      age: formData.age,
+      email: formData.email,
+      password: formData.password,
+      role: formData.role
+    };
+
+    if (formData.role === 'EMPLOYEE') {
+      accountData.costPerKm = formData.costPerKm;
+      accountData.workDescription = formData.workDescription;
     }
+
+    return accountData;
   }
 
 }

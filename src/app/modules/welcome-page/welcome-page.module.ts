@@ -15,6 +15,7 @@ import { AuthEffects } from 'src/app/ngrx/effects/auth.effects';
 import { WhatIsItComponent } from './components/what-is-it/what-is-it.component';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { AccountsEffects } from '../../ngrx/effects/accounts.effects';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule,
     RxReactiveFormsModule,
     NgbAlertModule,
-    EffectsModule.forFeature([AuthEffects]),
+    EffectsModule.forFeature([AuthEffects, AccountsEffects]),
     ...materialModules
   ],
   providers: [

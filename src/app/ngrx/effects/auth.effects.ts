@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { mergeMap, map, catchError } from 'rxjs/operators';
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_REQUEST, LOGOUT_SUCCESS } from '../actions/auth.actions';
+import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_FAILED, LOGOUT_REQUEST, LOGOUT_SUCCESS } from '../actions/auth.actions';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { Router } from '@angular/router';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';
@@ -47,7 +47,8 @@ export class AuthEffects {
         this.localStorageService.clear();
 
         return LOGOUT_SUCCESS();
-      })
+      }),
+      catchError(() => LOGOUT_FAILED)
     )
   );
 

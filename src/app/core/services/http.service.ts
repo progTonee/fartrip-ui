@@ -21,6 +21,14 @@ export class HttpService {
     return this.http.post(`${HttpUrl.Token}?grant_type=refresh_token&refresh_token=${this.localStorageService.get('refresh_token')}`, null);
   }
 
+  signUpAccount(accountData: any): Observable<any> {
+    if (accountData.role === 'USER') {
+      return this.signUpUser(accountData);
+    } else {
+      return this.signUpEmployee(accountData);
+    }
+  }
+
   signUpUser(body: any): Observable<any> {
     return this.http.post(HttpUrl.Users, body);
   }
