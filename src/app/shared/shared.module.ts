@@ -7,11 +7,11 @@ import { RouterModule } from '@angular/router';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CarInfoComponent } from '../modules/employer/components/car-info/car-info.component';
-import { EmployerCommentsComponent } from './components/profile-settings/employer-comments/employer-comments.component';
+import { CarInfoComponent } from '../modules/employee/components/car-info/car-info.component';
+import { EmployeeCommentsComponent } from './components/profile-settings/employe-comments/employee-comments.component';
 import { ProfileInfoComponent } from './components/profile-settings/profile-info/profile-info.component';
-import { EmployerCommentsService } from './components/profile-settings/employer-comments/employer-comments.service';
-import { CommentComponent } from './components/profile-settings/employer-comments/comment/comment.component';
+import { EmployeeCommentsService } from './components/profile-settings/employe-comments/employee-comments.service';
+import { CommentComponent } from './components/profile-settings/employe-comments/comment/comment.component';
 import { ProfileInfoService } from './components/profile-settings/profile-info/profile-info.service';
 import { DriverComponent } from '../modules/user/components/drivers/driver/driver.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -33,7 +33,7 @@ import {OrdersEffects} from '../ngrx/effects/orders.effects';
     DriverComponent,
     ProfileSettingsComponent,
     CarInfoComponent,
-    EmployerCommentsComponent,
+    EmployeeCommentsComponent,
     ProfileInfoComponent,
     CommentComponent,
     OrderComponent,
@@ -54,7 +54,7 @@ import {OrdersEffects} from '../ngrx/effects/orders.effects';
     ...materialModules,
   ],
   providers: [
-    EmployerCommentsService,
+    EmployeeCommentsService,
     ProfileInfoService,
     OrdersService,
     MapService,

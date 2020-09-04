@@ -6,7 +6,7 @@ import { LocalStorageService } from 'src/app/core/services/local-storage.service
 @Injectable({
   providedIn: 'root'
 })
-export class EmployerCommentsService {
+export class EmployeeCommentsService {
   comments: Comment[];
   leaveCommentOpen = false;
 

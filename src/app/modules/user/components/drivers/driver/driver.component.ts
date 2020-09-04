@@ -3,7 +3,7 @@ import { Driver } from 'src/app/core/models/driver.model';
 import { DriversService } from '../drivers.service';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeStatusValue, EmployeeStatusText } from '../../../../../core/enums/employee-status';
-import { EmployerCommentsService } from 'src/app/shared/components/profile-settings/employer-comments/employer-comments.service';
+import { EmployeeCommentsService } from 'src/app/shared/components/profile-settings/employe-comments/employee-comments.service';
 import { DialogService } from 'src/app/core/services/dialog.service';
 import { OrderFormComponent } from 'src/app/core/components/order-form/order-form.component';
 import { OrdersService } from 'src/app/shared/components/orders/orders.service';
@@ -26,7 +26,7 @@ export class DriverComponent implements OnInit {
     public spinnerService: SpinnerService,
     private route: ActivatedRoute,
     private driversService: DriversService,
-    private employerCommentsService: EmployerCommentsService,
+    private employerCommentsService: EmployeeCommentsService,
     private dialogService: DialogService,
     private ordersService: OrdersService,
     private store: Store

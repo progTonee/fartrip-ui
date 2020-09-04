@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileInfoService } from './profile-info.service';
 import { passwordsMustMatch } from 'src/app/core/validators/passwords-must-match.validator';
-import { EmployerStatus } from 'src/app/core/models/employer-status';
+import { EmployeeStatus } from 'src/app/core/models/employee-status';
 import { EmployeeStatusValue, EmployeeStatusText } from 'src/app/core/enums/employee-status';
 
 @Component({
@@ -45,7 +45,7 @@ export class ProfileInfoComponent implements OnInit {
       .subscribe(response => this.handleProfileInfoData(response));
   }
 
-  getStatusList(): EmployerStatus[] {
+  getStatusList(): EmployeeStatus[] {
     return this.profileInfoService.getStatusList();
   }
 

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-employer-settings',
-  templateUrl: './employer-settings.component.html',
-  styleUrls: ['./employer-settings.component.scss']
+  selector: 'app-employee-settings',
+  templateUrl: './employee-settings.component.html',
+  styleUrls: ['./employee-settings.component.scss']
 })
-export class EmployerSettingsComponent implements OnInit {
+export class EmployeeSettingsComponent implements OnInit {
   settingsTabs: any[];
 
   constructor() {

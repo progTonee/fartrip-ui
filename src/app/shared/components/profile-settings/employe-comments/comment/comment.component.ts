@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Comment } from 'src/app/core/models/comment';
-import { EmployerCommentsService } from '../employer-comments.service';
+import { EmployeeCommentsService } from '../employee-comments.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class CommentComponent implements OnInit {
 
   @Input() data: Comment;
 
-  constructor(private commentsService: EmployerCommentsService, private localStorageService: LocalStorageService) {}
+  constructor(private commentsService: EmployeeCommentsService, private localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {}
 

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmployerModule } from './modules/employer/employer.module';
+import { EmployeeModule } from './modules/employee/employee.module';
 import { UserModule } from './modules/user/user.module';
 import { WelcomePageModule } from './modules/welcome-page/welcome-page.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,7 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    EmployerModule,
+    EmployeeModule,
     UserModule,
     WelcomePageModule,
     NgbModule,

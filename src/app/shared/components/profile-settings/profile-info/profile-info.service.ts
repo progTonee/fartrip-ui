@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { EmployerStatus } from 'src/app/core/models/employer-status';
-import { employerStatusList } from 'src/app/core/constants/employee-status';
+import { EmployeeStatus } from 'src/app/core/models/employee-status';
+import { employeeStatusList } from 'src/app/core/constants/employee-status';
 import { HttpService } from 'src/app/core/services/http.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { Observable } from 'rxjs';
@@ -14,7 +14,7 @@ import { Gravatar } from 'src/app/core/enums/gravatar';
   providedIn: 'root'
 })
 export class ProfileInfoService {
-  statusList: EmployerStatus[];
+  statusList: EmployeeStatus[];
   profileInfoData: ProfileInfo;
 
   constructor(
@@ -22,7 +22,7 @@ export class ProfileInfoService {
     private localStorageService: LocalStorageService,
     private snackBarService: SnackBarService
   ) {
-    this.statusList = employerStatusList;
+    this.statusList = employeeStatusList;
   }
 
   loadProfileInfo(profileType: string): Observable<any> {
@@ -84,7 +84,7 @@ export class ProfileInfoService {
     return this.profileInfoData;
   }
 
-  getStatusList(): EmployerStatus[] {
+  getStatusList(): EmployeeStatus[] {
     return this.statusList;
   }
 

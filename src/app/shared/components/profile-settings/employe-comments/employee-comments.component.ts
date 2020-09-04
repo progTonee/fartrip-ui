@@ -1,23 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { EmployerCommentsService } from './employer-comments.service';
+import { Component, OnInit } from '@angular/core';
+import { EmployeeCommentsService } from './employee-comments.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Comment } from 'src/app/core/models/comment';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Component({
-  selector: 'app-employer-comments',
-  templateUrl: './employer-comments.component.html',
-  styleUrls: ['./employer-comments.component.scss']
+  selector: 'app-employee-comments',
+  templateUrl: './employee-comments.component.html',
+  styleUrls: ['./employee-comments.component.scss']
 })
-export class EmployerCommentsComponent implements OnInit {
+export class EmployeeCommentsComponent implements OnInit {
   formGroup: FormGroup;
-
-  @Input() employerId: number;
 
   constructor(
     private fb: FormBuilder,
-    private employerCommentService: EmployerCommentsService,
+    private employeeCommentService: EmployeeCommentsService,
     private router: Router,
     private localStorageService: LocalStorageService
   ) {
@@ -27,15 +25,15 @@ export class EmployerCommentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employerCommentService.loadComments(this.getEmployeeAccountId());
+    this.employeeCommentService.loadComments(this.getEmployeeAccountId());
   }
 
   isLeaveCommentOpen(): boolean {
-    return this.employerCommentService.isLeaveCommentOpen();
+    return this.employeeCommentService.isLeaveCommentOpen();
   }
 
   getComments(): Comment[] {
-    return this.employerCommentService.getComments();
+    return this.employeeCommentService.getComments();
   }
 
   getEmployeeAccountId(): string {
@@ -47,11 +45,11 @@ export class EmployerCommentsComponent implements OnInit {
   }
 
   onCancelCommentClick(): void {
-    this.employerCommentService.setCommentOpen(false);
+    this.employeeCommentService.setCommentOpen(false);
   }
 
   onSubmitComment(): void {
-    this.employerCommentService.createComment(this.getEmployeeAccountId(), this.formGroup.value);
+    this.employeeCommentService.createComment(this.getEmployeeAccountId(), this.formGroup.value);
   }
 
 }

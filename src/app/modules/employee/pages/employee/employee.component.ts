@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-employer',
-  templateUrl: './employer.component.html',
-  styleUrls: ['./employer.component.scss']
+  selector: 'app-employee',
+  templateUrl: './employee.component.html',
+  styleUrls: ['./employee.component.scss']
 })
-export class EmployerComponent implements OnInit {
-  employerTabs: any[];
+export class EmployeeComponent implements OnInit {
 
   constructor(private router: Router) {}
 
