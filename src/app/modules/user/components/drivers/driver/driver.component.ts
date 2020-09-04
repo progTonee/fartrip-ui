@@ -11,8 +11,8 @@ import { Store } from '@ngrx/store';
 import { LOAD_EMPLOYEE_REQUEST } from 'src/app/ngrx/actions/employees.actions';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/ngrx';
-import {CREATE_ORDER_REQUEST} from '../../../../../ngrx/actions/orders.actions';
-import {SpinnerService} from '../../../../../core/services/spinner.service';
+import { CREATE_ORDER_REQUEST } from '../../../../../ngrx/actions/orders.actions';
+import { SpinnerService } from '../../../../../core/services/spinner.service';
 
 @Component({
   selector: 'app-driver',

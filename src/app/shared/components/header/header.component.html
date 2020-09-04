@@ -1,18 +1,46 @@
 <mat-card *ngIf="!isSignInSignUpPage">
   <mat-card-actions *ngIf="headerType === 'welcome'">
     <div class="not-logged-in" *ngIf="!isLoggedInUser()">
-      <a mat-button routerLink="/login">Sign In</a>
-      <a mat-button routerLink="/signup">Sign Up</a>
+      <a class="header-link" mat-button routerLink="/login">Sign In</a>
+      <a class="header-link" mat-button routerLink="/signup">Sign Up</a>
     </div>
     <div class="logged-in" *ngIf="isLoggedInUser()">
-      <button mat-button (click)="onLogOut()">Log out</button>
+      <button class="header-link" mat-button (click)="onLogOut()">Log out</button>
     </div>
   </mat-card-actions>
   <mat-card-actions *ngIf="headerType === 'user' || headerType === 'employee'">
-    <a *ngIf="page === 'order-details'" mat-button [routerLink]="headerType === 'user' ? ['/user/orders-history'] : ['/employee/orders-history']">Back to orders list</a>
-    <a *ngIf="page === 'driver-details'" mat-button routerLink="/user/drivers">Back to drivers list</a>
-    <a *ngIf="page !== 'settings'" mat-button [routerLink]="headerType === 'user' ? ['/user/settings/profile'] : ['/employee/settings/profile']">Settings</a>
-    <a *ngIf="page === 'settings'" mat-button [routerLink]="headerType === 'user' ? ['/user/drivers'] : ['/employee/orders-history']">Back to profile</a>
-    <a mat-button routerLink="/" (click)="onLogOut()">Log out</a>
+    <a
+      class="header-link"
+      *ngIf="page === 'order-details'"
+      mat-button
+      [routerLink]="headerType === 'user' ? ['/user/orders-history'] : ['/employee/orders-history']"
+    >
+      Back to orders list
+    </a>
+    <a
+      class="header-link"
+      *ngIf="page === 'driver-details'"
+      mat-button
+      routerLink="/user/drivers"
+    >
+      Back to drivers list
+    </a>
+    <a
+      class="header-link"
+      *ngIf="page !== 'settings'"
+      mat-button
+      [routerLink]="headerType === 'user' ? ['/user/settings/profile'] : ['/employee/settings/profile']"
+    >
+      Settings
+    </a>
+    <a
+      class="header-link"
+      *ngIf="page === 'settings'"
+      mat-button
+      [routerLink]="headerType === 'user' ? ['/user/drivers'] : ['/employee/orders-history']"
+    >
+      Back to profile
+    </a>
+    <a class="header-link" mat-button routerLink="/" (click)="onLogOut()">Log out</a>
   </mat-card-actions>
 </mat-card>

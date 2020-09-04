@@ -78,7 +78,7 @@
       <mat-card-header>
         <mat-card-title>
           <span>Comments</span>
-          <span><mat-icon (click)="onAddCommentClick()">add_comment</mat-icon></span>
+          <span><mat-icon class="add-comment" (click)="onAddCommentClick()">add_comment</mat-icon></span>
         </mat-card-title>
       </mat-card-header>
       <app-employer-comments [employerId]="(driver$ | async)?.id"></app-employer-comments>

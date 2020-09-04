@@ -7,7 +7,6 @@ import { DriversComponent } from './components/drivers/drivers.component';
 import { DriversService } from './components/drivers/drivers.service';
 import { UserSettingsComponent } from './pages/user-settings/user-settings.component';
 import { materialModules } from 'src/app/core/material/material';
-import { UsersService } from './users.service';
 import { EmployeeStatusPipe } from 'src/app/core/pipes/employee-status.pipe';
 import { DialogService } from 'src/app/core/services/dialog.service';
 import { OrderFormComponent } from 'src/app/core/components/order-form/order-form.component';
@@ -40,7 +39,6 @@ import { SpinnerService } from '../../core/services/spinner.service';
   ],
   providers: [
     DriversService,
-    UsersService,
     DialogService,
     SpinnerService
   ],
