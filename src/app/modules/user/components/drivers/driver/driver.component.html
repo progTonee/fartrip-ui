@@ -26,9 +26,6 @@
               >
                 {{getStatus((driver$ | async)?.status)}}
               </span>
-              <div>
-                <mat-icon class="rating-icon" *ngFor="let item of getRating((driver$ | async)?.rating)">star</mat-icon>
-              </div>
               <div class="work_description">
                 <span>{{(driver$ | async)?.workDescription}}</span>
               </div>

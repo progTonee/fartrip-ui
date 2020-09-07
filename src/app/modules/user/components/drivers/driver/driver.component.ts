@@ -65,10 +65,6 @@ export class DriverComponent implements OnInit {
     return base64String;
   }
 
-  getRating(rating: number): any[] {
-    return new Array(Math.floor(rating)).fill(null);
-  }
-
   getProfileGravatarUrl(email: string): string {
     return this.driversService.getProfileGravatarUrl(email);
   }
