@@ -1,4 +1,4 @@
-import { EmployeeStatusValue, EmployeeStatusText } from '../enums/employee-status';
+import { EmployeeStatusValue, EmployeeStatusText } from '../enum/employee-status.enum';
 
 export interface EmployeeStatus {
   text: EmployeeStatusText;

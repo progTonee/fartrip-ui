@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { EmployeeStatus } from 'src/app/core/models/employee-status';
+import { EmployeeStatus } from 'src/app/core/models/employee-status.model';
 import { employeeStatusList } from 'src/app/core/constants/employee-status';
 import { HttpService } from 'src/app/core/services/http.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { Observable } from 'rxjs';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';
-import { ProfileInfo } from 'src/app/core/models/profile-info';
-import { Car } from 'src/app/core/models/car';
+import { ProfileInfo } from 'src/app/core/models/profile-info.model';
+import { Car } from 'src/app/core/models/car.model';
 import { Md5 } from 'ts-md5/dist/md5';
-import { Gravatar } from 'src/app/core/enums/gravatar';
+import { Gravatar } from 'src/app/core/enum/gravatar.enum';
 
 @Injectable({
   providedIn: 'root'

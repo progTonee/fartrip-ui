@@ -1,5 +1,5 @@
-import { EmployeeStatus } from '../models/employee-status';
-import { EmployeeStatusValue, EmployeeStatusText } from '../enums/employee-status';
+import { EmployeeStatus } from '../models/employee-status.model';
+import { EmployeeStatusValue, EmployeeStatusText } from '../enum/employee-status.enum';
 
 export const employeeStatusList: EmployeeStatus[] = [
   { value: EmployeeStatusValue.Available, text: EmployeeStatusText.Available },

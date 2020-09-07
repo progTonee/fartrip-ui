@@ -15,8 +15,8 @@ import {
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {Action} from '..';
 import {OrdersService} from '../../shared/components/orders/orders.service';
-import {Order} from '../../core/models/order';
-import {OrderStatusValue} from '../../core/enums/order';
+import {Order} from '../../core/models/order.model';
+import {OrderStatusValue} from '../../core/enum/order.enum';
 import {SnackBarService} from '../../core/services/snack-bar.service';
 import {SpinnerService} from '../../core/services/spinner.service';
 

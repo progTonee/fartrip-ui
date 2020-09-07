@@ -5,7 +5,7 @@ import { WelcomePageRoutingModule } from './welcome-page-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { LoginComponent } from './pages/login/login.component';
-import { materialModules } from 'src/app/core/material/material';
+import { materialModules } from 'src/app/shared/modules/material/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpService } from 'src/app/core/services/http.service';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';

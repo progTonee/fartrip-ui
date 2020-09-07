@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { OrderStatusValue, OrderStatusLabel } from '../enums/order';
+import { OrderStatusValue, OrderStatusLabel } from '../enum/order.enum';
 
 @Pipe({
   name: 'orderStatus'

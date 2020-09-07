@@ -10,7 +10,7 @@ import {
 } from '../actions/orders.actions';
 import { Action } from '../index';
 import { logActionMessage } from '../utils';
-import {Order} from '../../core/models/order';
+import {Order} from '../../core/models/order.model';
 
 export interface OrdersState {
   orders: Order[];

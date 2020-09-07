@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from 'src/app/core/models/order';
+import { Order } from 'src/app/core/models/order.model';
 import { ActivatedRoute } from '@angular/router';
 import { OrdersService } from '../orders.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';

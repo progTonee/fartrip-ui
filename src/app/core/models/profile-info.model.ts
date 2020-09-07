@@ -1,4 +1,4 @@
-import { Car } from './car';
+import { Car } from './car.model';
 
 export interface ProfileInfo {
   age: string;

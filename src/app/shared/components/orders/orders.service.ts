@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Md5 } from 'ts-md5/dist/md5';
 import { HttpService } from 'src/app/core/services/http.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
-import { OrderStatusValue } from 'src/app/core/enums/order';
-import { Gravatar } from 'src/app/core/enums/gravatar';
+import { OrderStatusValue } from 'src/app/core/enum/order.enum';
+import { Gravatar } from 'src/app/core/enum/gravatar.enum';
 import { Observable } from 'rxjs';
 
 @Injectable({

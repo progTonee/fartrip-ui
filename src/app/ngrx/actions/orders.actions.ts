@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import {Order} from '../../core/models/order';
-import {OrderStatusValue} from '../../core/enums/order';
+import {Order} from '../../core/models/order.model';
+import {OrderStatusValue} from '../../core/enum/order.enum';
 
 export const LOAD_ORDERS_REQUEST = createAction('[Orders Page] Load Orders Request');
 export const LOAD_ORDERS_SUCCESS = createAction(

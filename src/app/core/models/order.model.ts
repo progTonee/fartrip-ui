@@ -1,4 +1,4 @@
-import { OrderStatusValue } from '../enums/order';
+import { OrderStatusValue } from '../enum/order.enum';
 
 export interface Order {
   name: string;

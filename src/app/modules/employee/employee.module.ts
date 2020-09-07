@@ -4,7 +4,7 @@ import { EmployeeComponent } from './pages/employee/employee.component';
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { EmployeeSettingsComponent } from './pages/employee-settings/employee-settings.component';
-import { materialModules } from 'src/app/core/material/material';
+import { materialModules } from 'src/app/shared/modules/material/material';
 
 @NgModule({
   declarations: [

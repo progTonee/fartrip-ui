@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './modules/welcome-page/pages/login/login.component';
 import { SignUpComponent } from './modules/welcome-page/pages/sign-up/sign-up.component';
 import { AuthGuard } from './core/guards/auth.guard';
-import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -22,8 +21,7 @@ const routes: Routes = [
   },
   { path: '', redirectTo: '/welcome-page', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignUpComponent },
-  // { path: '**', component: PageNotFoundComponent }
+  { path: 'signup', component: SignUpComponent }
 ];
 
 @NgModule({

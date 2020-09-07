@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../../../ngrx';
 import { RouterTestingModule } from '@angular/router/testing';
-import { materialModules } from '../../../core/material/material';
+import { materialModules } from '../../modules/material/material';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('HeaderComponent', () => {

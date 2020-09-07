@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { EmployeeStatusText, EmployeeStatusValue } from '../enums/employee-status';
+import { EmployeeStatusText, EmployeeStatusValue } from '../enum/employee-status.enum';
 
 @Pipe({
   name: 'employeeStatus'

@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../../../../ngrx';
 import { RouterTestingModule } from '@angular/router/testing';
-import { materialModules } from '../../../../core/material/material';
+import { materialModules } from '../../../../shared/modules/material/material';
 
 describe('SignUpComponent', () => {
 

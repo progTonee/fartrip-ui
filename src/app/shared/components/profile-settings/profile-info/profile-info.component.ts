@@ -3,8 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileInfoService } from './profile-info.service';
 import { passwordsMustMatch } from 'src/app/core/validators/passwords-must-match.validator';
-import { EmployeeStatus } from 'src/app/core/models/employee-status';
-import { EmployeeStatusValue, EmployeeStatusText } from 'src/app/core/enums/employee-status';
+import { EmployeeStatus } from 'src/app/core/models/employee-status.model';
+import { EmployeeStatusValue, EmployeeStatusText } from 'src/app/core/enum/employee-status.enum';
 
 @Component({
   selector: 'app-profile-info',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/core/services/http.service';
-import { Comment } from 'src/app/core/models/comment';
+import { Comment } from 'src/app/core/models/comment.model';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Injectable({

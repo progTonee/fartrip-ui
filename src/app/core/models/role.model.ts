@@ -1,4 +1,4 @@
-import { RoleLabel, RoleValue } from '../enums/role';
+import { RoleLabel, RoleValue } from '../enum/role.enum';
 
 export interface Role {
   label: RoleLabel;

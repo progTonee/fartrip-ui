@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from './orders.service';
-import { Order } from 'src/app/core/models/order';
+import { Order } from 'src/app/core/models/order.model';
 import { Store } from '@ngrx/store';
 import { LOAD_ORDERS_REQUEST } from '../../../ngrx/actions/orders.actions';
 import { Observable } from 'rxjs';

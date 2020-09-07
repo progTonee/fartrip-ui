@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeCommentsService } from './employee-comments.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Comment } from 'src/app/core/models/comment';
+import { Comment } from 'src/app/core/models/comment.model';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 

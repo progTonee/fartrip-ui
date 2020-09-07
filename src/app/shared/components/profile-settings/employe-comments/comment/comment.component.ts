@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Comment } from 'src/app/core/models/comment';
+import { Comment } from 'src/app/core/models/comment.model';
 import { EmployeeCommentsService } from '../employee-comments.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 

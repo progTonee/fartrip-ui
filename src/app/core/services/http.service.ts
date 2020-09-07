@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpUrl } from '../enums/http-url';
+import { HttpUrl } from '../enum/http-url.enum';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
-import { Car } from '../models/car';
-import { Comment } from '../models/comment';
+import { Car } from '../models/car.model';
+import { Comment } from '../models/comment.model';
 
 @Injectable({
   providedIn: 'root'

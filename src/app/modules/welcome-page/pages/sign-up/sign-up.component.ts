@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Role } from 'src/app/core/models/role';
-import { RoleValue, RoleLabel } from 'src/app/core/enums/role';
+import { Role } from 'src/app/core/models/role.model';
+import { RoleValue, RoleLabel } from 'src/app/core/enum/role.enum';
 import { HttpService } from 'src/app/core/services/http.service';;
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { Store } from '@ngrx/store';

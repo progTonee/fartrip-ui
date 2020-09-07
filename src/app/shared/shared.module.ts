@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { HeaderComponent } from './components/header/header.component';
-import { materialModules } from '../core/material/material';
+import { materialModules } from './modules/material/material';
 import { RouterModule } from '@angular/router';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
@@ -23,8 +23,10 @@ import { OrderSpendTimePipe } from '../core/pipes/order-spend-time.pipe';
 import { OrderStatusPipe } from '../core/pipes/order-status.pipe';
 import { OrderDistancePipe } from '../core/pipes/order-distance.pipe';
 import { MapService } from './components/map/map.service';
-import {EffectsModule} from '@ngrx/effects';
-import {OrdersEffects} from '../ngrx/effects/orders.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { OrdersEffects } from '../ngrx/effects/orders.effects';
+import { OrderFormComponent } from './components/order-form/order-form.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import {OrdersEffects} from '../ngrx/effects/orders.effects';
     OrdersComponent,
     OrderSpendTimePipe,
     OrderStatusPipe,
-    OrderDistancePipe
+    OrderDistancePipe,
+    OrderFormComponent
   ],
   imports: [
     CommonModule,
@@ -50,6 +53,7 @@ import {OrdersEffects} from '../ngrx/effects/orders.effects';
     RouterModule,
     ScrollingModule,
     LeafletModule,
+    NgxMaterialTimepickerModule,
     EffectsModule.forFeature([OrdersEffects]),
     ...materialModules,
   ],
@@ -59,12 +63,14 @@ import {OrdersEffects} from '../ngrx/effects/orders.effects';
     OrdersService,
     MapService,
   ],
+  entryComponents: [OrderFormComponent],
   exports: [
     HeaderComponent,
     TabsComponent,
     OrdersComponent,
     ProfileSettingsComponent,
     OrderComponent,
+    OrderFormComponent
   ]
 })
 export class SharedModule { }

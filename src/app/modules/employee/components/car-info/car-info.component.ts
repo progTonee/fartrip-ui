@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfileInfoService } from 'src/app/shared/components/profile-settings/profile-info/profile-info.service';
-import { Car } from 'src/app/core/models/car';
+import { Car } from 'src/app/core/models/car.model';
 
 @Component({
   selector: 'app-car-info',
