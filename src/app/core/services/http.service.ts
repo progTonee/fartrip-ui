@@ -29,14 +29,6 @@ export class HttpService {
     }
   }
 
-  signUpUser(body: any): Observable<any> {
-    return this.http.post(HttpUrl.Users, body);
-  }
-
-  signUpEmployee(body: any): Observable<any> {
-    return this.http.post(HttpUrl.Employees, body);
-  }
-
   getEmployees(): Observable<any> {
     return this.http.get(HttpUrl.Employees);
   }
@@ -51,14 +43,6 @@ export class HttpService {
     } else {
       return this.getUserProfileInfo(id);
     }
-  }
-
-  getEmployeeProfileInfo(id: string): Observable<any> {
-    return this.http.get(`${HttpUrl.Employees}/${id}`);
-  }
-
-  getUserProfileInfo(id: string): Observable<any> {
-    return this.http.get(`${HttpUrl.Users}/${id}`);
   }
 
   createOrder(data: any): Observable<any> {
@@ -79,22 +63,6 @@ export class HttpService {
     } else {
       return this.getUserOrder(orderId, accountId);
     }
-  }
-
-  getEmployeeOrders(id: string): Observable<any> {
-    return this.http.get(`${HttpUrl.Employees}/${id}/orders`);
-  }
-
-  getUserOrders(id: string): Observable<any> {
-    return this.http.get(`${HttpUrl.Users}/${id}/orders`);
-  }
-
-  getEmployeeOrder(orderId: string, accountId: string): Observable<any> {
-    return this.http.get(`${HttpUrl.Employees}/${accountId}/orders/${orderId}`);
-  }
-
-  getUserOrder(orderId: string, accountId: string): Observable<any> {
-    return this.http.get(`${HttpUrl.Users}/${accountId}/orders/${orderId}`);
   }
 
   updateOrderStatus(orderStatusData: any): Observable<any> {
@@ -137,15 +105,47 @@ export class HttpService {
     return this.http.delete(`${HttpUrl.Employees}/${id}/car`);
   }
 
-  updateEmployeeProfileInfo(id: string, profileInfoData: any , requestType: string): Observable<any> {
+  updateEmployeeCarInfo(id: string, data: Car): Observable<any> {
+    return this.http.patch(`${HttpUrl.Employees}/${id}?type=car`, data);
+  }
+
+  private signUpUser(body: any): Observable<any> {
+    return this.http.post(HttpUrl.Users, body);
+  }
+
+  private signUpEmployee(body: any): Observable<any> {
+    return this.http.post(HttpUrl.Employees, body);
+  }
+
+  private getEmployeeProfileInfo(id: string): Observable<any> {
+    return this.http.get(`${HttpUrl.Employees}/${id}`);
+  }
+
+  private getUserProfileInfo(id: string): Observable<any> {
+    return this.http.get(`${HttpUrl.Users}/${id}`);
+  }
+
+  private getEmployeeOrders(id: string): Observable<any> {
+    return this.http.get(`${HttpUrl.Employees}/${id}/orders`);
+  }
+
+  private getUserOrders(id: string): Observable<any> {
+    return this.http.get(`${HttpUrl.Users}/${id}/orders`);
+  }
+
+  private getEmployeeOrder(orderId: string, accountId: string): Observable<any> {
+    return this.http.get(`${HttpUrl.Employees}/${accountId}/orders/${orderId}`);
+  }
+
+  private getUserOrder(orderId: string, accountId: string): Observable<any> {
+    return this.http.get(`${HttpUrl.Users}/${accountId}/orders/${orderId}`);
+  }
+
+  private updateEmployeeProfileInfo(id: string, profileInfoData: any , requestType: string): Observable<any> {
     return this.http.patch(`${HttpUrl.Employees}/${id}?type=${requestType}`, profileInfoData);
   }
 
-  updateUserProfileInfo(id: string, profileInfoData: any , requestType: string): Observable<any> {
+  private updateUserProfileInfo(id: string, profileInfoData: any , requestType: string): Observable<any> {
     return this.http.patch(`${HttpUrl.Users}/${id}?type=${requestType}`, profileInfoData);
-  }
-
-  updateEmployeeCarInfo(id: string, data: Car): Observable<any> {
-    return this.http.patch(`${HttpUrl.Employees}/${id}?type=car`, data);
   }
 }

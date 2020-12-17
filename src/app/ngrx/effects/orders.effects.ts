@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Actions, createEffect, ofType} from '@ngrx/effects';
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
   CANCEL_ORDER_FAILED,
   CANCEL_ORDER_REQUEST, CANCEL_ORDER_SUCCESS, CREATE_ORDER_FAILED, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS,
@@ -12,13 +12,14 @@ import {
   SUBMIT_ORDER_REQUEST,
   SUBMIT_ORDER_SUCCESS
 } from '../actions/orders.actions';
-import {catchError, map, mergeMap} from 'rxjs/operators';
-import {Action} from '..';
-import {OrdersService} from '../../shared/components/orders/orders.service';
-import {Order} from '../../core/models/order.model';
-import {OrderStatusValue} from '../../core/enum/order.enum';
-import {SnackBarService} from '../../core/services/snack-bar.service';
-import {SpinnerService} from '../../core/services/spinner.service';
+import { catchError, map, mergeMap } from 'rxjs/operators';
+import { Action } from '..';
+import { OrdersService } from '../../shared/components/orders/orders.service';
+import { Order } from '../../core/models/order.model';
+import { OrderStatusValue } from '../../core/enum/order.enum';
+import { SnackBarService } from '../../core/services/snack-bar.service';
+import { SpinnerService } from '../../core/services/spinner.service';
+import { of } from 'rxjs';
 
 @Injectable()
 export class OrdersEffects {
@@ -65,7 +66,16 @@ export class OrdersEffects {
 
             return CREATE_ORDER_SUCCESS();
           }),
-          catchError(() => CREATE_ORDER_FAILED)
+          catchError(err => {
+            if (err.status === 535) {
+              this.snackBarService.show('The order was sent to the driver. Please, wait for the respond from him!', 3000);
+            } else {
+              this.snackBarService.show(err.error.message, 3000);
+            }
+            this.spinnerService.turnSpinner(false);
+
+            return of(CREATE_ORDER_FAILED());
+          })
         )
       )
     )
